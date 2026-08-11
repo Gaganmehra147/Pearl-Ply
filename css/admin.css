@@ -711,6 +711,11 @@ body {
   box-shadow: 0 0 0 3px rgba(212, 163, 89, 0.25);
 }
 
+.adm-form-group select option {
+  background-color: var(--adm-card);
+  color: var(--adm-text);
+}
+
 /* Detailed Lead Dossier Card */
 .lead-dossier-hero {
   display: flex;
