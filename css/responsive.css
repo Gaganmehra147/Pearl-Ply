@@ -1,0 +1,451 @@
+/* ==========================================================================
+   PEARL PLY - MASTER RESPONSIVE & MOBILE DESIGN SYSTEM (100% FLUID)
+   ========================================================================== */
+
+/* Universal Mobile Safety: Zero Overflow & 100% Viewport Containment */
+html, body {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+  position: relative !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* ==========================================================================
+   1. TABLETS & SMALL LAPTOPS (< 1200px)
+   ========================================================================== */
+@media (max-width: 1200px) {
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  .hero-interactive-card {
+    max-width: 580px !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+  }
+
+  .calculator-wrap {
+    grid-template-columns: 1fr !important;
+  }
+
+  .calc-outputs {
+    border-left: none !important;
+    border-top: 1px solid var(--border-gold) !important;
+  }
+
+  .lab-grid, .dealers-grid, .architect-wrap {
+    grid-template-columns: 1fr !important;
+  }
+
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .products-grid, .applications-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* ==========================================================================
+   2. MOBILE SCREENS & TABLETS (< 992px)
+   ========================================================================== */
+@media (max-width: 992px) {
+  :root {
+    --header-height: 64px;
+  }
+
+  body {
+    padding-bottom: 68px !important; /* Space for Mobile Bottom Nav */
+  }
+
+  .topbar {
+    display: none !important;
+  }
+
+  .container, .container-wide {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Header & Mobile Toggle */
+  .main-header {
+    background: rgba(5, 20, 15, 0.98) !important;
+    backdrop-filter: blur(20px) !important;
+    border-bottom: 1.5px solid rgba(212, 163, 89, 0.3) !important;
+    padding: 10px 0 !important;
+    width: 100% !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
+  }
+
+  .main-header .container {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+
+  /* Slide-Out Drawer Navigation */
+  .nav-menu {
+    position: fixed !important;
+    top: var(--header-height) !important;
+    left: 0 !important;
+    width: 300px !important;
+    max-width: 85vw !important;
+    height: calc(100vh - var(--header-height)) !important;
+    background: linear-gradient(180deg, #071C15 0%, #04120D 100%) !important;
+    border-right: 1.5px solid var(--border-gold) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    padding: 20px 16px 80px !important;
+    gap: 8px !important;
+    overflow-y: auto !important;
+    transform: translateX(-100%) !important;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    z-index: 99999 !important;
+    box-shadow: 20px 0 50px rgba(0, 0, 0, 0.8) !important;
+  }
+
+  .nav-menu.active {
+    transform: translateX(0) !important;
+  }
+
+  .nav-item {
+    width: 100% !important;
+  }
+
+  .nav-link {
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+    color: #E2EAE6 !important;
+    width: 100% !important;
+    padding: 12px 14px !important;
+    border-radius: 8px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+
+  .nav-link:hover, .nav-link.active {
+    background: rgba(212, 163, 89, 0.15) !important;
+    color: var(--color-accent-gold) !important;
+  }
+
+  .dropdown-menu {
+    position: static !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(212, 163, 89, 0.2) !important;
+    box-shadow: none !important;
+    border-radius: 8px !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    margin: 6px 0 10px 0 !important;
+    padding: 6px !important;
+  }
+
+  .dropdown-link {
+    padding: 9px 12px !important;
+    font-size: 0.84rem !important;
+  }
+
+  .mobile-toggle {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 8px !important;
+    background: rgba(212, 163, 89, 0.15) !important;
+    border: 1px solid var(--border-gold) !important;
+    color: var(--color-accent-gold) !important;
+    cursor: pointer !important;
+  }
+
+  .header-actions .btn {
+    display: none !important;
+  }
+
+  /* HERO SECTION 100% FULL-WIDTH REPAIR */
+  .hero-section {
+    padding: 24px 0 40px !important;
+    min-height: auto !important;
+    width: 100% !important;
+    overflow: hidden !important;
+  }
+
+  .hero-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 24px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .hero-content {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .hero-title {
+    font-size: 1.85rem !important;
+    line-height: 1.2 !important;
+    margin-bottom: 12px !important;
+  }
+
+  .hero-desc {
+    font-size: 0.9rem !important;
+    line-height: 1.55 !important;
+    margin-bottom: 18px !important;
+    max-width: 100% !important;
+  }
+
+  .hero-cta-group {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 10px !important;
+  }
+
+  .hero-cta-group .btn {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 12px 18px !important;
+    font-size: 0.9rem !important;
+  }
+
+  .hero-trust-bar {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+    width: 100% !important;
+    margin-top: 18px !important;
+    padding-top: 16px !important;
+  }
+
+  .trust-number {
+    font-size: 1.35rem !important;
+  }
+
+  .trust-label {
+    font-size: 0.72rem !important;
+  }
+
+  /* 3D Holographic Card on Mobile */
+  .hero-interactive-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  .layer-breakdown-badges {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+
+  .layer-badge-item {
+    font-size: 0.74rem !important;
+    padding: 6px 8px !important;
+  }
+
+  /* ALL SECTIONS 100% RESPONSIVE */
+  .section {
+    padding: 44px 0 !important;
+    width: 100% !important;
+    overflow: hidden !important;
+  }
+
+  .section-title {
+    font-size: 1.55rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .section-desc {
+    font-size: 0.86rem !important;
+  }
+
+  .products-grid, .applications-grid, .blog-grid, .resources-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 18px !important;
+  }
+
+  /* Calculator Mobile */
+  .calculator-wrap {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .calc-inputs, .calc-outputs {
+    width: 100% !important;
+    padding: 20px 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  .calc-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .dimension-row {
+    grid-template-columns: 1fr 1fr 1fr !important;
+  }
+
+  .calc-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 8px !important;
+  }
+
+  .calc-actions .btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  /* Footer Mobile */
+  .footer-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 28px !important;
+  }
+
+  .footer-bottom {
+    flex-direction: column !important;
+    gap: 12px !important;
+    text-align: center !important;
+  }
+}
+
+/* ==========================================================================
+   3. NATIVE APP-LIKE BOTTOM DOCK ON MOBILE (< 768px)
+   ========================================================================== */
+.mobile-bottom-nav {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-bottom-nav {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-around !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 60px !important;
+    background: rgba(5, 20, 15, 0.98) !important;
+    backdrop-filter: blur(25px) !important;
+    border-top: 1.5px solid var(--border-gold) !important;
+    z-index: 99990 !important;
+    padding: 0 4px !important;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.6) !important;
+  }
+
+  .mobile-nav-tab {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 3px !important;
+    color: #9DB4AA !important;
+    text-decoration: none !important;
+    font-size: 0.65rem !important;
+    font-weight: 700 !important;
+    padding: 6px 0 !important;
+    position: relative !important;
+    background: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
+  }
+
+  .mobile-nav-tab.active, .mobile-nav-tab:hover {
+    color: var(--color-accent-gold) !important;
+  }
+
+  .mobile-nav-tab.wa {
+    color: #48BB78 !important;
+  }
+
+  .m-tab-dot {
+    position: absolute !important;
+    top: 6px !important;
+    right: 22% !important;
+    width: 6px !important;
+    height: 6px !important;
+    background: #48BB78 !important;
+    border-radius: 50% !important;
+    box-shadow: 0 0 8px #48BB78 !important;
+  }
+
+  /* Floating Buttons Positioned Above Bottom Dock */
+  .floating-whatsapp {
+    bottom: 72px !important;
+    right: 14px !important;
+    width: 46px !important;
+    height: 46px !important;
+  }
+
+  .floating-whatsapp svg {
+    width: 24px !important;
+    height: 24px !important;
+  }
+
+  .pearl-ai-trigger {
+    bottom: 126px !important;
+    right: 14px !important;
+    width: 46px !important;
+    height: 46px !important;
+  }
+
+  .pearl-ai-widget {
+    bottom: 68px !important;
+    right: 8px !important;
+    left: 8px !important;
+    width: auto !important;
+    height: calc(100vh - 130px) !important;
+    max-height: 540px !important;
+    border-radius: 16px !important;
+  }
+
+  /* Modals as Native Bottom Sheets */
+  .modal-box {
+    width: 100% !important;
+    max-height: 90vh !important;
+    border-radius: 20px 20px 0 0 !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    padding: 22px 16px 36px !important;
+    overflow-y: auto !important;
+  }
+
+  /* iOS Auto-Zoom Prevention */
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+
+  .form-grid-2 {
+    grid-template-columns: 1fr !important;
+  }
+}

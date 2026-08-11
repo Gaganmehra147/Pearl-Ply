@@ -1,0 +1,31 @@
+# ==========================================
+# ROBOTS.TXT FOR PEARL PLY
+# Website: https://www.pearlply.com/
+# ==========================================
+
+User-agent: *
+Allow: /
+Disallow: /admin.html
+
+# Allow AI Search & GEO Crawlers (Perplexity, ChatGPT, Claude, Gemini)
+User-agent: GPTBot
+Allow: /
+Allow: /llms.txt
+
+User-agent: ChatGPT-User
+Allow: /
+Allow: /llms.txt
+
+User-agent: PerplexityBot
+Allow: /
+Allow: /llms.txt
+
+User-agent: ClaudeBot
+Allow: /
+Allow: /llms.txt
+
+User-agent: Google-Extended
+Allow: /
+
+# Sitemap Directives
+Sitemap: https://www.pearlply.com/sitemap.xml

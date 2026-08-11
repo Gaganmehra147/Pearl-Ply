@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  
+  <!-- Homepage & Core Authority -->
+  <url>
+    <loc>https://www.pearlply.com/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Product Ranges -->
+  <url>
+    <loc>https://www.pearlply.com/#products</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- Marine BWP 710 -->
+  <url>
+    <loc>https://www.pearlply.com/#marine-710</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- BWR Moisture Guard -->
+  <url>
+    <loc>https://www.pearlply.com/#bwr-moisture</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Commercial MR -->
+  <url>
+    <loc>https://www.pearlply.com/#commercial-mr</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- SolidCore Blockboard -->
+  <url>
+    <loc>https://www.pearlply.com/#blockboard</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Jabalpur & Madhya Pradesh Regional Hub -->
+  <url>
+    <loc>https://www.pearlply.com/#jabalpur-hub</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- Manufacturing & 4-Head Calibration -->
+  <url>
+    <loc>https://www.pearlply.com/#manufacturing</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Quality & 7-Point Laboratory Testing -->
+  <url>
+    <loc>https://www.pearlply.com/#quality</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Applications Lookbook -->
+  <url>
+    <loc>https://www.pearlply.com/#applications</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Architects & Designers Portal -->
+  <url>
+    <loc>https://www.pearlply.com/#architects</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Dealership & Distributorship Network -->
+  <url>
+    <loc>https://www.pearlply.com/#dealership</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Interactive Sheet Calculator -->
+  <url>
+    <loc>https://www.pearlply.com/#calculator</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Technical Resources & TDS Downloads -->
+  <url>
+    <loc>https://www.pearlply.com/#resources</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Blog & Timber Knowledge Hub -->
+  <url>
+    <loc>https://www.pearlply.com/#blog</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Contact & Regional Depots -->
+  <url>
+    <loc>https://www.pearlply.com/#contact</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+</urlset>
