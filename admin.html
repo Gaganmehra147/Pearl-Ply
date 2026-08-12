@@ -145,6 +145,83 @@
       color: #D4A359;
     }
   </style>
+
+  <!-- Instant High-Priority Auth Script in Head -->
+  <script>
+    (function() {
+      const VALID_PASSWORDS = ['admin123', 'admin@123', 'pearl123', 'pearlply123'];
+
+      function isUserAuthenticated() {
+        return localStorage.getItem('pearl_admin_auth') === 'true' || sessionStorage.getItem('pearl_admin_auth') === 'true';
+      }
+
+      window.checkAdminAuth = function() {
+        const lock = document.getElementById('adminAuthLock');
+        const dash = document.getElementById('adminAppDashboard');
+        if (isUserAuthenticated()) {
+          if (lock) lock.style.display = 'none';
+          if (dash) dash.style.display = 'block';
+          if (window.PearlCRM && typeof window.PearlCRM.renderAll === 'function') {
+            window.PearlCRM.renderAll();
+          }
+          return true;
+        } else {
+          if (lock) lock.style.display = 'flex';
+          if (dash) dash.style.display = 'none';
+          const input = document.getElementById('adminPassInput');
+          if (input) {
+            input.value = '';
+            input.focus();
+          }
+          return false;
+        }
+      };
+
+      window.handleAdminLogin = function(e) {
+        if (e) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+        const input = document.getElementById('adminPassInput');
+        const err = document.getElementById('authErrorMsg');
+        const entered = input ? input.value.trim().toLowerCase() : '';
+
+        if (VALID_PASSWORDS.includes(entered)) {
+          localStorage.setItem('pearl_admin_auth', 'true');
+          sessionStorage.setItem('pearl_admin_auth', 'true');
+          if (err) err.style.display = 'none';
+          window.checkAdminAuth();
+          if (window.PearlCRM && typeof window.PearlCRM.renderAll === 'function') {
+            window.PearlCRM.renderAll();
+          }
+          return false;
+        } else {
+          if (err) {
+            err.textContent = '❌ Invalid Password. Please enter: admin123';
+            err.style.display = 'block';
+          }
+          if (input) {
+            input.value = '';
+            input.focus();
+          }
+          return false;
+        }
+      };
+
+      window.adminLogout = function() {
+        localStorage.removeItem('pearl_admin_auth');
+        sessionStorage.removeItem('pearl_admin_auth');
+        window.checkAdminAuth();
+      };
+
+      // Check immediately on load
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', window.checkAdminAuth);
+      } else {
+        window.checkAdminAuth();
+      }
+    })();
+  </script>
 </head>
 <body>
 
@@ -179,13 +256,13 @@
       <h2>PEARL PLY <span>CRM PORTAL</span></h2>
       <p>Enter Master Password to access lead CRM, live inquiries &amp; product catalog manager.</p>
       
-      <form id="formAdminAuth" onsubmit="window.handleAdminLogin(event)">
+      <form id="formAdminAuth" onsubmit="return window.handleAdminLogin(event)">
         <div class="auth-input-group">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-          <input type="password" id="adminPassInput" placeholder="Enter Admin Password..." required autofocus />
+          <input type="password" id="adminPassInput" placeholder="Enter password (admin123)..." required autofocus />
         </div>
         <div class="auth-error-msg" id="authErrorMsg" style="display:none;"></div>
-        <button type="submit" class="auth-submit-btn">
+        <button type="submit" class="auth-submit-btn" onclick="return window.handleAdminLogin(event)">
           Unlock CRM Command Center
         </button>
       </form>
@@ -274,7 +351,7 @@
     </nav>
 
     <!-- MAIN ANALYTICAL DASHBOARD WRAPPER -->
-    <main class="admin-main-wrap">
+    <main class="admin-main-wrap" id="crmSection">
 
       <!-- 1. 6-CARD ANALYTICAL KPI METRIC ROW -->
       <section class="kpi-row">

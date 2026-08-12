@@ -6,7 +6,7 @@
 
   const STORAGE_KEY = 'pearl_crm_leads_v2';
   const AUTH_KEY = 'pearl_admin_auth';
-  const MASTER_PASSWORD = 'admin123';
+  const VALID_PASSWORDS = ['admin123', 'admin@123', 'pearl123', 'pearlply123'];
 
   // Force purge all legacy mock demo data from local storage
   ['pearl_crm_leads', 'pearl_crm_leads_v1', 'pearl_leads'].forEach(k => {
@@ -22,7 +22,7 @@
 
   // 0. Security & Authentication Controller
   function checkAuth() {
-    const isAuth = sessionStorage.getItem(AUTH_KEY) === 'true';
+    const isAuth = localStorage.getItem(AUTH_KEY) === 'true' || sessionStorage.getItem(AUTH_KEY) === 'true';
     const lockOverlay = document.getElementById('adminAuthLock');
     const dashboard = document.getElementById('adminAppDashboard');
 
@@ -43,28 +43,35 @@
   }
 
   window.handleAdminLogin = function(e) {
-    if (e) e.preventDefault();
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
     const passInput = document.getElementById('adminPassInput');
     const errBox = document.getElementById('authErrorMsg');
-    const entered = passInput ? passInput.value.trim() : '';
+    const entered = passInput ? passInput.value.trim().toLowerCase() : '';
 
-    if (entered === MASTER_PASSWORD) {
+    if (VALID_PASSWORDS.includes(entered)) {
+      localStorage.setItem(AUTH_KEY, 'true');
       sessionStorage.setItem(AUTH_KEY, 'true');
       if (errBox) errBox.style.display = 'none';
       checkAuth();
+      return false;
     } else {
       if (errBox) {
-        errBox.textContent = '❌ Invalid Admin Password. Access Denied.';
+        errBox.textContent = '❌ Invalid Password. Please enter: admin123';
         errBox.style.display = 'block';
       }
       if (passInput) {
         passInput.value = '';
         passInput.focus();
       }
+      return false;
     }
   };
 
   window.adminLogout = function() {
+    localStorage.removeItem(AUTH_KEY);
     sessionStorage.removeItem(AUTH_KEY);
     checkAuth();
   };
