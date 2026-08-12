@@ -17,6 +17,11 @@ html, body {
   box-sizing: border-box;
 }
 
+/* Default: Bottom Navigation Bar is completely hidden on desktop & laptop screens */
+.mobile-bottom-nav {
+  display: none !important;
+}
+
 /* ==========================================================================
    1. LAPTOPS & DESKTOP SCREENS (1200px - 1400px)
    ========================================================================== */
