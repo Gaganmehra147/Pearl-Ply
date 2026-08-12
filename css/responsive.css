@@ -1,8 +1,8 @@
 /* ==========================================================================
-   PEARL PLY - MASTER RESPONSIVE & MOBILE DESIGN SYSTEM (100% FLUID)
+   PEARL PLY - MASTER RESPONSIVE & MOBILE-FIRST OPTIMIZATION ENGINE
    ========================================================================== */
 
-/* Universal Mobile Safety: Zero Overflow & 100% Viewport Containment */
+/* Universal Mobile Safety: Zero Overflow & 100% Fluid Containment */
 html, body {
   width: 100% !important;
   max-width: 100% !important;
@@ -10,15 +10,29 @@ html, body {
   position: relative !important;
   margin: 0 !important;
   padding: 0 !important;
+  -webkit-text-size-adjust: 100%;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box !important;
 }
 
 /* ==========================================================================
-   1. TABLETS & SMALL LAPTOPS (< 1200px)
+   1. DESKTOP & LARGE SCREENS (>= 1200px)
+   ========================================================================== */
+@media (min-width: 1200px) {
+  .hero-grid {
+    grid-template-columns: 1.15fr 0.85fr;
+  }
+}
+
+/* ==========================================================================
+   2. TABLETS & LAPTOPS (< 1200px)
    ========================================================================== */
 @media (max-width: 1200px) {
   .hero-grid {
     grid-template-columns: 1fr !important;
-    gap: 32px !important;
+    gap: 36px !important;
   }
 
   .hero-interactive-card {
@@ -42,15 +56,22 @@ html, body {
 
   .blog-grid {
     grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
   }
 
-  .products-grid, .applications-grid {
+  .products-grid, .applications-showcase-grid {
     grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+
+  .manufacturing-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
   }
 }
 
 /* ==========================================================================
-   2. MOBILE SCREENS & TABLETS (< 992px)
+   3. MOBILE SCREENS & TABLETS (< 992px)
    ========================================================================== */
 @media (max-width: 992px) {
   :root {
@@ -58,7 +79,7 @@ html, body {
   }
 
   body {
-    padding-bottom: 68px !important; /* Space for Mobile Bottom Nav */
+    padding-bottom: 68px !important; /* Space for Mobile Bottom Dock */
   }
 
   .topbar {
@@ -68,18 +89,17 @@ html, body {
   .container, .container-wide {
     width: 100% !important;
     max-width: 100% !important;
-    padding-left: 18px !important;
-    padding-right: 18px !important;
-    box-sizing: border-box !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
   }
 
-  /* Header & Mobile Toggle */
+  /* Header & Navigation */
   .main-header {
     background: rgba(5, 20, 15, 0.98) !important;
     backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
     border-bottom: 1.5px solid rgba(212, 163, 89, 0.3) !important;
-    padding: 10px 0 !important;
-    width: 100% !important;
+    padding: 8px 0 !important;
     position: sticky !important;
     top: 0 !important;
     z-index: 1000 !important;
@@ -89,25 +109,53 @@ html, body {
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
-    width: 100% !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .brand-logo {
+    gap: 8px !important;
+  }
+
+  .logo-symbol {
+    width: 38px !important;
+    height: 38px !important;
+  }
+
+  .logo-title {
+    font-size: 1.18rem !important;
+  }
+
+  .logo-subtitle {
+    font-size: 0.52rem !important;
+    letter-spacing: 0.12em !important;
+  }
+
+  .mobile-toggle {
+    display: flex !important;
+  }
+
+  .header-actions .btn {
+    display: none !important;
   }
 
   /* Slide-Out Drawer Navigation */
   .nav-menu {
     position: fixed !important;
-    top: var(--header-height) !important;
+    top: 0 !important;
     left: 0 !important;
-    width: 300px !important;
+    width: 310px !important;
     max-width: 85vw !important;
-    height: calc(100vh - var(--header-height)) !important;
-    background: linear-gradient(180deg, #071C15 0%, #04120D 100%) !important;
+    height: 100vh !important;
+    background: linear-gradient(180deg, #071C15 0%, #03100B 100%) !important;
     border-right: 1.5px solid var(--border-gold) !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: flex-start !important;
-    padding: 20px 16px 80px !important;
-    gap: 8px !important;
+    padding: 24px 18px 100px !important;
+    gap: 6px !important;
     overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
     transform: translateX(-100%) !important;
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
     z-index: 99999 !important;
@@ -152,53 +200,49 @@ html, body {
     min-width: 100% !important;
     display: flex !important;
     flex-direction: column !important;
-    margin: 6px 0 10px 0 !important;
+    margin: 4px 0 8px 0 !important;
     padding: 6px !important;
   }
 
   .dropdown-link {
-    padding: 9px 12px !important;
-    font-size: 0.84rem !important;
+    padding: 8px 10px !important;
+    font-size: 0.82rem !important;
   }
 
-  .mobile-toggle {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 40px !important;
-    height: 40px !important;
-    border-radius: 8px !important;
-    background: rgba(212, 163, 89, 0.15) !important;
-    border: 1px solid var(--border-gold) !important;
-    color: var(--color-accent-gold) !important;
-    cursor: pointer !important;
-  }
-
-  .header-actions .btn {
-    display: none !important;
-  }
-
-  /* HERO SECTION 100% FULL-WIDTH REPAIR */
+  /* HERO SECTION */
   .hero-section {
-    padding: 24px 0 40px !important;
+    padding: 24px 0 36px !important;
     min-height: auto !important;
     width: 100% !important;
-    overflow: hidden !important;
   }
 
   .hero-grid {
     display: flex !important;
     flex-direction: column !important;
     width: 100% !important;
-    max-width: 100% !important;
     gap: 24px !important;
-    margin: 0 !important;
-    padding: 0 !important;
   }
 
   .hero-content {
     width: 100% !important;
-    max-width: 100% !important;
+  }
+
+  .hero-badge-wrap {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    align-items: center !important;
+    margin-bottom: 14px !important;
+  }
+
+  .hero-badge {
+    font-size: 0.72rem !important;
+    padding: 5px 12px !important;
+    white-space: normal !important;
+    line-height: 1.3 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
   }
 
   .hero-title {
@@ -211,7 +255,6 @@ html, body {
     font-size: 0.9rem !important;
     line-height: 1.55 !important;
     margin-bottom: 18px !important;
-    max-width: 100% !important;
   }
 
   .hero-cta-group {
@@ -224,8 +267,8 @@ html, body {
   .hero-cta-group .btn {
     width: 100% !important;
     justify-content: center !important;
-    padding: 12px 18px !important;
-    font-size: 0.9rem !important;
+    padding: 13px 18px !important;
+    font-size: 0.92rem !important;
   }
 
   .hero-trust-bar {
@@ -233,25 +276,23 @@ html, body {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 12px !important;
     width: 100% !important;
-    margin-top: 18px !important;
+    margin-top: 20px !important;
     padding-top: 16px !important;
   }
 
   .trust-number {
-    font-size: 1.35rem !important;
+    font-size: 1.3rem !important;
   }
 
   .trust-label {
     font-size: 0.72rem !important;
+    line-height: 1.3 !important;
   }
 
-  /* 3D Holographic Card on Mobile */
   .hero-interactive-card {
     width: 100% !important;
     max-width: 100% !important;
-    margin: 0 !important;
     padding: 16px !important;
-    box-sizing: border-box !important;
   }
 
   .layer-breakdown-badges {
@@ -260,15 +301,17 @@ html, body {
   }
 
   .layer-badge-item {
-    font-size: 0.74rem !important;
+    font-size: 0.72rem !important;
     padding: 6px 8px !important;
   }
 
-  /* ALL SECTIONS 100% RESPONSIVE */
+  /* SECTION HEADERS */
   .section {
     padding: 44px 0 !important;
-    width: 100% !important;
-    overflow: hidden !important;
+  }
+
+  .section-header {
+    margin-bottom: 28px !important;
   }
 
   .section-title {
@@ -277,14 +320,29 @@ html, body {
   }
 
   .section-desc {
-    font-size: 0.86rem !important;
+    font-size: 0.88rem !important;
+    line-height: 1.5 !important;
   }
 
-  .products-grid, .applications-grid, .blog-grid, .resources-grid {
+  /* LAYOUT GRIDS CONVERTED FOR MOBILE */
+  .products-grid,
+  .blog-grid,
+  .resources-grid,
+  .about-main-grid,
+  .jabalpur-main-grid,
+  .contact-main-grid {
     display: flex !important;
     flex-direction: column !important;
     width: 100% !important;
-    gap: 18px !important;
+    gap: 20px !important;
+  }
+
+  /* About & Jabalpur Grids */
+  .about-badges-grid,
+  .jabalpur-stats-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
   }
 
   /* Calculator Mobile */
@@ -292,13 +350,11 @@ html, body {
     display: flex !important;
     flex-direction: column !important;
     width: 100% !important;
-    max-width: 100% !important;
   }
 
   .calc-inputs, .calc-outputs {
     width: 100% !important;
     padding: 20px 16px !important;
-    box-sizing: border-box !important;
   }
 
   .calc-grid {
@@ -307,6 +363,7 @@ html, body {
 
   .dimension-row {
     grid-template-columns: 1fr 1fr 1fr !important;
+    gap: 8px !important;
   }
 
   .calc-actions {
@@ -335,14 +392,155 @@ html, body {
   }
 }
 
-/* ==========================================================================
-   3. NATIVE APP-LIKE BOTTOM DOCK ON MOBILE (< 768px)
-   ========================================================================== */
-.mobile-bottom-nav {
-  display: none;
-}
-
+/* ==========================================
+   4. SMART QUIZ & MOBILE CARDS (< 768px)
+   ========================================== */
 @media (max-width: 768px) {
+  /* Quiz Step Progress Bar */
+  .quiz-step-nav {
+    margin-bottom: 24px !important;
+    gap: 8px !important;
+  }
+
+  .step-circle {
+    width: 34px !important;
+    height: 34px !important;
+    font-size: 0.85rem !important;
+  }
+
+  .step-label {
+    font-size: 0.68rem !important;
+    text-align: center !important;
+    line-height: 1.2 !important;
+  }
+
+  /* Quiz Option Cards 1-Column Responsive */
+  .quiz-options-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    margin-bottom: 24px !important;
+  }
+
+  .quiz-option-card {
+    padding: 16px 18px !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    text-align: left !important;
+    gap: 16px !important;
+    width: 100% !important;
+    border-radius: 12px !important;
+  }
+
+  .quiz-option-card .quiz-icon {
+    width: 46px !important;
+    height: 46px !important;
+    flex-shrink: 0 !important;
+    margin: 0 !important;
+  }
+
+  .quiz-option-card .quiz-icon svg {
+    width: 24px !important;
+    height: 24px !important;
+  }
+
+  .quiz-option-title {
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 3px !important;
+    color: #0A1F18 !important;
+  }
+
+  .quiz-option-desc {
+    font-size: 0.78rem !important;
+    color: #596B63 !important;
+    line-height: 1.35 !important;
+  }
+
+  /* Manufacturing Infrastructure Grid */
+  .manufacturing-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+    width: 100% !important;
+  }
+
+  .manufacturing-card {
+    padding: 18px !important;
+    border-radius: 12px !important;
+  }
+
+  .manufacturing-card h4 {
+    font-size: 1.05rem !important;
+    margin-bottom: 4px !important;
+  }
+
+  .manufacturing-card p {
+    font-size: 0.82rem !important;
+    line-height: 1.45 !important;
+  }
+
+  /* Certifications Badges 2x2 Grid */
+  .cert-badges-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+    margin-top: 24px !important;
+  }
+
+  .cert-box {
+    padding: 14px 10px !important;
+  }
+
+  .cert-number {
+    font-size: 1.25rem !important;
+  }
+
+  .cert-name {
+    font-size: 0.72rem !important;
+    line-height: 1.25 !important;
+  }
+
+  /* Applications / Lookbook Grid */
+  .applications-showcase-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 18px !important;
+    width: 100% !important;
+  }
+
+  .application-card {
+    border-radius: 12px !important;
+  }
+
+  .application-media {
+    height: 190px !important;
+  }
+
+  .application-body {
+    padding: 16px !important;
+  }
+
+  .application-body h4 {
+    font-size: 1.08rem !important;
+    margin: 8px 0 4px !important;
+  }
+
+  .application-body p {
+    font-size: 0.82rem !important;
+    line-height: 1.45 !important;
+  }
+
+  /* About & Jabalpur Sub-Grids */
+  .about-badges-grid,
+  .jabalpur-stats-grid,
+  .form-row-2 {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+
+  /* Native App-Like Mobile Bottom Navigation Bar */
   .mobile-bottom-nav {
     display: flex !important;
     align-items: center !important;
@@ -354,6 +552,7 @@ html, body {
     height: 60px !important;
     background: rgba(5, 20, 15, 0.98) !important;
     backdrop-filter: blur(25px) !important;
+    -webkit-backdrop-filter: blur(25px) !important;
     border-top: 1.5px solid var(--border-gold) !important;
     z-index: 99990 !important;
     padding: 0 4px !important;
@@ -397,12 +596,13 @@ html, body {
     box-shadow: 0 0 8px #48BB78 !important;
   }
 
-  /* Floating Buttons Positioned Above Bottom Dock */
+  /* Floating Buttons Positioned Cleanly Above Bottom Dock */
   .floating-whatsapp {
-    bottom: 72px !important;
+    bottom: 74px !important;
     right: 14px !important;
-    width: 46px !important;
-    height: 46px !important;
+    width: 48px !important;
+    height: 48px !important;
+    z-index: 99980 !important;
   }
 
   .floating-whatsapp svg {
@@ -411,10 +611,11 @@ html, body {
   }
 
   .pearl-ai-trigger {
-    bottom: 126px !important;
+    bottom: 130px !important;
     right: 14px !important;
-    width: 46px !important;
-    height: 46px !important;
+    width: 48px !important;
+    height: 48px !important;
+    z-index: 99980 !important;
   }
 
   .pearl-ai-widget {
@@ -425,12 +626,13 @@ html, body {
     height: calc(100vh - 130px) !important;
     max-height: 540px !important;
     border-radius: 16px !important;
+    z-index: 99995 !important;
   }
 
   /* Modals as Native Bottom Sheets */
   .modal-box {
     width: 100% !important;
-    max-height: 90vh !important;
+    max-height: 88vh !important;
     border-radius: 20px 20px 0 0 !important;
     position: fixed !important;
     bottom: 0 !important;
@@ -438,14 +640,37 @@ html, body {
     right: 0 !important;
     padding: 22px 16px 36px !important;
     overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
   }
 
   /* iOS Auto-Zoom Prevention */
   input, select, textarea {
     font-size: 16px !important;
   }
+}
 
-  .form-grid-2 {
+/* ==========================================
+   5. SMALL PHONES (< 400px)
+   ========================================== */
+@media (max-width: 400px) {
+  .logo-title {
+    font-size: 1.05rem !important;
+  }
+
+  .logo-subtitle {
+    font-size: 0.48rem !important;
+  }
+
+  .hero-title {
+    font-size: 1.6rem !important;
+  }
+
+  .trust-number {
+    font-size: 1.15rem !important;
+  }
+
+  .dimension-row {
     grid-template-columns: 1fr !important;
+    gap: 8px !important;
   }
 }

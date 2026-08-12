@@ -16,22 +16,39 @@ document.addEventListener('DOMContentLoaded', () => {
   // 2. Mobile Menu Toggle & App-Like Drawer
   const mobileToggle = document.getElementById('mobileMenuToggle');
   const navMenu = document.querySelector('.nav-menu');
+  const navOverlay = document.getElementById('navOverlay');
+
+  function openMobileMenu() {
+    navMenu?.classList.add('active');
+    mobileToggle?.classList.add('active');
+    navOverlay?.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMobileMenu() {
+    navMenu?.classList.remove('active');
+    mobileToggle?.classList.remove('active');
+    navOverlay?.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
   if (mobileToggle && navMenu) {
-    mobileToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
-      mobileToggle.innerHTML = navMenu.classList.contains('active') 
-        ? '<i class="lucide-x"></i>' 
-        : '<i class="lucide-menu"></i>';
-      lucide.createIcons();
+    mobileToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (navMenu.classList.contains('active')) {
+        closeMobileMenu();
+      } else {
+        openMobileMenu();
+      }
     });
+
+    navOverlay?.addEventListener('click', closeMobileMenu);
 
     // Close on link click
     document.querySelectorAll('.nav-link, .dropdown-link').forEach(link => {
       link.addEventListener('click', () => {
         if (window.innerWidth <= 992) {
-          navMenu.classList.remove('active');
-          mobileToggle.innerHTML = '<i class="lucide-menu"></i>';
-          lucide.createIcons();
+          closeMobileMenu();
         }
       });
     });
