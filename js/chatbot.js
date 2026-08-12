@@ -5,7 +5,7 @@
 (function() {
   // 1. Shared CRM Data Storage Utility
   window.PearlCRM = {
-    STORAGE_KEY: 'pearl_crm_leads',
+    STORAGE_KEY: 'pearl_crm_leads_v2',
     
     getLeads: function() {
       try {
@@ -48,80 +48,7 @@
     },
 
     getSeedLeads: function() {
-      const seed = [
-        {
-          id: 'PL-894201',
-          name: 'Ar. Rajesh Verma',
-          phone: '+91 98201 44520',
-          email: 'rajesh@vermaarchitects.com',
-          city: 'Mumbai, Maharashtra',
-          channel: 'Architect Kit',
-          product: 'Pearl 100% Calibrated Marine 710',
-          quantity: 'Sample Box Dispatched',
-          status: 'Sample Dispatched',
-          message: 'Requested 4K CAD USB & wood swatch presentation box for luxury sea-facing villa project in Bandra.',
-          date: '08 Aug 2026, 01:15 AM',
-          timestamp: Date.now() - 1800000
-        },
-        {
-          id: 'PL-894198',
-          name: 'Vikram Timber & Hardware',
-          phone: '+91 98765 12340',
-          email: 'vikram@vikramtimber.in',
-          city: 'Ahmedabad, Gujarat',
-          channel: 'Dealership',
-          product: 'Full Brand Distributorship',
-          quantity: '₹25L - ₹50L Investment',
-          status: 'Contacted',
-          message: 'Applying for exclusive territory dealership across SG Highway showroom.',
-          date: '07 Aug 2026, 11:45 PM',
-          timestamp: Date.now() - 7200000
-        },
-        {
-          id: 'PL-894185',
-          name: 'Pooja Mehta',
-          phone: '+91 97110 88231',
-          email: 'pooja.mehta@gmail.com',
-          city: 'Gurugram, Haryana',
-          channel: 'Calculator',
-          product: 'Pearl Marine BWP 710',
-          quantity: '18 Sheets (Kitchen + Wardrobes)',
-          status: 'Quote Sent',
-          message: 'Calculated 18mm & 12mm mix for 3BHK flat renovation in DLF Phase 5.',
-          date: '07 Aug 2026, 09:20 PM',
-          timestamp: Date.now() - 18000000
-        },
-        {
-          id: 'PL-894172',
-          name: 'Sunil Aggarwal (Contractor)',
-          phone: '+91 94140 22910',
-          email: 'sunil.buildcon@rediffmail.com',
-          city: 'Jaipur, Rajasthan',
-          channel: 'AI Chatbot',
-          product: 'Pearl SolidCore Blockboard',
-          quantity: '120 Sheets (8x4 ft)',
-          status: 'New',
-          message: 'Inquired about anti-warping warranty for 8ft wardrobe shutters for commercial hotel suite fitting.',
-          date: '07 Aug 2026, 07:10 PM',
-          timestamp: Date.now() - 25000000
-        },
-        {
-          id: 'PL-894160',
-          name: 'Amitabh Sen',
-          phone: '+91 98300 55122',
-          email: 'amitabh.sen@interiorstudio.co',
-          city: 'Kolkata, West Bengal',
-          channel: 'Instant Quote',
-          product: 'Pearl 100% Calibrated Marine 710',
-          quantity: '45 Sheets (19mm)',
-          status: 'Closed Won',
-          message: 'Factory dispatch order confirmed for coastal apartment project in New Town.',
-          date: '07 Aug 2026, 04:30 PM',
-          timestamp: Date.now() - 36000000
-        }
-      ];
-      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(seed));
-      return seed;
+      return [];
     }
   };
 
@@ -130,27 +57,26 @@
     API_KEY: 'YOUR_GEMINI_API_KEY_HERE',
     PRIMARY_MODEL: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent',
     FALLBACK_MODEL: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent',
-    SYSTEM_INSTRUCTION: `You are "Pearl AI", the official AI Timber & Plywood Technical Consultant for "Pearl Ply" (India's premier manufacturer of IS:710 Marine Plywood, BWR Moisture Guard, Commercial MR, and SolidCore Blockboards).
+    SYSTEM_INSTRUCTION: `You are "Pearl AI", the official AI Timber & Plywood Technical Consultant for "Pearl Ply" (India's premier manufacturer of IS:710 Marine Plywood, BWR Moisture Guard, Commercial MR, and Premium Flush Doors).
 
 CRITICAL GROUNDING RULES:
 1. STRICT BUSINESS FOCUS ONLY:
    - You must ONLY answer questions about Pearl Ply, plywood grades, wood specifications, furniture applications, prices, testing standards, factory manufacturing, architect sample kits, and dealership opportunities.
    - STRICT REFUSAL: If the user asks about ANYTHING outside Pearl Ply's business (e.g. insults, jokes, math, coding, politics, recipes, weather, general knowledge), DO NOT get distracted. Politely respond in the same language:
      - Hindi: "मैं पर्ल प्लाई (Pearl Ply) का अधिकृत AI कंसल्टेंट हूँ। मैं केवल प्लाईवुड ग्रेड्स, रेट्स, थिकनेस, और फर्नीचर स्पेसिफिकेशन्स में आपकी मदद कर सकता हूँ। आपकी प्लाईवुड आवश्यकता क्या है?"
-     - English: "I am Pearl Ply's official AI Timber Consultant. I can only assist with plywood grades (IS:710 Marine, BWR, MR, Blockboard), rates, dimensions, and furniture projects. How can I help with your project?"
+     - English: "I am Pearl Ply's official AI Timber Consultant. I can only assist with plywood grades (Pearl Ultima Plus, Pearl Ultima Ply, Pearl Platinum, Pearl Black Decor), rates, dimensions, and furniture projects. How can I help with your project?"
 
 2. BILINGUAL NATURAL CONVERSATION (HINDI & ENGLISH):
    - Always respond in the EXACT language and tone the customer used (Hindi / Hinglish / English).
    - Be helpful, respectful, and professional like a senior plywood company advisor.
 
-3. PEARL PLY SPECIFICATIONS & TECHNICAL MATRIX:
-   - Pearl 100% Calibrated Marine 710 (IS:710): 100% Gurjan hardwood core, undiluted Phenol Formaldehyde resin, 72-hour boiling water test certified, 25-Year replacement warranty. Best for modular kitchen sinks, bathroom vanities, dining tables, and boats.
-   - Pearl BWR Moisture Guard (IS:303): Synthetic phenolic resin bonding, 8-hour boiling water resistant, 15-Year warranty. Ideal for kitchen overhead cabinets and dining areas.
-   - Pearl Commercial MR (IS:303): Fortified Melamine Urea Formaldehyde (MUF) resin with vacuum chemical anti-borer defense, 10-Year warranty. Best for bedroom wardrobes, TV wall paneling, and false ceilings.
-   - Pearl SolidCore Blockboard (IS:1659): Kiln-dried seasoned solid pine battens with Gurjan cross-bands. 100% anti-bend guarantee for 7ft to 9ft tall wardrobe shutters and doors. Thicknesses: 19mm, 25mm, 30mm.
+3. PEARL PLY 4 CORE PRODUCT SPECIFICATIONS & TECHNICAL MATRIX:
+   - 1. Pearl Ultima Plus (IS:710 BWP Marine Plywood): 100% Gurjan inside core, extra layer construction, high density, undiluted Phenol Formaldehyde resin, 72-hour boiling water proof (zero delamination), perfectly calibrated (±0.1mm), 15-Year Guarantee. Best for modular kitchen sink areas, bathroom vanity units, and wet zones. (CM/L 9504492).
+   - 2. Pearl Ultima Ply (IS:303 BWR Grade Plywood): Calibrated Gurjan face veneer, extra layer plywood technology, high density core, 8-hour boiling water resistant (hot pressed), 10-Year Guarantee. Ideal for wardrobes, dining tables, study tables, and semi-wet zones. (CM/L 9760279217).
+   - 3. Pearl Platinum (IS:2202 BWP Premium Flush Door): 100% Pure Pine Wood core, full water proof, swell proof, GD protection, termite & borer resistant, 10-Year Guarantee. Best for main doors, bedroom doors, tall 8ft wardrobe shutters, and heavy duty entrance framing.
+   - 4. Pearl Black Decor (IS:303 MR Grade Plywood): 100% Gurjan Face Veneer, full core full panel construction, superior screw holding, GLP certified, Type AA ISI Marked. Ideal for dry interior bedroom furniture, TV wall consoles, decorative paneling, and acoustic louvers.
    - 4x Automated Quad-Calibration: ±0.1mm micro-even thickness using European 4-head diamond sanders.
    - 7-Point Quality Testing Protocol: 72-hr boiling test, MOR tensile test (>55 N/mm²), autoclave vacuum chemical defense, knife shear adhesion test, screw holding (>2200 N), E0 low formaldehyde emission.
-   - Indicative Price Range: Commercial MR 18mm (~₹65-₹85/sq.ft), BWR 18mm (~₹95-₹120/sq.ft), Marine 710 18mm (~₹130-₹165/sq.ft), Blockboard 19mm (~₹110-₹140/sq.ft).
    - Dealership / Distributor: Authorized Dealer (₹10L-₹25L), District Distributor (₹25L-₹50L+).
    - Architect Sample Box: Free luxury sample kit with real wood swatches & 4K CAD USB sent to architects.
 
@@ -292,14 +218,11 @@ CRITICAL GROUNDING RULES:
         <div class="top-lead-grid">
           <input type="text" id="chatLeadName" placeholder="Full Name *" required />
           <input type="tel" id="chatLeadPhone" placeholder="Phone / WhatsApp *" required />
-          <input type="text" id="chatLeadCity" placeholder="City & State *" required />
           <select id="chatLeadProduct">
             <option value="Pearl Ultima Plus (IS:710 BWP)">Pearl Ultima Plus (IS:710 BWP)</option>
             <option value="Pearl Ultima Ply (IS:303 BWR)">Pearl Ultima Ply (IS:303 BWR)</option>
             <option value="Pearl Platinum Flush Door (IS:2202)">Pearl Platinum Flush Door</option>
             <option value="Pearl Black Decor MR (IS:303)">Pearl Black Decor MR</option>
-            <option value="Pearl 100% Calibrated Marine 710">Pearl Marine BWP 710</option>
-            <option value="Pearl SolidCore Blockboard">SolidCore Blockboard</option>
             <option value="Dealership Partnership">Dealership Partnership</option>
             <option value="Architect Sample Kit">Architect Sample Kit</option>
           </select>

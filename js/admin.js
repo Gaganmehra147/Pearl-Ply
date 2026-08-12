@@ -4,106 +4,72 @@
 (function() {
   'use strict';
 
-  const STORAGE_KEY = 'pearl_crm_leads';
+  const STORAGE_KEY = 'pearl_crm_leads_v2';
+  const AUTH_KEY = 'pearl_admin_auth';
+  const MASTER_PASSWORD = 'admin123';
 
-  // Master Initial Seed Records
-  const DEFAULT_LEADS = [
-    {
-      id: 'PL-894198',
-      name: 'Vikram Timber & Hardware',
-      phone: '+91 98765 12340',
-      email: 'vikram@vikramtimber.in',
-      city: 'Ahmedabad, Gujarat',
-      channel: 'Dealership',
-      product: 'Full Brand Distributorship',
-      quantity: '₹25L - ₹50L Investment',
-      status: 'Closed Won',
-      message: 'Exclusive district distributorship agreement inquiry for Saurashtra & Ahmedabad territory.',
-      date: '07 Aug 2026, 11:45 PM',
-      timestamp: Date.now() - 7200000
-    },
-    {
-      id: 'PL-894185',
-      name: 'Pooja Mehta',
-      phone: '+91 97110 88231',
-      email: 'pooja.mehta@gmail.com',
-      city: 'Gurugram, Haryana',
-      channel: 'Calculator',
-      product: 'Pearl Marine BWP 710',
-      quantity: '18 Sheets (Kitchen + Wardrobes)',
-      status: 'Quote Sent',
-      message: 'Calculated 18mm & 12mm mix for 3BHK luxury flat renovation in DLF Phase 5.',
-      date: '07 Aug 2026, 09:20 PM',
-      timestamp: Date.now() - 18000000
-    },
-    {
-      id: 'PL-894172',
-      name: 'Sunil Aggarwal (Contractor)',
-      phone: '+91 94140 22910',
-      email: 'sunil.buildcon@rediffmail.com',
-      city: 'Jaipur, Rajasthan',
-      channel: 'AI Chatbot',
-      product: 'Pearl SolidCore Blockboard',
-      quantity: '120 Sheets (8x4 ft)',
-      status: 'New',
-      message: 'Inquired about anti-warping warranty for 8ft tall wardrobe shutters for luxury boutique hotel suite.',
-      date: '07 Aug 2026, 07:10 PM',
-      timestamp: Date.now() - 25000000
-    },
-    {
-      id: 'PL-894160',
-      name: 'Amitabh Sen (Interior Studio)',
-      phone: '+91 98300 55122',
-      email: 'amitabh.sen@interiorstudio.co',
-      city: 'Kolkata, West Bengal',
-      channel: 'Instant Quote',
-      product: 'Pearl 100% Calibrated Marine 710',
-      quantity: '45 Sheets (19mm)',
-      status: 'Closed Won',
-      message: 'Factory dispatch order confirmed for coastal apartment project in New Town.',
-      date: '07 Aug 2026, 04:30 PM',
-      timestamp: Date.now() - 36000000
-    },
-    {
-      id: 'PL-894145',
-      name: 'Siddharth Rao Architects',
-      phone: '+91 98801 44920',
-      email: 'studio@raoarchitects.com',
-      city: 'Bengaluru, Karnataka',
-      channel: 'Architect Kit',
-      product: 'Architect Sample Kit',
-      quantity: 'Full Material Spec Box',
-      status: 'Sample Dispatched',
-      message: 'Requested 4K CAD texture USB & 6-grade physical wood swatches for villa project in Whitefield.',
-      date: '06 Aug 2026, 02:15 PM',
-      timestamp: Date.now() - 95000000
-    },
-    {
-      id: 'PL-894110',
-      name: 'Rajesh Builders & Interiors',
-      phone: '+91 98220 31109',
-      email: 'rajesh@rajeshbuilders.in',
-      city: 'Mumbai, Maharashtra',
-      channel: 'Instant Quote',
-      product: 'Pearl BWR Moisture Guard',
-      quantity: '80 Sheets (18mm)',
-      status: 'Contacted',
-      message: 'Commercial tower kitchen vanity utility specifications required with factory rate card.',
-      date: '05 Aug 2026, 11:10 AM',
-      timestamp: Date.now() - 180000000
-    }
-  ];
+  // Master Initial Records - Empty array for fresh live production launch
+  const DEFAULT_LEADS = [];
 
   let leads = [];
   let currentFilter = 'All';
   let searchQuery = '';
+
+  // 0. Security & Authentication Controller
+  function checkAuth() {
+    const isAuth = sessionStorage.getItem(AUTH_KEY) === 'true';
+    const lockOverlay = document.getElementById('adminAuthLock');
+    if (lockOverlay) {
+      if (isAuth) {
+        lockOverlay.classList.add('hidden');
+      } else {
+        lockOverlay.classList.remove('hidden');
+        const passInput = document.getElementById('adminPassInput');
+        if (passInput) {
+          passInput.value = '';
+          passInput.focus();
+        }
+      }
+    }
+    return isAuth;
+  }
+
+  window.handleAdminLogin = function(e) {
+    if (e) e.preventDefault();
+    const passInput = document.getElementById('adminPassInput');
+    const errBox = document.getElementById('authErrorMsg');
+    const entered = passInput ? passInput.value.trim() : '';
+
+    if (entered === MASTER_PASSWORD) {
+      sessionStorage.setItem(AUTH_KEY, 'true');
+      if (errBox) errBox.style.display = 'none';
+      const lockOverlay = document.getElementById('adminAuthLock');
+      if (lockOverlay) lockOverlay.classList.add('hidden');
+      renderAll();
+    } else {
+      if (errBox) {
+        errBox.textContent = '❌ Invalid Admin Password. Access Denied.';
+        errBox.style.display = 'block';
+      }
+      if (passInput) {
+        passInput.value = '';
+        passInput.focus();
+      }
+    }
+  };
+
+  window.adminLogout = function() {
+    sessionStorage.removeItem(AUTH_KEY);
+    checkAuth();
+  };
 
   // 1. Data Store Controller
   function getLeads() {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
-        return JSON.parse(stored);
+        const parsed = JSON.parse(stored);
+        if (Array.isArray(parsed)) return parsed;
       }
     } catch (e) {
       console.warn('Storage read error:', e);
@@ -150,7 +116,7 @@
       // Valuations
       if (l.channel === 'Dealership') {
         pipelineValueLakhs += 35;
-      } else if (l.product && l.product.includes('710')) {
+      } else if (l.product && (l.product.includes('Ultima Plus') || l.product.includes('710'))) {
         pipelineValueLakhs += 1.8;
       } else {
         pipelineValueLakhs += 1.2;
@@ -158,12 +124,19 @@
     });
 
     // Populate DOM KPIs
-    document.getElementById('kpiTotalLeads').textContent = totalCount;
-    document.getElementById('kpiPipelineVal').textContent = `₹${(pipelineValueLakhs / 100).toFixed(2)} Cr`;
-    document.getElementById('kpiSheetVolume').textContent = `${totalSheets.toLocaleString()} Sheets`;
-    document.getElementById('kpiChatbotCount').textContent = `${chatbotCount} (${Math.round((chatbotCount/totalCount)*100 || 0)}%)`;
-    document.getElementById('kpiArchitectKits').textContent = archCount;
-    document.getElementById('kpiDealerCount').textContent = dealerCount;
+    const elTotal = document.getElementById('kpiTotalLeads');
+    const elVal = document.getElementById('kpiPipelineVal');
+    const elVol = document.getElementById('kpiSheetVolume');
+    const elChat = document.getElementById('kpiChatbotCount');
+    const elArch = document.getElementById('kpiArchitectKits');
+    const elDealer = document.getElementById('kpiDealerCount');
+
+    if (elTotal) elTotal.textContent = totalCount;
+    if (elVal) elVal.textContent = totalCount > 0 ? `₹${(pipelineValueLakhs / 100).toFixed(2)} Cr` : '₹0.00';
+    if (elVol) elVol.textContent = `${totalSheets.toLocaleString()} Sheets`;
+    if (elChat) elChat.textContent = totalCount > 0 ? `${chatbotCount} (${Math.round((chatbotCount/totalCount)*100)}%)` : '0';
+    if (elArch) elArch.textContent = archCount;
+    if (elDealer) elDealer.textContent = dealerCount;
 
     // B. Channel Acquisition Progress Bars
     const channelListEl = document.getElementById('channelProgressList');
@@ -185,26 +158,26 @@
               <span class="progress-val">${c.count} leads (${pct}%)</span>
             </div>
             <div class="progress-track">
-              <div class="progress-fill ${c.color}" style="width: ${Math.max(pct, 8)}%;"></div>
+              <div class="progress-fill ${c.color}" style="width: ${totalCount > 0 ? Math.max(pct, 6) : 0}%;"></div>
             </div>
           </div>
         `;
       }).join('');
     }
 
-    // C. Product Grade Demand Matrix
+    // C. Product Grade Demand Matrix (4 Real Pearl Ply Products)
     const gradeListEl = document.getElementById('gradeProgressList');
     if (gradeListEl) {
-      const marineCount = leads.filter(l => (l.product || '').includes('710') || (l.product || '').includes('Marine')).length;
-      const bwrCount = leads.filter(l => (l.product || '').includes('BWR')).length;
-      const solidCount = leads.filter(l => (l.product || '').includes('Blockboard') || (l.product || '').includes('Solid')).length;
-      const mrCount = leads.filter(l => (l.product || '').includes('MR') || (l.product || '').includes('Commercial')).length;
+      const plusCount = leads.filter(l => (l.product || '').includes('Ultima Plus') || (l.product || '').includes('710')).length;
+      const plyCount = leads.filter(l => (l.product || '').includes('Ultima Ply') || (l.product || '').includes('BWR')).length;
+      const platCount = leads.filter(l => (l.product || '').includes('Platinum') || (l.product || '').includes('Flush') || (l.product || '').includes('Door')).length;
+      const decorCount = leads.filter(l => (l.product || '').includes('Black Decor') || (l.product || '').includes('MR')).length;
 
       const grades = [
-        { name: 'Pearl Marine BWP 710 (IS:710)', count: marineCount, color: 'gold' },
-        { name: 'Pearl BWR Moisture Guard (IS:303)', count: bwrCount, color: 'blue' },
-        { name: 'Pearl SolidCore Blockboard (IS:1659)', count: solidCount, color: 'green' },
-        { name: 'Pearl Commercial MR (IS:303)', count: mrCount || 1, color: 'amber' }
+        { name: 'Pearl Ultima Plus (IS:710 BWP Marine)', count: plusCount, color: 'gold' },
+        { name: 'Pearl Ultima Ply (IS:303 BWR Grade)', count: plyCount, color: 'blue' },
+        { name: 'Pearl Platinum (IS:2202 Flush Door)', count: platCount, color: 'green' },
+        { name: 'Pearl Black Decor (IS:303 MR Grade)', count: decorCount, color: 'amber' }
       ];
 
       gradeListEl.innerHTML = grades.map(g => {
@@ -216,7 +189,7 @@
               <span class="progress-val">${g.count} Inquiries (${pct}%)</span>
             </div>
             <div class="progress-track">
-              <div class="progress-fill ${g.color}" style="width: ${Math.max(pct, 10)}%;"></div>
+              <div class="progress-fill ${g.color}" style="width: ${totalCount > 0 ? Math.max(pct, 6) : 0}%;"></div>
             </div>
           </div>
         `;
@@ -232,19 +205,32 @@
       'Closed Won': leads.filter(l => l.status === 'Closed Won').length
     };
 
-    document.getElementById('funnelNew').textContent = statusCounts['New'];
-    document.getElementById('funnelContacted').textContent = statusCounts['Contacted'];
-    document.getElementById('funnelQuote').textContent = statusCounts['Quote Sent'];
-    document.getElementById('funnelSample').textContent = statusCounts['Sample Dispatched'];
-    document.getElementById('funnelClosed').textContent = statusCounts['Closed Won'];
+    const fnNew = document.getElementById('funnelNew');
+    const fnCon = document.getElementById('funnelContacted');
+    const fnQuo = document.getElementById('funnelQuote');
+    const fnSam = document.getElementById('funnelSample');
+    const fnClo = document.getElementById('funnelClosed');
+
+    if (fnNew) fnNew.textContent = statusCounts['New'];
+    if (fnCon) fnCon.textContent = statusCounts['Contacted'];
+    if (fnQuo) fnQuo.textContent = statusCounts['Quote Sent'];
+    if (fnSam) fnSam.textContent = statusCounts['Sample Dispatched'];
+    if (fnClo) fnClo.textContent = statusCounts['Closed Won'];
 
     // Update Filter Pill Counters
-    document.getElementById('pillAllCount').textContent = totalCount;
-    document.getElementById('pillChatCount').textContent = chatbotCount;
-    document.getElementById('pillQuoteCount').textContent = quoteCount;
-    document.getElementById('pillArchCount').textContent = archCount;
-    document.getElementById('pillDealerCount').textContent = dealerCount;
-    document.getElementById('pillCalcCount').textContent = calcCount;
+    const pillAll = document.getElementById('pillAllCount');
+    const pillChat = document.getElementById('pillChatCount');
+    const pillQuo = document.getElementById('pillQuoteCount');
+    const pillArch = document.getElementById('pillArchCount');
+    const pillDeal = document.getElementById('pillDealerCount');
+    const pillCalc = document.getElementById('pillCalcCount');
+
+    if (pillAll) pillAll.textContent = totalCount;
+    if (pillChat) pillChat.textContent = chatbotCount;
+    if (pillQuo) pillQuo.textContent = quoteCount;
+    if (pillArch) pillArch.textContent = archCount;
+    if (pillDeal) pillDeal.textContent = dealerCount;
+    if (pillCalc) pillCalc.textContent = calcCount;
   }
 
   // 3. Render High-Density Table
@@ -276,9 +262,13 @@
     if (filtered.length === 0) {
       tbody.innerHTML = `
         <tr>
-          <td colspan="7" style="text-align: center; padding: 40px; color: var(--adm-text-muted);">
-            <div style="font-size: 1.1rem; color: var(--adm-gold); font-weight: 700; margin-bottom: 6px;">No Inquiries Found</div>
-            <p style="margin: 0; font-size: 0.82rem;">Try changing your search query or channel filter tab.</p>
+          <td colspan="7" style="text-align: center; padding: 48px 20px; color: var(--adm-text-muted);">
+            <div style="font-size: 1.15rem; color: var(--adm-gold); font-weight: 700; margin-bottom: 6px;">
+              ${leads.length === 0 ? '✨ CRM Ready for Live Inquiries' : 'No Inquiries Matching Search'}
+            </div>
+            <p style="margin: 0; font-size: 0.84rem; color: #A3B5AE;">
+              ${leads.length === 0 ? 'Customer inquiries from website forms, plywood calculator, and AI chatbot will appear here in real time.' : 'Try changing your search query or channel filter tab.'}
+            </p>
           </td>
         </tr>
       `;
@@ -319,7 +309,7 @@
             <span class="source-tag ${srcClass}">${escapeHTML(lead.channel || 'Direct Inquiry')}</span>
           </td>
           <td>
-            <div style="font-weight: 700; color: #FFFFFF;">${escapeHTML(lead.product || 'Pearl Marine 710')}</div>
+            <div style="font-weight: 700; color: #FFFFFF;">${escapeHTML(lead.product || 'Pearl Ultima Plus')}</div>
             <div style="font-size: 0.72rem; color: var(--adm-gold);">${escapeHTML(lead.quantity || 'Inquiry Submitted')}</div>
           </td>
           <td>
@@ -356,6 +346,28 @@
 
   // 4. Exposed Public APIs on window.PearlCRM
   window.PearlCRM = {
+    saveLead: function(data) {
+      const newLead = {
+        id: data.id || ('PL-' + Math.floor(100000 + Math.random() * 900000)),
+        name: data.name || 'Anonymous Customer',
+        phone: data.phone || 'N/A',
+        email: data.email || 'N/A',
+        city: data.city || 'Direct Inquiry',
+        product: data.product || 'Pearl Ultima Plus',
+        channel: data.channel || 'Website Form',
+        quantity: data.quantity || 'Inquiry Submitted',
+        status: data.status || 'New',
+        message: data.message || 'Direct lead captured.',
+        date: data.date || new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' }),
+        timestamp: data.timestamp || Date.now()
+      };
+      const list = getLeads();
+      list.unshift(newLead);
+      saveAllLeads(list);
+      window.dispatchEvent(new CustomEvent('pearl_lead_added', { detail: newLead }));
+      return newLead;
+    },
+
     updateStatus: function(leadId, newStatus) {
       leads = getLeads();
       const item = leads.find(l => l.id === leadId);
@@ -373,8 +385,8 @@
     },
 
     resetToDefaults: function() {
-      if (confirm('Reset all CRM data to master demonstration records?')) {
-        saveAllLeads(DEFAULT_LEADS);
+      if (confirm('Clear all CRM records and reset to empty state?')) {
+        saveAllLeads([]);
       }
     },
 
@@ -418,7 +430,7 @@
       document.getElementById('dosPhone').textContent = lead.phone;
       document.getElementById('dosEmail').textContent = lead.email || 'N/A';
       document.getElementById('dosCity').textContent = lead.city;
-      document.getElementById('dosProduct').textContent = lead.product || 'Pearl Marine 710';
+      document.getElementById('dosProduct').textContent = lead.product || 'Pearl Ultima Plus';
       document.getElementById('dosQty').textContent = lead.quantity || 'General Scope';
       document.getElementById('dosStatus').textContent = lead.status;
       document.getElementById('dosMessage').textContent = `"${lead.message || 'No additional notes provided.'}"`;
@@ -446,6 +458,7 @@
 
   // 6. Bind Events
   document.addEventListener('DOMContentLoaded', () => {
+    checkAuth();
     renderAll();
 
     // Filter Pills

@@ -19,6 +19,53 @@
 <body>
 
   <!-- ==========================================
+       ADMIN MASTER ACCESS AUTHENTICATION BARRIER
+       ========================================== -->
+  <div class="admin-auth-overlay" id="adminAuthLock">
+    <div class="admin-auth-card">
+      <div class="admin-auth-logo">
+        <svg width="48" height="48" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="authGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#FFEAA7"/>
+              <stop offset="35%" stop-color="#D4A359"/>
+              <stop offset="70%" stop-color="#B8860B"/>
+              <stop offset="100%" stop-color="#8C6014"/>
+            </linearGradient>
+            <linearGradient id="authDarkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#0E3326"/>
+              <stop offset="100%" stop-color="#04120D"/>
+            </linearGradient>
+          </defs>
+          <rect x="2" y="2" width="36" height="36" rx="9" fill="url(#authDarkGrad)" stroke="url(#authGoldGrad)" stroke-width="1.8"/>
+          <path d="M6 11 L11 6 M34 11 L29 6 M6 29 L11 34 M34 29 L29 34" stroke="url(#authGoldGrad)" stroke-width="1.2" stroke-linecap="round"/>
+          <polygon points="20,5.5 23.5,9.5 16.5,9.5" fill="url(#authGoldGrad)"/>
+          <path d="M13 11.5 H21.5 C24.8 11.5 27.5 13.8 27.5 17.2 C27.5 20.6 24.8 22.8 21.5 22.8 H17.2 V32 H13 V11.5 Z" fill="url(#authGoldGrad)"/>
+          <path d="M17.2 15 H21 C22.4 15 23.4 15.9 23.4 17.2 C23.4 18.5 22.4 19.4 21 19.4 H17.2 V15 Z" fill="#0E3326"/>
+          <line x1="13" y1="22.8" x2="21.5" y2="22.8" stroke="#FFEAA7" stroke-width="1"/>
+          <circle cx="28.5" cy="11.5" r="2" fill="#FFEAA7"/>
+        </svg>
+      </div>
+      <h2>PEARL PLY <span>PORTAL</span></h2>
+      <p>Enter Master Password to access lead CRM, live inquiries &amp; product catalog manager.</p>
+      
+      <form id="formAdminAuth" onsubmit="window.handleAdminLogin(event)">
+        <div class="auth-input-group">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          <input type="password" id="adminPassInput" placeholder="Enter Admin Password..." required autofocus />
+        </div>
+        <div class="auth-error-msg" id="authErrorMsg" style="display:none;"></div>
+        <button type="submit" class="btn-adm btn-adm-gold auth-submit-btn">
+          Unlock CRM Command Center
+        </button>
+      </form>
+      <div class="auth-footer-link">
+        <a href="index.html">&larr; Return to Pearl Ply Website</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
        EXECUTIVE TOP COMMAND NAVBAR
        ========================================== -->
   <header class="admin-navbar">
@@ -64,14 +111,18 @@
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
         Export CSV
       </button>
-      <button class="btn-adm btn-adm-outline" onclick="window.PearlCRM.resetToDefaults()" title="Reset Seed Records">
+      <button class="btn-adm btn-adm-outline" onclick="window.PearlCRM.resetToDefaults()" title="Clear All Records">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
-        Reset Data
+        Clear CRM Data
       </button>
       <a href="index.html" class="btn-adm btn-adm-outline">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-        Back to Website
+        Website
       </a>
+      <button class="btn-adm btn-adm-outline" onclick="window.adminLogout()" title="Logout of Admin Panel" style="color: #FC8181; border-color: rgba(252, 129, 129, 0.4);">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+        Logout
+      </button>
     </div>
   </header>
 
@@ -401,10 +452,10 @@
           <div class="adm-form-group">
             <label>Product Grade</label>
             <select id="mProduct">
-              <option value="Pearl 100% Calibrated Marine 710">Pearl Marine BWP 710 (IS:710)</option>
-              <option value="Pearl BWR Moisture Guard">Pearl BWR Moisture Guard (IS:303)</option>
-              <option value="Pearl Commercial MR">Pearl Commercial MR (IS:303)</option>
-              <option value="Pearl SolidCore Blockboard">Pearl SolidCore Blockboard (IS:1659)</option>
+              <option value="Pearl Ultima Plus">Pearl Ultima Plus (IS:710 BWP Marine)</option>
+              <option value="Pearl Ultima Ply">Pearl Ultima Ply (IS:303 BWR Grade)</option>
+              <option value="Pearl Platinum">Pearl Platinum (IS:2202 Flush Door)</option>
+              <option value="Pearl Black Decor">Pearl Black Decor (IS:303 MR Grade)</option>
               <option value="Architect Presentation Kit">Architect Presentation Kit</option>
               <option value="Territory Dealership">Territory Dealership</option>
             </select>
@@ -539,8 +590,8 @@
               <option value="Marine">Marine Plywood (IS:710 BWP)</option>
               <option value="BWR">BWR Moisture Guard (IS:303)</option>
               <option value="MR">Commercial MR Plywood (IS:303)</option>
+              <option value="Door">Flush Door (IS:2202 BWP)</option>
               <option value="Blockboard">SolidCore Blockboard (IS:1659)</option>
-              <option value="Flexi">FlexiCore Flexi Ply</option>
               <option value="Other">Other / Specialty</option>
             </select>
           </div>

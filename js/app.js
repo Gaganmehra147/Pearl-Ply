@@ -401,9 +401,9 @@ document.addEventListener('DOMContentLoaded', () => {
           if (window.PearlCRM && typeof window.PearlCRM.saveLead === 'function') {
             window.PearlCRM.saveLead(leadObj);
           } else {
-            const existing = JSON.parse(localStorage.getItem('pearl_crm_leads') || '[]');
+            const existing = JSON.parse(localStorage.getItem('pearl_crm_leads_v2') || '[]');
             existing.unshift(leadObj);
-            localStorage.setItem('pearl_crm_leads', JSON.stringify(existing));
+            localStorage.setItem('pearl_crm_leads_v2', JSON.stringify(existing));
           }
 
           // 2. Dispatch Instant WhatsApp (+91 99936 13434) & Email Notification
@@ -642,9 +642,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (window.PearlCRM && typeof window.PearlCRM.saveLead === 'function') {
         window.PearlCRM.saveLead(leadObj);
       } else {
-        const existing = JSON.parse(localStorage.getItem('pearl_crm_leads') || '[]');
+        const existing = JSON.parse(localStorage.getItem('pearl_crm_leads_v2') || '[]');
         existing.unshift(leadObj);
-        localStorage.setItem('pearl_crm_leads', JSON.stringify(existing));
+        localStorage.setItem('pearl_crm_leads_v2', JSON.stringify(existing));
       }
       
       // Dispatch Instant WhatsApp & Email Notification

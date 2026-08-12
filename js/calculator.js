@@ -16,20 +16,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnShareWhatsApp = document.getElementById('btnShareWhatsApp');
 
   const FURNITURE_PRESETS = {
-    kitchen: { l: 12, h: 7, d: 2, defaultGrade: 'bwp', multiplier: 0.16 },
-    wardrobe: { l: 8, h: 7, d: 2, defaultGrade: 'bwr', multiplier: 0.14 },
-    bed: { l: 6.5, h: 3.5, d: 6, defaultGrade: 'bwr', multiplier: 0.12 },
-    tv_unit: { l: 9, h: 6, d: 1.5, defaultGrade: 'mr', multiplier: 0.10 },
-    bathroom: { l: 4, h: 3, d: 2, defaultGrade: 'marine', multiplier: 0.20 },
-    custom: { l: 10, h: 6, d: 2, defaultGrade: 'bwp', multiplier: 0.13 }
+    kitchen: { l: 12, h: 7, d: 2, defaultGrade: 'ultimaplus', multiplier: 0.16 },
+    wardrobe: { l: 8, h: 7, d: 2, defaultGrade: 'ultimaply', multiplier: 0.14 },
+    bed: { l: 6.5, h: 3.5, d: 6, defaultGrade: 'ultimaply', multiplier: 0.12 },
+    tv_unit: { l: 9, h: 6, d: 1.5, defaultGrade: 'blackdecor', multiplier: 0.10 },
+    bathroom: { l: 4, h: 3, d: 2, defaultGrade: 'ultimaplus', multiplier: 0.20 },
+    doors: { l: 7, h: 3.5, d: 0.25, defaultGrade: 'platinum', multiplier: 0.15 },
+    custom: { l: 10, h: 6, d: 2, defaultGrade: 'ultimaplus', multiplier: 0.13 }
   };
 
   const GRADE_PRICING = {
-    mr: { name: 'Pearl Commercial MR (IS:303)', avgSqFt: 65 },
-    bwr: { name: 'Pearl BWR Moisture Guard', avgSqFt: 88 },
-    bwp: { name: 'Pearl Marine BWP (IS:710)', avgSqFt: 115 },
-    marine: { name: 'Pearl 100% Calibrated Marine 710', avgSqFt: 145 },
-    blockboard: { name: 'Pearl SolidCore Blockboard', avgSqFt: 98 }
+    ultimaplus: { name: 'Pearl Ultima Plus (IS:710 BWP Marine)', avgSqFt: 135 },
+    ultimaply: { name: 'Pearl Ultima Ply (IS:303 BWR Grade)', avgSqFt: 95 },
+    platinum: { name: 'Pearl Platinum (IS:2202 BWP Flush Door)', avgSqFt: 110 },
+    blackdecor: { name: 'Pearl Black Decor (IS:303 MR Gurjan Face)', avgSqFt: 75 }
   };
 
   function updateCalculator() {
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const l = parseFloat(dimLength.value) || 0;
     const h = parseFloat(dimHeight.value) || 0;
     const d = parseFloat(dimDepth.value) || 0;
-    const selectedGrade = plyGrade.value;
+    const selectedGrade = plyGrade ? plyGrade.value : 'ultimaply';
 
     // Approximate total sheet surface area in sqft (8x4 sheet = 32 sqft)
     let totalSurfaceArea = 0;
@@ -52,6 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
       totalSurfaceArea = (l * d * 2.2) + (l * 2 * h) + (d * 2 * h); // Top frame, bottom box, sides
     } else if (type === 'tv_unit') {
       totalSurfaceArea = (l * h * 1.5) + (l * d * 2);
+    } else if (type === 'doors') {
+      totalSurfaceArea = (l * h * 2.5);
     } else {
       totalSurfaceArea = (2 * (l * h + l * d + h * d)) * 1.15; // Box with 15% wastage
     }
@@ -63,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const s12 = Math.max(1, Math.round(totalSheets * 0.20)); // 20% Shelves & Drawers
     const s6 = Math.max(1, totalSheets - s18 - s12); // 15% Backing
 
-    const gradeInfo = GRADE_PRICING[selectedGrade] || GRADE_PRICING['bwp'];
+    const gradeInfo = GRADE_PRICING[selectedGrade] || GRADE_PRICING['ultimaply'];
     const totalSqFt = totalSheets * 32;
     const minCost = Math.round(totalSqFt * gradeInfo.avgSqFt * 0.95);
     const maxCost = Math.round(totalSqFt * gradeInfo.avgSqFt * 1.10);

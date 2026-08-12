@@ -17,39 +17,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const PRODUCT_RECOMMENDATIONS = {
     kitchen_high_cnc: {
-      title: 'Pearl 100% Calibrated Marine Plywood (IS:710)',
-      tag: 'Supreme Waterproof & CNC Precision',
-      desc: 'Engineered with unextended Phenol Formaldehyde resin, 72-hour boiling water proof endurance, and 4x calibrating sanding for 0.1mm thickness accuracy required by modular factory CNC machines.',
-      specs: 'IS:710 Marine Certified | 100% Gurjan Core | 25-Year Warranty | E0 Emission',
-      targetId: 'prod-marine'
+      title: 'Pearl Ultima Plus (IS:710 BWP Marine)',
+      tag: '100% Gurjan Inside & 15-Year Replacement Warranty',
+      desc: 'Super-premium Boiling Water Proof (BWP) plywood certified IS:710 (CM/L 9504492). Built with 100% Gurjan core inside, extra layer construction, and 4-head quad calibration for zero delamination in modular kitchens & bathrooms.',
+      specs: 'IS:710 Marine Certified | 100% Gurjan Inside | 15-Year Guarantee | 72-Hr Boiling Proof',
+      targetId: 'prod-ultimaplus'
     },
     kitchen_mod_carpenter: {
-      title: 'Pearl Marine BWP 710 Plywood',
-      tag: 'Boiling Water Proof & Termite Defense',
-      desc: 'Ideal for modular kitchens, under-sink carcasses, and heavy moisture zones. Deep chemical vacuum pressure impregnation prevents borer and termite infestations permanently.',
-      specs: 'IS:710 BWP | 72-Hour Boiling Proof | 100% Hardwood | 20-Year Guarantee',
-      targetId: 'prod-bwp'
+      title: 'Pearl Ultima Plus (IS:710 BWP Marine)',
+      tag: 'Supreme Waterproof & Anti-Termite Shield',
+      desc: 'Ideal for modular kitchens, under-sink carcasses, and continuous water contact areas. Deep vacuum pressure chemical treatment guarantees zero borer and termite vulnerability.',
+      specs: 'IS:710 BWP | 72-Hour Boiling Proof | 100% Gurjan Core | 15-Year Guarantee',
+      targetId: 'prod-ultimaplus'
     },
     bedroom_dry: {
-      title: 'Pearl Commercial MR Plywood (IS:303)',
-      tag: 'Cost-Effective Strength for Living & Bedrooms',
-      desc: 'Bonded with fortified Melamine Urea Formaldehyde resin, engineered for high nail holding capacity, warp-free wardrobes, and luxury false ceiling paneling.',
-      specs: 'IS:303 MR Grade | Borer Proof Chemical Shield | Selected Timber Core',
-      targetId: 'prod-mr'
+      title: 'Pearl Black Decor (IS:303 MR Grade)',
+      tag: '100% Gurjan Face & Full Core Solid Panel',
+      desc: 'Engineered for luxury living room furniture, wardrobes, wall louvers, and TV consoles. Full core, full panel construction delivers unmatched screw holding and structural flatness.',
+      specs: 'IS:303 MR Grade | 100% Gurjan Face | Full Core Full Panel | ISI Marked',
+      targetId: 'prod-blackdecor'
     },
     wardrobe_doors: {
-      title: 'Pearl SolidCore Block Board (IS:1659)',
-      tag: '100% Anti-Warping for Tall 7ft/8ft Shutters',
-      desc: 'Manufactured with seasoned pine and hardwood battens with zero core gaps. Provides extreme vertical rigidity preventing wardrobe shutters and long table tops from bending over time.',
-      specs: 'IS:1659 Grade | Zero Core Gap | High Screw Retention | Solid Timber Batten',
-      targetId: 'prod-blockboard'
+      title: 'Pearl Platinum (IS:2202 BWP Flush Door)',
+      tag: '100% Pure Pine Wood & Zero Swell Protection',
+      desc: 'Manufactured with 100% pure seasoned pine wood core. Full water proof and warp resistant, perfect for tall 7ft/8ft wardrobe shutters, main entrance doors, and heavy load partitions.',
+      specs: 'IS:2202 BWP Grade | 100% Pine Wood Core | Swell Proof | 10-Year Guarantee',
+      targetId: 'prod-platinum'
     },
     bwr_general: {
-      title: 'Pearl BWR Moisture Guard Plywood (IS:303)',
-      tag: 'Boiling Water Resistant for All-Weather Use',
-      desc: 'Enhanced synthetic phenolic bonding withstands moderate humidity and accidental water spills. Perfect for dining furniture, living room partitions, and bedroom storage.',
-      specs: 'IS:303 BWR | Phenolic Resin | 15-Year Warranty | High Density Core',
-      targetId: 'prod-bwr'
+      title: 'Pearl Ultima Ply (IS:303 BWR Grade)',
+      tag: 'Calibrated Gurjan Face & Extra Layer Technology',
+      desc: 'Certified IS:303 BWR Grade (CM/L 9760279217). Extra layer high density plywood with calibrated Gurjan face. 8-hour boiling water resistant and hot pressed for lifetime domestic durability.',
+      specs: 'IS:303 BWR Grade | Calibrated Gurjan Face | 10-Year Guarantee | High Density',
+      targetId: 'prod-ultimaply'
     }
   };
 
@@ -91,8 +91,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (quizResultBox) quizResultBox.style.display = 'block';
 
     let recKey = 'bwr_general';
-    if (userAnswers.room === 'kitchen' || userAnswers.room === 'bathroom') {
-      recKey = (userAnswers.style === 'cnc') ? 'kitchen_high_cnc' : 'kitchen_mod_carpenter';
+    if (userAnswers.room === 'kitchen' || userAnswers.room === 'bathroom' || userAnswers.moisture === 'submerged') {
+      recKey = 'kitchen_high_cnc';
     } else if (userAnswers.room === 'wardrobe_doors') {
       recKey = 'wardrobe_doors';
     } else if (userAnswers.moisture === 'dry') {
