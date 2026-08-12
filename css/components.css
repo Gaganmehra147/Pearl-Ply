@@ -302,7 +302,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 30px;
-  max-width: 900px;
+  max-width: 1140px;
   margin: 0 auto;
 }
 
@@ -326,17 +326,22 @@
 
 .product-media {
   position: relative;
-  background: #11261F;
+  background: #0A1F18;
   cursor: pointer;
   border-radius: 8px 8px 0 0;
-  overflow: visible;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .product-media img {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
-  object-fit: contain;
+  object-fit: cover;
   transition: opacity 0.2s ease, transform 0.3s ease;
   border-radius: 8px 8px 0 0;
 }

@@ -465,6 +465,54 @@ document.addEventListener('DOMContentLoaded', () => {
       warranty: '7 Years Standard Manufacturing Warranty',
       applications: 'Office partition frames, packaging, sofa inner framing, temporary paneling'
     },
+    'ultima_plus': {
+      title: 'Pearl Ultima Plus (IS:710 BWP Marine Grade)',
+      grade: 'IS:710 BWP Grade • CM/L 9504492',
+      core: '100% Gurjan Inside with Extra Layer Technology & High Density Compaction',
+      resin: '100% Undiluted Phenol Formaldehyde (PF) Marine Resin (Low VOC)',
+      thickness: '6mm, 9mm, 12mm, 16mm, 19mm, 25mm',
+      dimensions: '8x4, 7x4, 8x3, 7x3 ft',
+      boilingTest: '72-Hour Continuous Boiling Water Proof Immersion Test (Zero Delamination)',
+      screwHolding: '> 2850 N (Face) | > 1750 N (Edge)',
+      warranty: '15 Years Guarantee',
+      applications: 'Modular kitchen base units, wet areas, bathroom vanities, luxury wardrobes, coastal residences'
+    },
+    'ultima_ply': {
+      title: 'Pearl Ultima Ply (IS:303 BWR Grade)',
+      grade: 'IS:303 BWR Grade • CM/L 9760279217',
+      core: 'High Density Hardwood Core with Calibrated Gurjan Face & Extra Layer',
+      resin: 'Fortified Phenol Formaldehyde Synthetic Resin Matrix (Low VOC)',
+      thickness: '6mm, 9mm, 12mm, 16mm, 19mm, 25mm',
+      dimensions: '8x4, 7x4, 8x3, 7x3 ft',
+      boilingTest: '8-Hour Continuous Boiling Resistant (Hot Pressed Technology)',
+      screwHolding: '> 2450 N (Face) | > 1550 N (Edge)',
+      warranty: '10 Years Guarantee',
+      applications: 'Kitchen upper cabinets, wardrobes, dining furniture, living partitions, architectural woodworking'
+    },
+    'platinum': {
+      title: 'Pearl Platinum Flush Door (IS:2202 BWP)',
+      grade: 'IS:2202 BWP Grade • ISO 9001:2008',
+      core: '100% Pure Pine Wood Solid Door Core with GD Protection',
+      resin: 'Phenol Formaldehyde (PF) BWP Synthetic Resin',
+      thickness: '30mm, 35mm',
+      dimensions: '8x4, 7x4, 7x3, 6.5x3 ft',
+      boilingTest: 'Full Water Proof (BWP) & Superior Swell Proof',
+      screwHolding: '> 3000 N (Face) | > 2100 N (Edge)',
+      warranty: '10-Year Guarantee',
+      applications: 'Main entrance doors, bathroom doors, bedroom luxury doors, commercial suites'
+    },
+    'blackdecor': {
+      title: 'Pearl Black Decor MR Plywood (IS:303)',
+      grade: 'IS:303 MR Grade • Type AA (ISI Marked)',
+      core: 'Full Core, Full Panel Construction with 100% Gurjan Face',
+      resin: 'Fortified Melamine Urea Formaldehyde (MUF)',
+      thickness: '9mm, 12mm, 16mm, 18mm, 19mm',
+      dimensions: '8x4, 7x4, 8x3, 7x3 ft',
+      boilingTest: 'Moisture Resistant Interior Immersion Tested',
+      screwHolding: '> 2350 N (Face) | > 1450 N (Edge)',
+      warranty: '10-Year Guarantee',
+      applications: 'Premium living furniture, modular wardrobes, TV consoles, wall paneling'
+    },
     'blockboard': {
       title: 'Pearl SolidCore Block Board (IS:1659)',
       grade: 'IS:1659 Solid Batten Blockboard',

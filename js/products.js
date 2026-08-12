@@ -91,6 +91,46 @@
       features: 'Anti-warp core, ISI:1659, Solid timber strip construction, Zero bow guarantee',
       photo: '',
       createdAt: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
+    },
+    {
+      id: 'PP-005',
+      name: 'Pearl Ultima Plus (IS:710 BWP)',
+      grade: 'Marine',
+      tagline: 'Elevate Your Space with Uncompromising Strength',
+      description: 'Super-premium Boiling Water Proof (BWP) plywood certified IS:710 (CM/L 9504492). Built with 100% Gurjan inside, extra layer construction, high density, and perfectly calibrated surfaces. 72-hr boiling proof with low VOC eco-friendly formulation.',
+      core: '100% High Density Gurjan Inside',
+      resin: '100% Undiluted Phenol Formaldehyde (PF) — Low VOC',
+      standard: 'IS:710 (BWP) • CM/L 9504492',
+      warranty: '15-Year Guarantee',
+      waterTest: '72-Hour Boiling Proof (Zero Delamination)',
+      moisture: 'BWP',
+      thicknesses: ['6', '9', '12', '16', '18', '19', '25'],
+      sheetSizes: ['8x4', '7x4', '8x3', '7x3'],
+      price: '₹1,550 per sheet',
+      status: 'Active',
+      features: 'Superior Strength, Boiling Water Proof (BWP), Termite & Borer Proof, Perfectly Calibrated, Eco-Friendly & Sustainable, Low VOC, Gurjan Inside, Extra Layer',
+      photo: 'assets/images/pearl_ultima_plus.png',
+      createdAt: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
+    },
+    {
+      id: 'PP-006',
+      name: 'Pearl Ultima Ply (IS:303 BWR)',
+      grade: 'BWR',
+      tagline: 'High Density Extra Layer with Calibrated Gurjan Face',
+      description: 'Certified IS:303 BWR Grade (CM/L 9760279217). Engineered with extra layer plywood technology, calibrated Gurjan face, high density core, and hot pressed under precision hydraulic temperature & pressure. 10-year guarantee with low VOC emissions.',
+      core: 'High Density Core + Calibrated Gurjan Face',
+      resin: 'Fortified Phenol Formaldehyde Synthetic Resin — Low VOC',
+      standard: 'IS:303 (BWR) • CM/L 9760279217',
+      warranty: '10-Year Guarantee',
+      waterTest: '8-Hour Boiling Resistant (Hot Pressed)',
+      moisture: 'BWR',
+      thicknesses: ['6', '9', '12', '16', '18', '19', '25'],
+      sheetSizes: ['8x4', '7x4', '8x3', '7x3'],
+      price: '₹1,050 per sheet',
+      status: 'Active',
+      features: '303 BWR Grade, Calibrated Gurjan Face, Extra Layer Plywood, High Density, Low VOC, 10 Years Guarantee, Hot Pressed, Termite Proof',
+      photo: 'assets/images/pearl_ultima_ply.jpg',
+      createdAt: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
     }
   ];
 
@@ -98,7 +138,21 @@
   function getProducts() {
     try {
       const stored = localStorage.getItem(PRODUCTS_KEY);
-      if (stored) return JSON.parse(stored);
+      if (stored) {
+        let list = JSON.parse(stored);
+        // Ensure default products exist in stored list
+        let updated = false;
+        DEFAULT_PRODUCTS.forEach(dp => {
+          if (!list.some(p => p.id === dp.id)) {
+            list.push(dp);
+            updated = true;
+          }
+        });
+        if (updated) {
+          localStorage.setItem(PRODUCTS_KEY, JSON.stringify(list));
+        }
+        return list;
+      }
     } catch (e) { console.warn('Products read error:', e); }
     localStorage.setItem(PRODUCTS_KEY, JSON.stringify(DEFAULT_PRODUCTS));
     return DEFAULT_PRODUCTS;

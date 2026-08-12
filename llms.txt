@@ -13,7 +13,42 @@
 
 ## 2. Product Specifications & Grades Matrix
 
-### A. Pearl Platinum Premium Flush Door (IS:2202 BWP)
+### A. Pearl Ultima Plus (IS:710 BWP Marine Grade)
+- **Brand Name:** Pearl Plywood Ultima Plus
+- **Standard:** IS:710 (BWP Plywood - Boiling Water Proof)
+- **License / CM/L:** CM/L 9504492
+- **Core Timber:** 100% Gurjan Inside (High Density Selected Core)
+- **Construction:** Extra Layer Cross-Grain Interlocking Technology
+- **Bonding Resin:** 100% Undiluted Phenol Formaldehyde (PF) Marine Resin Matrix
+- **Water Endurance:** 72-Hour Continuous Boiling Water Proof Immersion Test Passed (Zero Delamination)
+- **Calibration:** Perfectly Quad-Calibrated Surface (±0.1mm micro-flat precision)
+- **Pest Defense:** Anti-Borer & Termite Proof Vacuum Preservative Impregnation
+- **Environmental:** Low VOC & Eco-Friendly Sustainable Timber
+- **Certification:** ISO 9001:2008 Certified Co. • The Architect's First Choice
+- **Warranty:** 15 Years Guarantee
+- **Thickness Range:** 6mm, 9mm, 12mm, 16mm, 19mm, 25mm
+- **Standard Sizes:** 8x4 ft, 7x4 ft, 8x3 ft, 7x3 ft
+- **Key Applications:** Modular kitchen base units, under-sink boxes, bathroom vanities, wet areas, luxury wardrobes, coastal residences.
+
+### B. Pearl Ultima Ply (IS:303 BWR Grade)
+- **Brand Name:** Pearl Ultima Ply
+- **Standard:** IS:303 (BWR Grade Plywood for General Purpose)
+- **License / CM/L:** CM/L 9760279217
+- **Grade:** 303 BWR Grade (Boiling Water Resistant)
+- **Face Veneer:** Calibrated Gurjan Face
+- **Core & Layering:** High Density Hardwood Core with Extra Layer Plywood Technology
+- **Manufacturing:** Hot Pressed under Precision Hydraulic Temperature & Pressure
+- **Bonding Resin:** Fortified Phenol Formaldehyde Synthetic Matrix
+- **Water Endurance:** 8-Hour Boiling Water Resistant (Zero ply separation)
+- **Pest Defense:** Termite Proof Chemical Infusion
+- **Environmental:** Low VOC (Indoor Safe Air Quality)
+- **Certification:** ISO 9001:2008 Certified Co. • "Pearl Think Different"
+- **Warranty:** 10 Years Guarantee
+- **Thickness Range:** 6mm, 9mm, 12mm, 16mm, 18mm, 19mm, 25mm
+- **Standard Sizes:** 8x4 ft, 7x4 ft, 8x3 ft, 7x3 ft
+- **Key Applications:** Kitchen upper cabinets, dining units, living room furniture, wardrobes, TV consoles, semi-wet partitions.
+
+### C. Pearl Platinum Premium Flush Door (IS:2202 BWP)
 - **Standard:** IS:2202 (BWP Grade Flush Door)
 - **Core:** 100% Pure Pine Wood Door Core
 - **Protection:** Swell Proof, GD Protection, Termite & Borer Resistant
@@ -21,7 +56,7 @@
 - **Warranty:** 10-Year Guarantee
 - **Available Sizes:** 30mm, 35mm
 
-### B. Pearl Black Decor MR Grade Plywood (IS:303)
+### D. Pearl Black Decor MR Grade Plywood (IS:303)
 - **Standard:** IS:303 MR Grade (Type AA, ISI Marked)
 - **Face Veneer:** 100% Gurjan Face Veneer
 - **Panel Construction:** Full Core, Full Panel

@@ -294,8 +294,11 @@ CRITICAL GROUNDING RULES:
           <input type="tel" id="chatLeadPhone" placeholder="Phone / WhatsApp *" required />
           <input type="text" id="chatLeadCity" placeholder="City & State *" required />
           <select id="chatLeadProduct">
+            <option value="Pearl Ultima Plus (IS:710 BWP)">Pearl Ultima Plus (IS:710 BWP)</option>
+            <option value="Pearl Ultima Ply (IS:303 BWR)">Pearl Ultima Ply (IS:303 BWR)</option>
+            <option value="Pearl Platinum Flush Door (IS:2202)">Pearl Platinum Flush Door</option>
+            <option value="Pearl Black Decor MR (IS:303)">Pearl Black Decor MR</option>
             <option value="Pearl 100% Calibrated Marine 710">Pearl Marine BWP 710</option>
-            <option value="Pearl BWR Moisture Guard">Pearl BWR Moisture Guard</option>
             <option value="Pearl SolidCore Blockboard">SolidCore Blockboard</option>
             <option value="Dealership Partnership">Dealership Partnership</option>
             <option value="Architect Sample Kit">Architect Sample Kit</option>
@@ -308,7 +311,7 @@ CRITICAL GROUNDING RULES:
         <div class="chat-msg bot">
           <div class="msg-bubble">
             <p><strong>Namaste! 🙏 Welcome to Pearl Ply.</strong></p>
-            <p>I am your official AI Timber & Plywood Consultant. Ask me about <strong>IS:710 Marine 710</strong>, <strong>BWR Moisture Guard</strong>, <strong>SolidCore Blockboards</strong>, thicknesses, or pricing!</p>
+            <p>I am your official AI Timber & Plywood Consultant. Ask me about <strong>Pearl Ultima Plus (IS:710 BWP)</strong>, <strong>Pearl Ultima Ply (IS:303 BWR)</strong>, <strong>Pearl Platinum Doors</strong>, thicknesses, or pricing!</p>
             <div class="chat-chips">
               <div class="chat-chip" onclick="window.sendChatQuery('What is IS:710 Marine Plywood?')">IS:710 Marine 710</div>
               <div class="chat-chip" onclick="window.sendChatQuery('Plywood price estimate')">Price / Rates</div>
@@ -463,16 +466,22 @@ CRITICAL GROUNDING RULES:
   // Local knowledge fallback if API is unreachable
   function generateLocalFallback(userInput) {
     const q = userInput.toLowerCase();
+    if (q.includes('ultima plus') || (q.includes('ultima') && q.includes('plus'))) {
+      return "<strong>Pearl Ultima Plus (IS:710 BWP Marine Plywood)</strong> is our super-premium flagship grade:<br><br>• <strong>Core:</strong> 100% Gurjan Inside with Extra Layer Technology.<br>• <strong>Standard:</strong> Certified IS:710 (BWP) • CM/L 9504492.<br>• <strong>Endurance:</strong> 72-Hour Boiling Water Proof (Zero Delamination).<br>• <strong>Features:</strong> Perfectly Quad-Calibrated (±0.1mm), Termite & Borer Proof, Low VOC.<br>• <strong>Warranty:</strong> 15-Year Replacement Guarantee.<br>• <strong>Best For:</strong> Modular kitchens, bathroom vanities, under-sink units, and wet areas.";
+    }
+    if (q.includes('ultima ply') || q.includes('ultima')) {
+      return "<strong>Pearl Ultima Ply (IS:303 BWR Grade)</strong> is engineered for high performance interior woodworking:<br><br>• <strong>Face & Core:</strong> Calibrated Gurjan Face with High Density Extra Layer Core.<br>• <strong>Standard:</strong> Certified IS:303 (BWR) • CM/L 9760279217.<br>• <strong>Manufacturing:</strong> Hot Pressed under hydraulic temperature & pressure.<br>• <strong>Features:</strong> 8-Hr Boiling Water Resistant, Termite Proof, Low VOC indoor safe.<br>• <strong>Warranty:</strong> 10-Year Guarantee.<br>• <strong>Best For:</strong> Kitchen upper cabinets, wardrobes, TV units, and dining furniture.";
+    }
     if (q.includes('marine') || q.includes('710') || q.includes('water')) {
-      return "<strong>Pearl 100% Calibrated Marine 710 (IS:710)</strong> is crafted with 100% Gurjan core and unextended Phenol Formaldehyde resin.<br><br>• <strong>Endurance:</strong> 72 continuous hours boiling water tested.<br>• <strong>Warranty:</strong> 25-Year Guarantee.<br>• <strong>Ideal For:</strong> Modular kitchens, bathroom vanity counters, and coastal residences.";
+      return "<strong>Pearl Ultima Plus & Marine 710 (IS:710 BWP)</strong> are crafted with 100% Gurjan core and unextended Phenol Formaldehyde resin.<br><br>• <strong>Endurance:</strong> 72 continuous hours boiling water tested.<br>• <strong>Warranty:</strong> 15 to 25-Year Guarantee.<br>• <strong>Ideal For:</strong> Modular kitchens, bathroom vanity counters, and coastal residences.";
     }
     if (q.includes('price') || q.includes('rate') || q.includes('cost')) {
-      return "<strong>Pearl Ply Indicative Rates:</strong><br><br>• <strong>Commercial MR (18mm):</strong> Approx. ₹65 - ₹85 / sq.ft.<br>• <strong>BWR Moisture Guard (18mm):</strong> Approx. ₹95 - ₹120 / sq.ft.<br>• <strong>Marine 710 (18mm):</strong> Approx. ₹130 - ₹165 / sq.ft.<br>• <strong>SolidCore Blockboard (19mm):</strong> Approx. ₹110 - ₹140 / sq.ft.";
+      return "<strong>Pearl Ply Indicative Rates:</strong><br><br>• <strong>Pearl Ultima Plus IS:710 (18mm):</strong> Approx. ₹135 - ₹165 / sq.ft.<br>• <strong>Pearl Ultima Ply IS:303 (18mm):</strong> Approx. ₹95 - ₹120 / sq.ft.<br>• <strong>Pearl Black Decor MR (18mm):</strong> Approx. ₹70 - ₹88 / sq.ft.<br>• <strong>SolidCore Blockboard (19mm):</strong> Approx. ₹110 - ₹140 / sq.ft.";
     }
     if (q.includes('dealer') || q.includes('distributor')) {
       return "<strong>Pearl Ply Dealership Partnership:</strong><br><br>We offer territory-exclusive dealerships across India.<br>• <strong>Authorized Dealer:</strong> ₹10L - ₹25L investment tier.<br>• <strong>Distributor:</strong> ₹25L - ₹50L+ tier with full sampling and plant dispatch support.";
     }
-    return "Thank you for reaching out! <strong>Pearl Ply</strong> manufactures certified <strong>IS:710 Marine Plywood</strong>, <strong>BWR Moisture Guard</strong>, and <strong>SolidCore Blockboards</strong> with 25-Year warranty.<br><br>I can assist with grade specifications, pricing, sheet estimates, architect sample kits, and dealership opportunities.";
+    return "Thank you for reaching out! <strong>Pearl Ply</strong> manufactures certified <strong>Pearl Ultima Plus (IS:710 BWP)</strong>, <strong>Pearl Ultima Ply (IS:303 BWR)</strong>, and <strong>Pearl Platinum Flush Doors</strong> with up to 15-Year warranty.<br><br>I can assist with grade specifications, pricing, sheet estimates, architect sample kits, and dealership opportunities.";
   }
 
   // 6. Submit Lead directly from Chat to Admin CRM
