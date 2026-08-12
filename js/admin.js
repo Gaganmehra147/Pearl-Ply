@@ -8,7 +8,12 @@
   const AUTH_KEY = 'pearl_admin_auth';
   const MASTER_PASSWORD = 'admin123';
 
-  // Master Initial Records - Empty array for fresh live production launch
+  // Force purge all legacy mock demo data from local storage
+  ['pearl_crm_leads', 'pearl_crm_leads_v1', 'pearl_leads'].forEach(k => {
+    try { localStorage.removeItem(k); } catch (e) {}
+  });
+
+  // Master Initial Records - Empty array for live production
   const DEFAULT_LEADS = [];
 
   let leads = [];
@@ -19,16 +24,19 @@
   function checkAuth() {
     const isAuth = sessionStorage.getItem(AUTH_KEY) === 'true';
     const lockOverlay = document.getElementById('adminAuthLock');
-    if (lockOverlay) {
-      if (isAuth) {
-        lockOverlay.classList.add('hidden');
-      } else {
-        lockOverlay.classList.remove('hidden');
-        const passInput = document.getElementById('adminPassInput');
-        if (passInput) {
-          passInput.value = '';
-          passInput.focus();
-        }
+    const dashboard = document.getElementById('adminAppDashboard');
+
+    if (isAuth) {
+      if (lockOverlay) lockOverlay.style.display = 'none';
+      if (dashboard) dashboard.style.display = 'block';
+      renderAll();
+    } else {
+      if (lockOverlay) lockOverlay.style.display = 'flex';
+      if (dashboard) dashboard.style.display = 'none';
+      const passInput = document.getElementById('adminPassInput');
+      if (passInput) {
+        passInput.value = '';
+        passInput.focus();
       }
     }
     return isAuth;
@@ -43,9 +51,7 @@
     if (entered === MASTER_PASSWORD) {
       sessionStorage.setItem(AUTH_KEY, 'true');
       if (errBox) errBox.style.display = 'none';
-      const lockOverlay = document.getElementById('adminAuthLock');
-      if (lockOverlay) lockOverlay.classList.add('hidden');
-      renderAll();
+      checkAuth();
     } else {
       if (errBox) {
         errBox.textContent = '❌ Invalid Admin Password. Access Denied.';
@@ -68,8 +74,16 @@
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
-        const parsed = JSON.parse(stored);
-        if (Array.isArray(parsed)) return parsed;
+        let parsed = JSON.parse(stored);
+        if (Array.isArray(parsed)) {
+          // Remove any legacy mock seed leads
+          const mockIds = ['PL-894198', 'PL-894185', 'PL-894172', 'PL-894160', 'PL-894145', 'PL-894110', 'PL-894201'];
+          const filtered = parsed.filter(l => l && !mockIds.includes(l.id));
+          if (filtered.length !== parsed.length) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(filtered));
+          }
+          return filtered;
+        }
       }
     } catch (e) {
       console.warn('Storage read error:', e);
@@ -134,7 +148,7 @@
     if (elTotal) elTotal.textContent = totalCount;
     if (elVal) elVal.textContent = totalCount > 0 ? `₹${(pipelineValueLakhs / 100).toFixed(2)} Cr` : '₹0.00';
     if (elVol) elVol.textContent = `${totalSheets.toLocaleString()} Sheets`;
-    if (elChat) elChat.textContent = totalCount > 0 ? `${chatbotCount} (${Math.round((chatbotCount/totalCount)*100)}%)` : '0';
+    if (elChat) elChat.textContent = totalCount > 0 ? `${chatbotCount} (${Math.round((chatbotCount / totalCount) * 100)}%)` : '0';
     if (elArch) elArch.textContent = archCount;
     if (elDealer) elDealer.textContent = dealerCount;
 
@@ -459,7 +473,6 @@
   // 6. Bind Events
   document.addEventListener('DOMContentLoaded', () => {
     checkAuth();
-    renderAll();
 
     // Filter Pills
     document.querySelectorAll('.filter-pill-tab').forEach(btn => {

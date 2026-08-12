@@ -15,13 +15,143 @@
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/admin.css" />
+
+  <!-- Embedded High-Priority Security & Auth Styles -->
+  <style>
+    #adminAuthLock {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: radial-gradient(circle at center, #0B2B20 0%, #030D0A 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 99999999;
+      padding: 16px;
+      box-sizing: border-box;
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+    }
+    .admin-auth-card {
+      background: rgba(10, 35, 26, 0.96);
+      border: 1.5px solid rgba(212, 163, 89, 0.4);
+      border-radius: 16px;
+      padding: 40px 32px;
+      width: 100%;
+      max-width: 440px;
+      text-align: center;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9), 0 0 40px rgba(212, 163, 89, 0.15);
+      box-sizing: border-box;
+      animation: authCardFade 0.35s ease-out;
+    }
+    @keyframes authCardFade {
+      from { opacity: 0; transform: translateY(18px) scale(0.97); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .admin-auth-logo {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .admin-auth-card h2 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      margin: 0 0 8px;
+      letter-spacing: -0.01em;
+    }
+    .admin-auth-card h2 span {
+      color: #D4A359;
+    }
+    .admin-auth-card p {
+      font-size: 0.88rem;
+      color: #A3B5AE;
+      margin: 0 0 24px;
+      line-height: 1.5;
+    }
+    .auth-input-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #051812;
+      border: 1.5px solid rgba(212, 163, 89, 0.35);
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin-bottom: 14px;
+      box-sizing: border-box;
+      transition: all 0.2s ease;
+    }
+    .auth-input-group:focus-within {
+      border-color: #D4A359;
+      box-shadow: 0 0 16px rgba(212, 163, 89, 0.25);
+    }
+    .auth-input-group svg {
+      color: #D4A359;
+      flex-shrink: 0;
+    }
+    .auth-input-group input {
+      background: none;
+      border: none;
+      outline: none;
+      color: #FFFFFF;
+      font-size: 1rem;
+      font-family: inherit;
+      width: 100%;
+    }
+    .auth-input-group input::placeholder {
+      color: #596B63;
+    }
+    .auth-error-msg {
+      color: #FC8181;
+      background: rgba(229, 62, 62, 0.15);
+      border: 1px solid rgba(229, 62, 62, 0.35);
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      text-align: left;
+    }
+    .auth-submit-btn {
+      width: 100%;
+      padding: 14px;
+      font-size: 0.95rem;
+      font-weight: 800;
+      border-radius: 10px;
+      cursor: pointer;
+      background: linear-gradient(135deg, #D4A359 0%, #B8860B 100%);
+      color: #030D0A;
+      border: none;
+      margin-bottom: 18px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 15px rgba(212, 163, 89, 0.3);
+    }
+    .auth-submit-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(212, 163, 89, 0.4);
+    }
+    .auth-footer-link a {
+      font-size: 0.84rem;
+      color: #A3B5AE;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .auth-footer-link a:hover {
+      color: #D4A359;
+    }
+  </style>
 </head>
 <body>
 
   <!-- ==========================================
        ADMIN MASTER ACCESS AUTHENTICATION BARRIER
        ========================================== -->
-  <div class="admin-auth-overlay" id="adminAuthLock">
+  <div id="adminAuthLock">
     <div class="admin-auth-card">
       <div class="admin-auth-logo">
         <svg width="48" height="48" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -46,7 +176,7 @@
           <circle cx="28.5" cy="11.5" r="2" fill="#FFEAA7"/>
         </svg>
       </div>
-      <h2>PEARL PLY <span>PORTAL</span></h2>
+      <h2>PEARL PLY <span>CRM PORTAL</span></h2>
       <p>Enter Master Password to access lead CRM, live inquiries &amp; product catalog manager.</p>
       
       <form id="formAdminAuth" onsubmit="window.handleAdminLogin(event)">
@@ -55,7 +185,7 @@
           <input type="password" id="adminPassInput" placeholder="Enter Admin Password..." required autofocus />
         </div>
         <div class="auth-error-msg" id="authErrorMsg" style="display:none;"></div>
-        <button type="submit" class="btn-adm btn-adm-gold auth-submit-btn">
+        <button type="submit" class="auth-submit-btn">
           Unlock CRM Command Center
         </button>
       </form>
@@ -66,641 +196,657 @@
   </div>
 
   <!-- ==========================================
-       EXECUTIVE TOP COMMAND NAVBAR
+       PROTECTED ADMIN APPLICATION DASHBOARD WRAPPER
+       (Hidden until password authentication is verified)
        ========================================== -->
-  <header class="admin-navbar">
-    <div class="admin-brand-cluster">
-      <div class="admin-logo-badge">
-        <svg width="34" height="34" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="admGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#FFEAA7"/>
-              <stop offset="35%" stop-color="#D4A359"/>
-              <stop offset="70%" stop-color="#B8860B"/>
-              <stop offset="100%" stop-color="#8C6014"/>
-            </linearGradient>
-            <linearGradient id="admDarkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#0E3326"/>
-              <stop offset="100%" stop-color="#04120D"/>
-            </linearGradient>
-          </defs>
-          <rect x="2" y="2" width="36" height="36" rx="9" fill="url(#admDarkGrad)" stroke="url(#admGoldGrad)" stroke-width="1.8"/>
-          <path d="M6 11 L11 6 M34 11 L29 6 M6 29 L11 34 M34 29 L29 34" stroke="url(#admGoldGrad)" stroke-width="1.2" stroke-linecap="round"/>
-          <polygon points="20,5.5 23.5,9.5 16.5,9.5" fill="url(#admGoldGrad)"/>
-          <path d="M13 11.5 H21.5 C24.8 11.5 27.5 13.8 27.5 17.2 C27.5 20.6 24.8 22.8 21.5 22.8 H17.2 V32 H13 V11.5 Z" fill="url(#admGoldGrad)"/>
-          <path d="M17.2 15 H21 C22.4 15 23.4 15.9 23.4 17.2 C23.4 18.5 22.4 19.4 21 19.4 H17.2 V15 Z" fill="#0E3326"/>
-          <line x1="13" y1="22.8" x2="21.5" y2="22.8" stroke="#FFEAA7" stroke-width="1"/>
-          <circle cx="28.5" cy="11.5" r="2" fill="#FFEAA7"/>
-        </svg>
-      </div>
-      <div class="brand-text-block">
-        <h1>PEARL PLY <span>ENTERPRISE CRM</span></h1>
-        <div class="plant-telemetry-badge">
-          <span class="pulse-dot-green"></span>
-          Plant Telemetry: Active &bull; IS:710 Marine
-        </div>
-      </div>
-    </div>
+  <div id="adminAppDashboard" style="display: none;">
 
-    <div class="admin-header-actions">
-      <button class="btn-adm btn-adm-gold" id="headerActionBtn" onclick="window.openAddLeadModal()">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-        <span id="headerActionLabel">+ Add Manual Lead</span>
-      </button>
-      <button class="btn-adm btn-adm-outline" onclick="window.PearlCRM.exportCSV()">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-        Export CSV
-      </button>
-      <button class="btn-adm btn-adm-outline" onclick="window.PearlCRM.resetToDefaults()" title="Clear All Records">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
-        Clear CRM Data
-      </button>
-      <a href="index.html" class="btn-adm btn-adm-outline">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-        Website
-      </a>
-      <button class="btn-adm btn-adm-outline" onclick="window.adminLogout()" title="Logout of Admin Panel" style="color: #FC8181; border-color: rgba(252, 129, 129, 0.4);">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
-        Logout
-      </button>
-    </div>
-  </header>
-
-  <!-- ==========================================
-       MAIN TAB NAVIGATION
-       ========================================== -->
-  <nav class="admin-tab-nav">
-    <button class="admin-tab-btn active" id="tabCRM" onclick="window.switchAdminTab('crm')">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-      Lead CRM & Analytics
-    </button>
-    <button class="admin-tab-btn" id="tabProducts" onclick="window.switchAdminTab('products')">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
-      Product Catalog Manager
-      <span class="tab-product-count" id="tabProductCount">0</span>
-    </button>
-  </nav>
-
-  <!-- ==========================================
-       MAIN ANALYTICAL DASHBOARD WRAPPER
-       ========================================== -->
-  <main class="admin-main-wrap">
-
-    <!-- 1. 6-CARD ANALYTICAL KPI METRIC ROW -->
-    <section class="kpi-row">
-      <!-- Total Leads -->
-      <div class="kpi-box">
-        <div class="kpi-top">
-          <span class="kpi-label">Active Lead Pipeline</span>
-          <div class="kpi-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-          </div>
+    <!-- EXECUTIVE TOP COMMAND NAVBAR -->
+    <header class="admin-navbar">
+      <div class="admin-brand-cluster">
+        <div class="admin-logo-badge">
+          <svg width="34" height="34" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="admGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FFEAA7"/>
+                <stop offset="35%" stop-color="#D4A359"/>
+                <stop offset="70%" stop-color="#B8860B"/>
+                <stop offset="100%" stop-color="#8C6014"/>
+              </linearGradient>
+              <linearGradient id="admDarkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#0E3326"/>
+                <stop offset="100%" stop-color="#04120D"/>
+              </linearGradient>
+            </defs>
+            <rect x="2" y="2" width="36" height="36" rx="9" fill="url(#admDarkGrad)" stroke="url(#admGoldGrad)" stroke-width="1.8"/>
+            <path d="M6 11 L11 6 M34 11 L29 6 M6 29 L11 34 M34 29 L29 34" stroke="url(#admGoldGrad)" stroke-width="1.2" stroke-linecap="round"/>
+            <polygon points="20,5.5 23.5,9.5 16.5,9.5" fill="url(#admGoldGrad)"/>
+            <path d="M13 11.5 H21.5 C24.8 11.5 27.5 13.8 27.5 17.2 C27.5 20.6 24.8 22.8 21.5 22.8 H17.2 V32 H13 V11.5 Z" fill="url(#admGoldGrad)"/>
+            <path d="M17.2 15 H21 C22.4 15 23.4 15.9 23.4 17.2 C23.4 18.5 22.4 19.4 21 19.4 H17.2 V15 Z" fill="#0E3326"/>
+            <line x1="13" y1="22.8" x2="21.5" y2="22.8" stroke="#FFEAA7" stroke-width="1"/>
+            <circle cx="28.5" cy="11.5" r="2" fill="#FFEAA7"/>
+          </svg>
         </div>
-        <div class="kpi-number" id="kpiTotalLeads">0</div>
-        <div class="kpi-trend">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
-          +18.4% this week
-        </div>
-      </div>
-
-      <!-- Estimated Pipeline Value -->
-      <div class="kpi-box">
-        <div class="kpi-top">
-          <span class="kpi-label">Est. Order Pipeline</span>
-          <div class="kpi-icon amber">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-          </div>
-        </div>
-        <div class="kpi-number" id="kpiPipelineVal">₹0</div>
-        <div class="kpi-trend">High-yield luxury specs</div>
-      </div>
-
-      <!-- Total Sheet Volume -->
-      <div class="kpi-box">
-        <div class="kpi-top">
-          <span class="kpi-label">Total Sheets Inquired</span>
-          <div class="kpi-icon cyan">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
-          </div>
-        </div>
-        <div class="kpi-number" id="kpiSheetVolume">0 Sheets</div>
-        <div class="kpi-trend">8x4 & 7x4 Calibrated Panels</div>
-      </div>
-
-      <!-- AI Chatbot Conversion Rate -->
-      <div class="kpi-box">
-        <div class="kpi-top">
-          <span class="kpi-label">AI Gemini Ingestion</span>
-          <div class="kpi-icon green">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-          </div>
-        </div>
-        <div class="kpi-number" id="kpiChatbotCount">0</div>
-        <div class="kpi-trend">24/7 Real-Time Capture</div>
-      </div>
-
-      <!-- Architect Sample Kits -->
-      <div class="kpi-box">
-        <div class="kpi-top">
-          <span class="kpi-label">Architect Sample Kits</span>
-          <div class="kpi-icon purple">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-          </div>
-        </div>
-        <div class="kpi-number" id="kpiArchitectKits">0</div>
-        <div class="kpi-trend">Sample Boxes Dispatched</div>
-      </div>
-
-      <!-- Dealership Proposals -->
-      <div class="kpi-box">
-        <div class="kpi-top">
-          <span class="kpi-label">B2B Dealerships</span>
-          <div class="kpi-icon blue">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-          </div>
-        </div>
-        <div class="kpi-number" id="kpiDealerCount">0</div>
-        <div class="kpi-trend">₹10L - ₹50L+ Tiers</div>
-      </div>
-    </section>
-
-    <!-- 2. ANALYTICS & INTELLIGENCE VISUAL GRID -->
-    <section class="analytics-grid">
-      <!-- Channel Acquisition Breakdown -->
-      <div class="analytics-card">
-        <div class="card-header-bar">
-          <div class="card-header-title">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10"></path><path d="M12 20V4"></path><path d="M6 20v-6"></path></svg>
-            Acquisition Channel Distribution
-          </div>
-          <span class="card-badge">Live Telemetry</span>
-        </div>
-        <div class="progress-list" id="channelProgressList">
-          <!-- Rendered dynamically -->
-        </div>
-      </div>
-
-      <!-- Grade Demand Matrix -->
-      <div class="analytics-card">
-        <div class="card-header-bar">
-          <div class="card-header-title">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
-            Product Grade Demand Matrix
-          </div>
-          <span class="card-badge">Market Share</span>
-        </div>
-        <div class="progress-list" id="gradeProgressList">
-          <!-- Rendered dynamically -->
-        </div>
-      </div>
-
-      <!-- Sales Pipeline Funnel & Regional Hubs -->
-      <div class="analytics-card">
-        <div class="card-header-bar">
-          <div class="card-header-title">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-            Conversion Funnel & Top Regions
-          </div>
-          <span class="card-badge">Fulfillment</span>
-        </div>
-        
-        <div class="funnel-pipeline" id="funnelStepsWrap">
-          <div class="funnel-step">
-            <div class="funnel-count" id="funnelNew">0</div>
-            <div class="funnel-title">New</div>
-          </div>
-          <div class="funnel-step">
-            <div class="funnel-count" id="funnelContacted">0</div>
-            <div class="funnel-title">Contacted</div>
-          </div>
-          <div class="funnel-step">
-            <div class="funnel-count" id="funnelQuote">0</div>
-            <div class="funnel-title">Quote Sent</div>
-          </div>
-          <div class="funnel-step">
-            <div class="funnel-count" id="funnelSample">0</div>
-            <div class="funnel-title">Sample Kit</div>
-          </div>
-          <div class="funnel-step">
-            <div class="funnel-count" id="funnelClosed">0</div>
-            <div class="funnel-title">Closed Won</div>
-          </div>
-        </div>
-
-        <div style="margin-top: 18px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.06);">
-          <div style="font-size: 0.76rem; font-weight: 700; color: var(--adm-gold); margin-bottom: 8px; text-transform: uppercase;">Top Regional Ingestion Hubs:</div>
-          <div style="display: flex; gap: 8px; flex-wrap: wrap;" id="topCitiesTags">
-            <span class="card-badge">Gurugram (NCR)</span>
-            <span class="card-badge">Jaipur</span>
-            <span class="card-badge">Ahmedabad</span>
-            <span class="card-badge">Kolkata</span>
-            <span class="card-badge">Mumbai</span>
+        <div class="brand-text-block">
+          <h1>PEARL PLY <span>ENTERPRISE CRM</span></h1>
+          <div class="plant-telemetry-badge">
+            <span class="pulse-dot-green"></span>
+            Plant Telemetry: Active &bull; IS:710 Marine
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- 3. OPERATIONS CONSOLE & LEAD DATA TABLE -->
-    <section class="crm-console-card">
-      <div class="console-toolbar">
-        <div class="filter-pills-wrap" id="filterPills">
-          <button class="filter-pill-tab active" data-channel="All">All Inquiries <span class="pill-counter" id="pillAllCount">0</span></button>
-          <button class="filter-pill-tab" data-channel="AI Chatbot">AI Chatbot <span class="pill-counter" id="pillChatCount">0</span></button>
-          <button class="filter-pill-tab" data-channel="Instant Quote">Instant Quotes <span class="pill-counter" id="pillQuoteCount">0</span></button>
-          <button class="filter-pill-tab" data-channel="Architect Kit">Architect Kits <span class="pill-counter" id="pillArchCount">0</span></button>
-          <button class="filter-pill-tab" data-channel="Dealership">Dealerships <span class="pill-counter" id="pillDealerCount">0</span></button>
-          <button class="filter-pill-tab" data-channel="Calculator">Sheet Calculator <span class="pill-counter" id="pillCalcCount">0</span></button>
-        </div>
-
-        <div class="search-field-box">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          <input type="text" id="adminSearchInput" placeholder="Search customer, phone, city, or product..." />
-        </div>
-      </div>
-
-      <div class="crm-table-container">
-        <table class="adm-table">
-          <thead>
-            <tr>
-              <th>Ref ID & Time</th>
-              <th>Customer & Organization</th>
-              <th>Contact & Regional Hub</th>
-              <th>Channel Source</th>
-              <th>Product & Quantity</th>
-              <th>Pipeline Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody id="crmTableBody">
-            <!-- Rendered dynamically -->
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ==========================================
-       PRODUCTS MANAGEMENT SECTION
-       ========================================== -->
-  <main class="admin-main-wrap products-main" id="productsSection" style="display:none;">
-
-    <!-- Products Stats Bar -->
-    <section class="products-stats-row">
-      <div class="prod-stat-box">
-        <div class="prod-stat-icon" style="background: rgba(212,163,89,0.15); color: var(--adm-gold);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
-        </div>
-        <div>
-          <div class="prod-stat-num" id="statTotalProducts">0</div>
-          <div class="prod-stat-label">Total Products</div>
-        </div>
-      </div>
-      <div class="prod-stat-box">
-        <div class="prod-stat-icon" style="background: rgba(56,161,105,0.15); color: var(--adm-green);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-        </div>
-        <div>
-          <div class="prod-stat-num" id="statActiveProducts">0</div>
-          <div class="prod-stat-label">Active Listings</div>
-        </div>
-      </div>
-      <div class="prod-stat-box">
-        <div class="prod-stat-icon" style="background: rgba(49,130,206,0.15); color: var(--adm-blue);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
-        </div>
-        <div>
-          <div class="prod-stat-num" id="statGrades">0</div>
-          <div class="prod-stat-label">Grades/Categories</div>
-        </div>
-      </div>
-      <div class="prod-stat-box">
-        <div class="prod-stat-icon" style="background: rgba(128,90,213,0.15); color: var(--adm-purple);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-        </div>
-        <div>
-          <div class="prod-stat-num" id="statWithPhotos">0</div>
-          <div class="prod-stat-label">With Photos</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Products Grid Header -->
-    <section class="products-grid-section">
-      <div class="products-grid-header">
-        <div class="products-grid-title">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
-          Plywood Product Catalog
-        </div>
-        <div class="products-grid-controls">
-          <div class="prod-search-box">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-            <input type="text" id="prodSearchInput" placeholder="Search products..." oninput="window.PearlProducts.filterProducts(this.value)" />
-          </div>
-          <select class="prod-filter-select" id="prodGradeFilter" onchange="window.PearlProducts.filterProducts()">
-            <option value="">All Grades</option>
-            <option value="Marine">Marine (IS:710)</option>
-            <option value="BWR">BWR Moisture Guard</option>
-            <option value="MR">Commercial MR</option>
-            <option value="Blockboard">Blockboard</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- Product Cards Grid -->
-      <div class="products-cards-grid" id="productsGrid">
-        <!-- Rendered dynamically -->
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ==========================================
-       MODAL 1: ADD MANUAL LEAD
-       ========================================== -->
-  <div class="admin-modal-backdrop" id="modalAddLead">
-    <div class="admin-modal-box">
-      <div class="modal-header-row">
-        <h3>+ Register Enterprise Lead</h3>
-        <button class="modal-close-cross" onclick="window.closeAddLeadModal()">&times;</button>
-      </div>
-
-      <form id="formManualLead">
-        <div class="form-grid-2">
-          <div class="adm-form-group">
-            <label>Customer / Firm Name *</label>
-            <input type="text" id="mName" placeholder="e.g. Apex Wood Crafts" required />
-          </div>
-          <div class="adm-form-group">
-            <label>Phone / WhatsApp *</label>
-            <input type="tel" id="mPhone" placeholder="+91 98765 43210" required />
-          </div>
-        </div>
-
-        <div class="form-grid-2">
-          <div class="adm-form-group">
-            <label>Email Address</label>
-            <input type="email" id="mEmail" placeholder="contact@firm.com" />
-          </div>
-          <div class="adm-form-group">
-            <label>City & State *</label>
-            <input type="text" id="mCity" placeholder="e.g. Mumbai, Maharashtra" required />
-          </div>
-        </div>
-
-        <div class="form-grid-2">
-          <div class="adm-form-group">
-            <label>Product Grade</label>
-            <select id="mProduct">
-              <option value="Pearl Ultima Plus">Pearl Ultima Plus (IS:710 BWP Marine)</option>
-              <option value="Pearl Ultima Ply">Pearl Ultima Ply (IS:303 BWR Grade)</option>
-              <option value="Pearl Platinum">Pearl Platinum (IS:2202 Flush Door)</option>
-              <option value="Pearl Black Decor">Pearl Black Decor (IS:303 MR Grade)</option>
-              <option value="Architect Presentation Kit">Architect Presentation Kit</option>
-              <option value="Territory Dealership">Territory Dealership</option>
-            </select>
-          </div>
-          <div class="adm-form-group">
-            <label>Channel Source</label>
-            <select id="mChannel">
-              <option value="Direct Call / Showroom">Direct Call / Showroom</option>
-              <option value="Instant Quote">Instant Quote</option>
-              <option value="Architect Kit">Architect Kit</option>
-              <option value="Dealership">Dealership</option>
-              <option value="AI Chatbot">AI Chatbot</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="adm-form-group">
-          <label>Estimated Quantity / Scope</label>
-          <input type="text" id="mQuantity" placeholder="e.g. 50 Sheets (18mm) or 3BHK Project" />
-        </div>
-
-        <div class="adm-form-group">
-          <label>Inquiry Details / Notes</label>
-          <textarea id="mMessage" rows="3" placeholder="Specific technical requirements, delivery address, or discount terms..."></textarea>
-        </div>
-
-        <button type="submit" class="btn-adm btn-adm-gold" style="width: 100%; justify-content: center; padding: 12px; font-size: 0.95rem;">
-          Save & Ingest Lead
+      <div class="admin-header-actions">
+        <button class="btn-adm btn-adm-gold" id="headerActionBtn" onclick="window.openAddLeadModal()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          <span id="headerActionLabel">+ Add Manual Lead</span>
         </button>
-      </form>
-    </div>
-  </div>
-
-  <!-- ==========================================
-       MODAL 2: DETAILED LEAD DOSSIER INSPECTOR
-       ========================================== -->
-  <div class="admin-modal-backdrop" id="modalLeadDetails">
-    <div class="admin-modal-box">
-      <div class="modal-header-row">
-        <h3>Lead Intelligence Dossier</h3>
-        <button class="modal-close-cross" onclick="window.closeLeadDetails()">&times;</button>
-      </div>
-
-      <div class="lead-dossier-hero">
-        <div class="dossier-avatar" id="dosAvatar">P</div>
-        <div class="dossier-meta">
-          <h4 id="dosName">Customer Name</h4>
-          <div class="dossier-pills">
-            <span id="dosChannel">AI Chatbot</span> &bull; <span id="dosRefId">PL-123456</span> &bull; <span id="dosDate">Date</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="dossier-grid">
-        <div class="dossier-cell">
-          <div class="dossier-cell-label">Phone / WhatsApp</div>
-          <div class="dossier-cell-val" id="dosPhone">+91 00000 00000</div>
-        </div>
-        <div class="dossier-cell">
-          <div class="dossier-cell-label">Email Address</div>
-          <div class="dossier-cell-val" id="dosEmail">N/A</div>
-        </div>
-        <div class="dossier-cell">
-          <div class="dossier-cell-label">Regional Location</div>
-          <div class="dossier-cell-val" id="dosCity">City, State</div>
-        </div>
-        <div class="dossier-cell">
-          <div class="dossier-cell-label">Product Selected</div>
-          <div class="dossier-cell-val gold" id="dosProduct">Pearl Marine 710</div>
-        </div>
-        <div class="dossier-cell">
-          <div class="dossier-cell-label">Order Volume</div>
-          <div class="dossier-cell-val" id="dosQty">General Inquiry</div>
-        </div>
-        <div class="dossier-cell">
-          <div class="dossier-cell-label">Pipeline Status</div>
-          <div class="dossier-cell-val" id="dosStatus">New</div>
-        </div>
-      </div>
-
-      <div class="dossier-message-box">
-        <div style="font-size: 0.7rem; font-weight: 700; color: var(--adm-gold); text-transform: uppercase; margin-bottom: 4px;">Inquiry Narrative / Specifications:</div>
-        <p id="dosMessage">"Customer inquiry notes appear here..."</p>
-      </div>
-
-      <div style="display: flex; gap: 10px;">
-        <a id="dosWhatsAppBtn" href="#" target="_blank" class="btn-adm btn-adm-gold" style="flex: 1; justify-content: center;">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-          Direct WhatsApp Chat
+        <button class="btn-adm btn-adm-outline" onclick="window.PearlCRM.exportCSV()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Export CSV
+        </button>
+        <button class="btn-adm btn-adm-outline" onclick="window.PearlCRM.resetToDefaults()" title="Clear All Records">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+          Clear CRM Data
+        </button>
+        <a href="index.html" class="btn-adm btn-adm-outline">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          Website
         </a>
-        <button class="btn-adm btn-adm-outline" onclick="window.closeLeadDetails()">
-          Close Dossier
+        <button class="btn-adm btn-adm-outline" onclick="window.adminLogout()" title="Logout of Admin Panel" style="color: #FC8181; border-color: rgba(252, 129, 129, 0.4);">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          Logout
         </button>
       </div>
-    </div>
-  </div>
+    </header>
 
-  <!-- ==========================================
-       MODAL 3: ADD / EDIT PRODUCT
-       ========================================== -->
-  <div class="admin-modal-backdrop" id="modalProduct">
-    <div class="admin-modal-box product-modal-box">
-      <div class="modal-header-row">
-        <h3 id="productModalTitle">+ Add New Product</h3>
-        <button class="modal-close-cross" onclick="window.PearlProducts.closeModal()">&#x2715;</button>
-      </div>
+    <!-- MAIN TAB NAVIGATION -->
+    <nav class="admin-tab-nav">
+      <button class="admin-tab-btn active" id="tabCRM" onclick="window.switchAdminTab('crm')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        Lead CRM & Analytics
+      </button>
+      <button class="admin-tab-btn" id="tabProducts" onclick="window.switchAdminTab('products')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+        Product Catalog Manager
+        <span class="tab-product-count" id="tabProductCount">4</span>
+      </button>
+    </nav>
 
-      <form id="formProduct" onsubmit="window.PearlProducts.saveProduct(event)">
-        <input type="hidden" id="prodEditId" />
+    <!-- MAIN ANALYTICAL DASHBOARD WRAPPER -->
+    <main class="admin-main-wrap">
 
-        <!-- Photo Upload Area -->
-        <div class="photo-upload-zone" id="photoUploadZone" onclick="document.getElementById('prodPhotoInput').click()">
-          <div class="photo-upload-placeholder" id="photoPlaceholder">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-            <span>Click to Upload Product Photo</span>
-            <small>JPG, PNG, WEBP — Max 5MB</small>
+      <!-- 1. 6-CARD ANALYTICAL KPI METRIC ROW -->
+      <section class="kpi-row">
+        <!-- Total Leads -->
+        <div class="kpi-box">
+          <div class="kpi-top">
+            <span class="kpi-label">Active Lead Pipeline</span>
+            <div class="kpi-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            </div>
           </div>
-          <img id="prodPhotoPreview" src="" alt="Preview" style="display:none; width:100%; height:100%; object-fit:cover; border-radius:10px;" />
-          <input type="file" id="prodPhotoInput" accept="image/*" style="display:none;" onchange="window.PearlProducts.handlePhotoUpload(event)" />
+          <div class="kpi-number" id="kpiTotalLeads">0</div>
+          <div class="kpi-trend">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+            Real-time Pipeline
+          </div>
         </div>
 
-        <!-- Basic Info -->
-        <div class="form-grid-2">
-          <div class="adm-form-group">
-            <label>Product Name *</label>
-            <input type="text" id="prodName" placeholder="e.g. Pearl Marine BWP 710" required />
+        <!-- Estimated Pipeline Value -->
+        <div class="kpi-box">
+          <div class="kpi-top">
+            <span class="kpi-label">Est. Order Pipeline</span>
+            <div class="kpi-icon amber">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            </div>
           </div>
-          <div class="adm-form-group">
-            <label>Grade / Category *</label>
-            <select id="prodGrade" required>
-              <option value="">Select Grade</option>
-              <option value="Marine">Marine Plywood (IS:710 BWP)</option>
-              <option value="BWR">BWR Moisture Guard (IS:303)</option>
-              <option value="MR">Commercial MR Plywood (IS:303)</option>
-              <option value="Door">Flush Door (IS:2202 BWP)</option>
-              <option value="Blockboard">SolidCore Blockboard (IS:1659)</option>
-              <option value="Other">Other / Specialty</option>
+          <div class="kpi-number" id="kpiPipelineVal">₹0.00</div>
+          <div class="kpi-trend">High-yield luxury specs</div>
+        </div>
+
+        <!-- Total Sheet Volume -->
+        <div class="kpi-box">
+          <div class="kpi-top">
+            <span class="kpi-label">Total Sheets Inquired</span>
+            <div class="kpi-icon cyan">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+            </div>
+          </div>
+          <div class="kpi-number" id="kpiSheetVolume">0 Sheets</div>
+          <div class="kpi-trend">8x4 & 7x4 Calibrated Panels</div>
+        </div>
+
+        <!-- AI Chatbot Conversion Rate -->
+        <div class="kpi-box">
+          <div class="kpi-top">
+            <span class="kpi-label">AI Gemini Ingestion</span>
+            <div class="kpi-icon green">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            </div>
+          </div>
+          <div class="kpi-number" id="kpiChatbotCount">0</div>
+          <div class="kpi-trend">24/7 Real-Time Capture</div>
+        </div>
+
+        <!-- Architect Sample Kits -->
+        <div class="kpi-box">
+          <div class="kpi-top">
+            <span class="kpi-label">Architect Sample Kits</span>
+            <div class="kpi-icon purple">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+            </div>
+          </div>
+          <div class="kpi-number" id="kpiArchitectKits">0</div>
+          <div class="kpi-trend">Sample Boxes Dispatched</div>
+        </div>
+
+        <!-- Dealership Proposals -->
+        <div class="kpi-box">
+          <div class="kpi-top">
+            <span class="kpi-label">B2B Dealerships</span>
+            <div class="kpi-icon blue">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </div>
+          </div>
+          <div class="kpi-number" id="kpiDealerCount">0</div>
+          <div class="kpi-trend">₹10L - ₹50L+ Tiers</div>
+        </div>
+      </section>
+
+      <!-- 2. ANALYTICS & INTELLIGENCE VISUAL GRID -->
+      <section class="analytics-grid">
+        <!-- Channel Acquisition Breakdown -->
+        <div class="analytics-card">
+          <div class="card-header-bar">
+            <div class="card-header-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10"></path><path d="M12 20V4"></path><path d="M6 20v-6"></path></svg>
+              Acquisition Channel Distribution
+            </div>
+            <span class="card-badge">Live Telemetry</span>
+          </div>
+          <div class="progress-list" id="channelProgressList">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+
+        <!-- Grade Demand Matrix -->
+        <div class="analytics-card">
+          <div class="card-header-bar">
+            <div class="card-header-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+              Product Grade Demand Matrix
+            </div>
+            <span class="card-badge">Market Share</span>
+          </div>
+          <div class="progress-list" id="gradeProgressList">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+
+        <!-- Sales Pipeline Funnel & Regional Hubs -->
+        <div class="analytics-card">
+          <div class="card-header-bar">
+            <div class="card-header-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+              Conversion Funnel & Top Regions
+            </div>
+            <span class="card-badge">Fulfillment</span>
+          </div>
+          
+          <div class="funnel-pipeline" id="funnelStepsWrap">
+            <div class="funnel-step">
+              <div class="funnel-count" id="funnelNew">0</div>
+              <div class="funnel-title">New</div>
+            </div>
+            <div class="funnel-step">
+              <div class="funnel-count" id="funnelContacted">0</div>
+              <div class="funnel-title">Contacted</div>
+            </div>
+            <div class="funnel-step">
+              <div class="funnel-count" id="funnelQuote">0</div>
+              <div class="funnel-title">Quote Sent</div>
+            </div>
+            <div class="funnel-step">
+              <div class="funnel-count" id="funnelSample">0</div>
+              <div class="funnel-title">Sample Kit</div>
+            </div>
+            <div class="funnel-step">
+              <div class="funnel-count" id="funnelClosed">0</div>
+              <div class="funnel-title">Closed Won</div>
+            </div>
+          </div>
+
+          <div style="margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--adm-border);">
+            <div style="font-size: 0.76rem; font-weight: 700; color: var(--adm-text-muted); text-transform: uppercase; margin-bottom: 8px;">
+              Primary Dispatch Corridors:
+            </div>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <span class="corridor-pill">📍 Jabalpur Hub (Madhya Pradesh)</span>
+              <span class="corridor-pill">📍 Indore / Ujjain (Central India)</span>
+              <span class="corridor-pill">📍 Bhopal / Sehore Corridor</span>
+              <span class="corridor-pill">📍 Pan-India Express Freight</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. REAL-TIME INTERACTIVE CRM DATA TABLE -->
+      <section class="crm-table-card">
+        <div class="table-toolbar">
+          <div class="table-title-group">
+            <h3>Customer Inquiries & Enterprise Leads</h3>
+            <span class="live-pulse-badge">
+              <span class="pulse-dot-green"></span> Live Webhook & Gemini Sync
+            </span>
+          </div>
+
+          <div class="table-filters-group">
+            <div class="filter-pills-row">
+              <button class="filter-pill-tab active" data-channel="All">All (<span id="pillAllCount">0</span>)</button>
+              <button class="filter-pill-tab" data-channel="AI Chatbot">AI Chatbot (<span id="pillChatCount">0</span>)</button>
+              <button class="filter-pill-tab" data-channel="Instant Quote">Quotes (<span id="pillQuoteCount">0</span>)</button>
+              <button class="filter-pill-tab" data-channel="Architect Kit">Architect Kits (<span id="pillArchCount">0</span>)</button>
+              <button class="filter-pill-tab" data-channel="Dealership">Dealerships (<span id="pillDealerCount">0</span>)</button>
+              <button class="filter-pill-tab" data-channel="Calculator">Calculator (<span id="pillCalcCount">0</span>)</button>
+            </div>
+
+            <div class="search-field-box">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <input type="text" id="adminSearchInput" placeholder="Search by name, phone, city, product, ID..." />
+            </div>
+          </div>
+        </div>
+
+        <!-- High-Density Responsive Table -->
+        <div class="crm-table-container">
+          <table class="adm-table">
+            <thead>
+              <tr>
+                <th>Lead ID & Date</th>
+                <th>Client Profile</th>
+                <th>Contact & Region</th>
+                <th>Acquisition Channel</th>
+                <th>Product & Volume</th>
+                <th>Pipeline Status</th>
+                <th>Direct Action</th>
+              </tr>
+            </thead>
+            <tbody id="crmTableBody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- 4. PRODUCT CATALOG MANAGER TAB SECTION -->
+    <main class="admin-main-wrap products-main" id="productsSection" style="display: none;">
+
+      <!-- Products Stats Row -->
+      <section class="products-stats-row">
+        <div class="kpi-box">
+          <div class="kpi-top">
+            <span class="kpi-label">Total Products</span>
+            <div class="kpi-icon gold">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+            </div>
+          </div>
+          <div class="kpi-number" id="statTotalProducts">4</div>
+          <div class="kpi-trend">Core Pearl Lineup</div>
+        </div>
+
+        <div class="kpi-box">
+          <div class="kpi-top">
+            <span class="kpi-label">Active Listings</span>
+            <div class="kpi-icon green">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+          </div>
+          <div class="kpi-number" id="statActiveProducts">4</div>
+          <div class="kpi-trend">Visible on Website</div>
+        </div>
+
+        <div class="kpi-box">
+          <div class="kpi-top">
+            <span class="kpi-label">Product Grades</span>
+            <div class="kpi-icon purple">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+            </div>
+          </div>
+          <div class="kpi-number" id="statGradesCount">4</div>
+          <div class="kpi-trend">IS:710, IS:303, IS:2202</div>
+        </div>
+
+        <div class="kpi-box">
+          <div class="kpi-top">
+            <span class="kpi-label">Thickness Variants</span>
+            <div class="kpi-icon cyan">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+            </div>
+          </div>
+          <div class="kpi-number" id="statThicknessesCount">6mm - 35mm</div>
+          <div class="kpi-trend">Calibrated Core Specs</div>
+        </div>
+      </section>
+
+      <!-- Products Grid & Controls -->
+      <section class="products-grid-card">
+        <div class="products-grid-header">
+          <div>
+            <h3>Official Product Catalogue</h3>
+            <p style="font-size:0.8rem; color:var(--adm-text-muted); margin:0;">Live catalogue items synced with website specs, sheets calculator, and AI chatbot.</p>
+          </div>
+          <div class="products-grid-controls">
+            <div class="prod-search-box">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <input type="text" id="prodSearchInput" placeholder="Search products..." oninput="window.PearlProducts.search(this.value)" />
+            </div>
+            <select class="prod-filter-select" id="prodGradeFilter" onchange="window.PearlProducts.filterGrade(this.value)">
+              <option value="">All Grades</option>
+              <option value="Marine">Marine (IS:710)</option>
+              <option value="BWR">BWR (IS:303)</option>
+              <option value="Door">Flush Door (IS:2202)</option>
+              <option value="MR">Commercial MR (IS:303)</option>
             </select>
           </div>
         </div>
 
-        <div class="adm-form-group">
-          <label>Short Tagline / Use Case</label>
-          <input type="text" id="prodTagline" placeholder="e.g. Modular Kitchen Base & Bathrooms" />
+        <!-- Product Cards Grid -->
+        <div class="products-cards-grid" id="productsGrid">
+          <!-- Rendered dynamically by products.js -->
+        </div>
+      </section>
+
+    </main>
+
+    <!-- MODAL 1: ADD MANUAL INQUIRY / LEAD -->
+    <div class="admin-modal-backdrop" id="modalAddLead">
+      <div class="admin-modal-box">
+        <div class="modal-header-row">
+          <h3>Ingest Direct Client Inquiry</h3>
+          <button class="modal-close-cross" onclick="window.closeAddLeadModal()">&times;</button>
         </div>
 
-        <div class="adm-form-group">
-          <label>Product Description *</label>
-          <textarea id="prodDescription" rows="3" placeholder="Detailed product description, key benefits, certifications..." required></textarea>
-        </div>
-
-        <!-- Technical Specs -->
-        <div class="specs-section-title">Technical Specifications</div>
-        <div class="form-grid-2">
-          <div class="adm-form-group">
-            <label>Core Timber</label>
-            <input type="text" id="prodCore" placeholder="e.g. 100% Imported Gurjan Hardwood" />
+        <form id="formManualLead">
+          <div class="form-grid-2">
+            <div class="adm-form-group">
+              <label>Full Customer Name *</label>
+              <input type="text" id="mName" placeholder="e.g. Ramesh Chandra Sharma" required />
+            </div>
+            <div class="adm-form-group">
+              <label>Phone / WhatsApp Number *</label>
+              <input type="tel" id="mPhone" placeholder="+91 98765 43210" required />
+            </div>
           </div>
-          <div class="adm-form-group">
-            <label>Resin / Adhesive</label>
-            <input type="text" id="prodResin" placeholder="e.g. Phenol Formaldehyde (PF)" />
-          </div>
-        </div>
 
-        <div class="form-grid-2">
-          <div class="adm-form-group">
-            <label>BIS Standard</label>
-            <input type="text" id="prodStandard" placeholder="e.g. IS:710 / IS:303 / IS:1659" />
+          <div class="form-grid-2">
+            <div class="adm-form-group">
+              <label>Email Address (Optional)</label>
+              <input type="email" id="mEmail" placeholder="client@domain.com" />
+            </div>
+            <div class="adm-form-group">
+              <label>City & State *</label>
+              <input type="text" id="mCity" placeholder="e.g. Mumbai, Maharashtra" required />
+            </div>
           </div>
-          <div class="adm-form-group">
-            <label>Warranty</label>
-            <input type="text" id="prodWarranty" placeholder="e.g. 20-Year Guarantee" />
+
+          <div class="form-grid-2">
+            <div class="adm-form-group">
+              <label>Product Grade</label>
+              <select id="mProduct">
+                <option value="Pearl Ultima Plus">Pearl Ultima Plus (IS:710 BWP Marine)</option>
+                <option value="Pearl Ultima Ply">Pearl Ultima Ply (IS:303 BWR Grade)</option>
+                <option value="Pearl Platinum">Pearl Platinum (IS:2202 Flush Door)</option>
+                <option value="Pearl Black Decor">Pearl Black Decor (IS:303 MR Grade)</option>
+                <option value="Architect Presentation Kit">Architect Presentation Kit</option>
+                <option value="Territory Dealership">Territory Dealership</option>
+              </select>
+            </div>
+            <div class="adm-form-group">
+              <label>Channel Source</label>
+              <select id="mChannel">
+                <option value="Direct Call / Showroom">Direct Call / Showroom</option>
+                <option value="Instant Quote">Instant Quote</option>
+                <option value="Architect Kit">Architect Kit</option>
+                <option value="Dealership">Dealership</option>
+                <option value="AI Chatbot">AI Chatbot</option>
+              </select>
+            </div>
           </div>
-        </div>
 
-        <div class="form-grid-2">
           <div class="adm-form-group">
-            <label>Water Test</label>
-            <input type="text" id="prodWaterTest" placeholder="e.g. 72-Hour Boiling Proof" />
+            <label>Estimated Quantity / Scope</label>
+            <input type="text" id="mQuantity" placeholder="e.g. 50 Sheets (18mm) or 3BHK Project" />
           </div>
+
           <div class="adm-form-group">
-            <label>Moisture Resistance</label>
-            <select id="prodMoisture">
-              <option value="">Select Level</option>
-              <option value="BWP">BWP — Boiling Water Proof (IS:710)</option>
-              <option value="BWR">BWR — Boiling Water Resistant (IS:303)</option>
-              <option value="MR">MR — Moisture Resistant (IS:303)</option>
-            </select>
+            <label>Inquiry Details / Notes</label>
+            <textarea id="mMessage" rows="3" placeholder="Specific technical requirements, delivery address, or discount terms..."></textarea>
           </div>
-        </div>
 
-        <!-- Sizes -->
-        <div class="specs-section-title">Available Thicknesses (mm)</div>
-        <div class="size-checkboxes" id="sizeCheckboxes">
-          <label class="size-check-item"><input type="checkbox" value="4" /> 4mm</label>
-          <label class="size-check-item"><input type="checkbox" value="6" /> 6mm</label>
-          <label class="size-check-item"><input type="checkbox" value="8" /> 8mm</label>
-          <label class="size-check-item"><input type="checkbox" value="9" /> 9mm</label>
-          <label class="size-check-item"><input type="checkbox" value="12" /> 12mm</label>
-          <label class="size-check-item"><input type="checkbox" value="16" /> 16mm</label>
-          <label class="size-check-item"><input type="checkbox" value="18" /> 18mm</label>
-          <label class="size-check-item"><input type="checkbox" value="19" /> 19mm</label>
-          <label class="size-check-item"><input type="checkbox" value="25" /> 25mm</label>
-        </div>
-
-        <!-- Sheet Sizes -->
-        <div class="specs-section-title">Sheet Sizes Available</div>
-        <div class="size-checkboxes">
-          <label class="size-check-item"><input type="checkbox" name="sheetSize" value="8x4" /> 8x4 ft</label>
-          <label class="size-check-item"><input type="checkbox" name="sheetSize" value="7x4" /> 7x4 ft</label>
-          <label class="size-check-item"><input type="checkbox" name="sheetSize" value="6x4" /> 6x4 ft</label>
-          <label class="size-check-item"><input type="checkbox" name="sheetSize" value="6x3" /> 6x3 ft</label>
-        </div>
-
-        <!-- Pricing & Status -->
-        <div class="form-grid-2">
-          <div class="adm-form-group">
-            <label>Starting Price (₹ per sheet, optional)</label>
-            <input type="text" id="prodPrice" placeholder="e.g. ₹1,200 per sheet" />
-          </div>
-          <div class="adm-form-group">
-            <label>Listing Status</label>
-            <select id="prodStatus">
-              <option value="Active">✅ Active — Visible on Website</option>
-              <option value="Draft">📝 Draft — Hidden</option>
-              <option value="Discontinued">❌ Discontinued</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="adm-form-group">
-          <label>Additional Features / Certifications</label>
-          <textarea id="prodFeatures" rows="2" placeholder="e.g. Zero formaldehyde emission, ISI marked, CARB P2 compliant..."></textarea>
-        </div>
-
-        <div style="display: flex; gap: 10px; margin-top: 8px;">
-          <button type="submit" class="btn-adm btn-adm-gold" style="flex:1; justify-content:center; padding:12px; font-size:0.95rem;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
-            Save Product
+          <button type="submit" class="btn-adm btn-adm-gold" style="width: 100%; justify-content: center; padding: 12px; font-size: 0.95rem;">
+            Save & Ingest Lead
           </button>
-          <button type="button" class="btn-adm btn-adm-outline" onclick="window.PearlProducts.closeModal()" style="padding:12px 20px;">Cancel</button>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
-  </div>
+
+    <!-- MODAL 2: DETAILED LEAD DOSSIER INSPECTOR -->
+    <div class="admin-modal-backdrop" id="modalLeadDetails">
+      <div class="admin-modal-box">
+        <div class="modal-header-row">
+          <h3>Lead Intelligence Dossier</h3>
+          <button class="modal-close-cross" onclick="window.closeLeadDetails()">&times;</button>
+        </div>
+
+        <div class="lead-dossier-hero">
+          <div class="dossier-avatar" id="dosAvatar">P</div>
+          <div class="dossier-meta">
+            <h4 id="dosName">Customer Name</h4>
+            <div class="dossier-pills">
+              <span id="dosChannel">AI Chatbot</span> &bull; <span id="dosRefId">PL-123456</span> &bull; <span id="dosDate">Date</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dossier-grid">
+          <div class="dossier-cell">
+            <div class="dossier-cell-label">Phone / WhatsApp</div>
+            <div class="dossier-cell-val" id="dosPhone">+91 00000 00000</div>
+          </div>
+          <div class="dossier-cell">
+            <div class="dossier-cell-label">Email Address</div>
+            <div class="dossier-cell-val" id="dosEmail">N/A</div>
+          </div>
+          <div class="dossier-cell">
+            <div class="dossier-cell-label">Regional Location</div>
+            <div class="dossier-cell-val" id="dosCity">City, State</div>
+          </div>
+          <div class="dossier-cell">
+            <div class="dossier-cell-label">Product Selected</div>
+            <div class="dossier-cell-val gold" id="dosProduct">Pearl Ultima Plus</div>
+          </div>
+          <div class="dossier-cell">
+            <div class="dossier-cell-label">Order Volume</div>
+            <div class="dossier-cell-val" id="dosQty">General Inquiry</div>
+          </div>
+          <div class="dossier-cell">
+            <div class="dossier-cell-label">Pipeline Status</div>
+            <div class="dossier-cell-val" id="dosStatus">New</div>
+          </div>
+        </div>
+
+        <div class="dossier-message-box">
+          <div style="font-size: 0.7rem; font-weight: 700; color: var(--adm-gold); text-transform: uppercase; margin-bottom: 4px;">Inquiry Narrative / Specifications:</div>
+          <p id="dosMessage">"Customer inquiry notes appear here..."</p>
+        </div>
+
+        <div style="display: flex; gap: 10px;">
+          <a id="dosWhatsAppBtn" href="#" target="_blank" class="btn-adm btn-adm-gold" style="flex: 1; justify-content: center;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+            Direct WhatsApp Chat
+          </a>
+          <button class="btn-adm btn-adm-outline" onclick="window.closeLeadDetails()">
+            Close Dossier
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL 3: ADD / EDIT PRODUCT -->
+    <div class="admin-modal-backdrop" id="modalProduct">
+      <div class="admin-modal-box product-modal-box">
+        <div class="modal-header-row">
+          <h3 id="productModalTitle">+ Add New Product</h3>
+          <button class="modal-close-cross" onclick="window.PearlProducts.closeModal()">&#x2715;</button>
+        </div>
+
+        <form id="formProduct" onsubmit="window.PearlProducts.saveProduct(event)">
+          <input type="hidden" id="prodEditId" />
+
+          <!-- Photo Upload Area -->
+          <div class="photo-upload-zone" id="photoUploadZone" onclick="document.getElementById('prodPhotoInput').click()">
+            <div class="photo-upload-placeholder" id="photoPlaceholder">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+              <span>Click to Upload Product Photo</span>
+              <small>JPG, PNG, WEBP — Max 5MB</small>
+            </div>
+            <img id="prodPhotoPreview" src="" alt="Preview" style="display:none; width:100%; height:100%; object-fit:cover; border-radius:10px;" />
+            <input type="file" id="prodPhotoInput" accept="image/*" style="display:none;" onchange="window.PearlProducts.handlePhotoUpload(event)" />
+          </div>
+
+          <!-- Basic Info -->
+          <div class="form-grid-2">
+            <div class="adm-form-group">
+              <label>Product Name *</label>
+              <input type="text" id="prodName" placeholder="e.g. Pearl Ultima Plus" required />
+            </div>
+            <div class="adm-form-group">
+              <label>Grade / Category *</label>
+              <select id="prodGrade" required>
+                <option value="">Select Grade</option>
+                <option value="Marine">Marine Plywood (IS:710 BWP)</option>
+                <option value="BWR">BWR Moisture Guard (IS:303)</option>
+                <option value="MR">Commercial MR Plywood (IS:303)</option>
+                <option value="Door">Flush Door (IS:2202 BWP)</option>
+                <option value="Blockboard">SolidCore Blockboard (IS:1659)</option>
+                <option value="Other">Other / Specialty</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="adm-form-group">
+            <label>Short Tagline / Use Case</label>
+            <input type="text" id="prodTagline" placeholder="e.g. Modular Kitchen Base & Bathrooms" />
+          </div>
+
+          <div class="adm-form-group">
+            <label>Product Description *</label>
+            <textarea id="prodDescription" rows="3" placeholder="Detailed product description, key benefits, certifications..." required></textarea>
+          </div>
+
+          <!-- Technical Specs -->
+          <div class="specs-section-title">Technical Specifications</div>
+          <div class="form-grid-2">
+            <div class="adm-form-group">
+              <label>Core Timber</label>
+              <input type="text" id="prodCore" placeholder="e.g. 100% Gurjan Core Inside" />
+            </div>
+            <div class="adm-form-group">
+              <label>Resin / Adhesive</label>
+              <input type="text" id="prodResin" placeholder="e.g. Phenol Formaldehyde (PF)" />
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="adm-form-group">
+              <label>BIS Standard</label>
+              <input type="text" id="prodStandard" placeholder="e.g. IS:710 / IS:303 / IS:2202" />
+            </div>
+            <div class="adm-form-group">
+              <label>Warranty</label>
+              <input type="text" id="prodWarranty" placeholder="e.g. 15-Year Guarantee" />
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="adm-form-group">
+              <label>Water Test</label>
+              <input type="text" id="prodWaterTest" placeholder="e.g. 72-Hour Boiling Proof" />
+            </div>
+            <div class="adm-form-group">
+              <label>Moisture Resistance</label>
+              <select id="prodMoisture">
+                <option value="">Select Level</option>
+                <option value="BWP">BWP — Boiling Water Proof (IS:710)</option>
+                <option value="BWR">BWR — Boiling Water Resistant (IS:303)</option>
+                <option value="MR">MR — Moisture Resistant (IS:303)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Sizes -->
+          <div class="specs-section-title">Available Thicknesses (mm)</div>
+          <div class="size-checkboxes" id="sizeCheckboxes">
+            <label class="size-check-item"><input type="checkbox" value="4" /> 4mm</label>
+            <label class="size-check-item"><input type="checkbox" value="6" /> 6mm</label>
+            <label class="size-check-item"><input type="checkbox" value="8" /> 8mm</label>
+            <label class="size-check-item"><input type="checkbox" value="9" /> 9mm</label>
+            <label class="size-check-item"><input type="checkbox" value="12" /> 12mm</label>
+            <label class="size-check-item"><input type="checkbox" value="16" /> 16mm</label>
+            <label class="size-check-item"><input type="checkbox" value="18" /> 18mm</label>
+            <label class="size-check-item"><input type="checkbox" value="19" /> 19mm</label>
+            <label class="size-check-item"><input type="checkbox" value="25" /> 25mm</label>
+            <label class="size-check-item"><input type="checkbox" value="30" /> 30mm</label>
+            <label class="size-check-item"><input type="checkbox" value="35" /> 35mm</label>
+          </div>
+
+          <!-- Sheet Sizes -->
+          <div class="specs-section-title">Sheet Sizes Available</div>
+          <div class="size-checkboxes">
+            <label class="size-check-item"><input type="checkbox" name="sheetSize" value="8x4" /> 8x4 ft</label>
+            <label class="size-check-item"><input type="checkbox" name="sheetSize" value="7x4" /> 7x4 ft</label>
+            <label class="size-check-item"><input type="checkbox" name="sheetSize" value="8x3" /> 8x3 ft</label>
+            <label class="size-check-item"><input type="checkbox" name="sheetSize" value="7x3" /> 7x3 ft</label>
+            <label class="size-check-item"><input type="checkbox" name="sheetSize" value="6x4" /> 6x4 ft</label>
+            <label class="size-check-item"><input type="checkbox" name="sheetSize" value="6.5x3" /> 6.5x3 ft</label>
+          </div>
+
+          <!-- Pricing & Status -->
+          <div class="form-grid-2">
+            <div class="adm-form-group">
+              <label>Starting Price (₹ per sheet, optional)</label>
+              <input type="text" id="prodPrice" placeholder="e.g. ₹1,550 per sheet" />
+            </div>
+            <div class="adm-form-group">
+              <label>Listing Status</label>
+              <select id="prodStatus">
+                <option value="Active">✅ Active — Visible on Website</option>
+                <option value="Draft">📝 Draft — Hidden</option>
+                <option value="Discontinued">❌ Discontinued</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="adm-form-group">
+            <label>Additional Features / Certifications</label>
+            <textarea id="prodFeatures" rows="2" placeholder="e.g. 100% Gurjan Inside, ISI marked, 72-hr boiling proof..."></textarea>
+          </div>
+
+          <div style="display: flex; gap: 10px; margin-top: 8px;">
+            <button type="submit" class="btn-adm btn-adm-gold" style="flex:1; justify-content:center; padding:12px; font-size:0.95rem;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+              Save Product
+            </button>
+            <button type="button" class="btn-adm btn-adm-outline" onclick="window.PearlProducts.closeModal()" style="padding:12px 20px;">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div><!-- /adminAppDashboard -->
 
   <!-- Scripts -->
   <script src="js/admin.js"></script>
