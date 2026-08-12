@@ -1,79 +1,92 @@
 /* ==========================================================================
-   PEARL PLY - MASTER RESPONSIVE & MOBILE-FIRST OPTIMIZATION ENGINE
+   PEARL PLY - MASTER RESPONSIVE & MOBILE OPTIMIZATION ENGINE
    ========================================================================== */
 
-/* Universal Mobile Safety: Zero Overflow & 100% Fluid Containment */
+/* Universal Fluid Reset */
 html, body {
-  width: 100% !important;
-  max-width: 100% !important;
-  overflow-x: hidden !important;
-  position: relative !important;
-  margin: 0 !important;
-  padding: 0 !important;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  position: relative;
+  margin: 0;
+  padding: 0;
   -webkit-text-size-adjust: 100%;
 }
 
 *, *::before, *::after {
-  box-sizing: border-box !important;
+  box-sizing: border-box;
 }
 
 /* ==========================================================================
-   1. DESKTOP & LARGE SCREENS (>= 1200px)
+   1. LAPTOPS & DESKTOP SCREENS (1200px - 1400px)
    ========================================================================== */
 @media (min-width: 1200px) {
   .hero-grid {
+    display: grid;
     grid-template-columns: 1.15fr 0.85fr;
-  }
-}
-
-/* ==========================================================================
-   2. TABLETS & LAPTOPS (< 1200px)
-   ========================================================================== */
-@media (max-width: 1200px) {
-  .hero-grid {
-    grid-template-columns: 1fr !important;
-    gap: 36px !important;
-  }
-
-  .hero-interactive-card {
-    max-width: 580px !important;
-    margin: 0 auto !important;
-    width: 100% !important;
-  }
-
-  .calculator-wrap {
-    grid-template-columns: 1fr !important;
-  }
-
-  .calc-outputs {
-    border-left: none !important;
-    border-top: 1px solid var(--border-gold) !important;
-  }
-
-  .lab-grid, .dealers-grid, .architect-wrap {
-    grid-template-columns: 1fr !important;
+    gap: 48px;
+    align-items: center;
   }
 
   .blog-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 20px !important;
-  }
-
-  .products-grid, .applications-showcase-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 20px !important;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
   }
 
   .manufacturing-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 20px !important;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .applications-showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
   }
 }
 
 /* ==========================================================================
-   3. MOBILE SCREENS & TABLETS (< 992px)
+   2. SMALL LAPTOPS & TABLETS LANDSCAPE (992px - 1199px)
    ========================================================================== */
-@media (max-width: 992px) {
+@media (min-width: 992px) and (max-width: 1199px) {
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .manufacturing-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+
+  .applications-showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+/* ==========================================================================
+   3. TABLETS PORTRAIT & MOBILE SCREENS (<= 991px)
+   ========================================================================== */
+@media (max-width: 991px) {
   :root {
     --header-height: 64px;
   }
@@ -209,7 +222,7 @@ html, body {
     font-size: 0.82rem !important;
   }
 
-  /* HERO SECTION */
+  /* HERO SECTION (TABLET/MOBILE) */
   .hero-section {
     padding: 24px 0 36px !important;
     min-height: auto !important;
@@ -324,20 +337,30 @@ html, body {
     line-height: 1.5 !important;
   }
 
-  /* LAYOUT GRIDS CONVERTED FOR MOBILE */
+  /* 2-COLUMN TABLET GRIDS */
   .products-grid,
-  .blog-grid,
-  .resources-grid,
+  .applications-showcase-grid,
+  .manufacturing-grid,
+  .blog-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 18px !important;
+    width: 100% !important;
+  }
+
   .about-main-grid,
   .jabalpur-main-grid,
-  .contact-main-grid {
+  .contact-main-grid,
+  .resources-grid,
+  .lab-grid,
+  .dealers-grid,
+  .architect-wrap {
     display: flex !important;
     flex-direction: column !important;
     width: 100% !important;
     gap: 20px !important;
   }
 
-  /* About & Jabalpur Grids */
   .about-badges-grid,
   .jabalpur-stats-grid {
     display: grid !important;
@@ -355,6 +378,11 @@ html, body {
   .calc-inputs, .calc-outputs {
     width: 100% !important;
     padding: 20px 16px !important;
+  }
+
+  .calc-outputs {
+    border-left: none !important;
+    border-top: 1px solid var(--border-gold) !important;
   }
 
   .calc-grid {
@@ -378,10 +406,10 @@ html, body {
     justify-content: center !important;
   }
 
-  /* Footer Mobile */
+  /* Footer Tablet */
   .footer-grid {
-    display: flex !important;
-    flex-direction: column !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
     gap: 28px !important;
   }
 
@@ -392,10 +420,43 @@ html, body {
   }
 }
 
-/* ==========================================
-   4. SMART QUIZ & MOBILE CARDS (< 768px)
-   ========================================== */
-@media (max-width: 768px) {
+/* ==========================================================================
+   4. SMARTPHONE SCREENS (<= 767px)
+   ========================================================================== */
+@media (max-width: 767px) {
+  /* 1-COLUMN MOBILE GRIDS FOR CLEAN READABILITY */
+  .applications-showcase-grid,
+  .manufacturing-grid,
+  .products-grid,
+  .blog-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 18px !important;
+    width: 100% !important;
+  }
+
+  .application-card {
+    border-radius: 12px !important;
+  }
+
+  .application-media {
+    height: 190px !important;
+  }
+
+  .application-body {
+    padding: 16px !important;
+  }
+
+  .application-body h4 {
+    font-size: 1.08rem !important;
+    margin: 8px 0 4px !important;
+  }
+
+  .application-body p {
+    font-size: 0.82rem !important;
+    line-height: 1.45 !important;
+  }
+
   /* Quiz Step Progress Bar */
   .quiz-step-nav {
     margin-bottom: 24px !important;
@@ -457,14 +518,7 @@ html, body {
     line-height: 1.35 !important;
   }
 
-  /* Manufacturing Infrastructure Grid */
-  .manufacturing-grid {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 14px !important;
-    width: 100% !important;
-  }
-
+  /* Manufacturing Infrastructure Cards */
   .manufacturing-card {
     padding: 18px !important;
     border-radius: 12px !important;
@@ -501,36 +555,6 @@ html, body {
     line-height: 1.25 !important;
   }
 
-  /* Applications / Lookbook Grid */
-  .applications-showcase-grid {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 18px !important;
-    width: 100% !important;
-  }
-
-  .application-card {
-    border-radius: 12px !important;
-  }
-
-  .application-media {
-    height: 190px !important;
-  }
-
-  .application-body {
-    padding: 16px !important;
-  }
-
-  .application-body h4 {
-    font-size: 1.08rem !important;
-    margin: 8px 0 4px !important;
-  }
-
-  .application-body p {
-    font-size: 0.82rem !important;
-    line-height: 1.45 !important;
-  }
-
   /* About & Jabalpur Sub-Grids */
   .about-badges-grid,
   .jabalpur-stats-grid,
@@ -538,6 +562,13 @@ html, body {
     display: flex !important;
     flex-direction: column !important;
     gap: 10px !important;
+  }
+
+  /* Footer Mobile */
+  .footer-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 24px !important;
   }
 
   /* Native App-Like Mobile Bottom Navigation Bar */
@@ -599,78 +630,31 @@ html, body {
   /* Floating Buttons Positioned Cleanly Above Bottom Dock */
   .floating-whatsapp {
     bottom: 74px !important;
-    right: 14px !important;
+    right: 16px !important;
     width: 48px !important;
     height: 48px !important;
-    z-index: 99980 !important;
   }
 
-  .floating-whatsapp svg {
-    width: 24px !important;
-    height: 24px !important;
-  }
-
-  .pearl-ai-trigger {
+  .pearl-ai-floating-btn {
     bottom: 130px !important;
-    right: 14px !important;
-    width: 48px !important;
-    height: 48px !important;
-    z-index: 99980 !important;
+    right: 16px !important;
+    padding: 8px 12px !important;
+    font-size: 0.78rem !important;
   }
 
-  .pearl-ai-widget {
-    bottom: 68px !important;
-    right: 8px !important;
-    left: 8px !important;
-    width: auto !important;
-    height: calc(100vh - 130px) !important;
-    max-height: 540px !important;
-    border-radius: 16px !important;
-    z-index: 99995 !important;
-  }
-
-  /* Modals as Native Bottom Sheets */
+  /* Modals on Mobile as Native Sheet */
   .modal-box {
     width: 100% !important;
-    max-height: 88vh !important;
+    max-width: 100% !important;
+    margin: 0 !important;
     border-radius: 20px 20px 0 0 !important;
-    position: fixed !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    padding: 22px 16px 36px !important;
+    padding: 24px 18px 36px !important;
+    max-height: 88vh !important;
     overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch;
   }
 
-  /* iOS Auto-Zoom Prevention */
-  input, select, textarea {
-    font-size: 16px !important;
-  }
-}
-
-/* ==========================================
-   5. SMALL PHONES (< 400px)
-   ========================================== */
-@media (max-width: 400px) {
-  .logo-title {
-    font-size: 1.05rem !important;
-  }
-
-  .logo-subtitle {
-    font-size: 0.48rem !important;
-  }
-
-  .hero-title {
-    font-size: 1.6rem !important;
-  }
-
-  .trust-number {
-    font-size: 1.15rem !important;
-  }
-
-  .dimension-row {
-    grid-template-columns: 1fr !important;
-    gap: 8px !important;
+  .modal-backdrop {
+    align-items: flex-end !important;
+    padding: 0 !important;
   }
 }
