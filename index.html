@@ -170,24 +170,49 @@
 <body>
 
   <!-- ==========================================
-       TOP BAR (SUPPORT, QUICK ACTIONS & CRM PORTAL)
+       ROYALE TOUCHE STYLE LUXURY INTRO PRELOADER
        ========================================== -->
-  <div class="topbar">
-    <div class="container">
-      <div class="topbar-left">
-        <span class="topbar-item"><i class="lucide-phone"></i> Helpline: <strong>+91 99936 13434</strong></span>
-        <span class="topbar-item"><i class="lucide-mail"></i> ambikatradingcompany.sonu@gmail.com</span>
-        <span class="topbar-badge">IS:710 Marine Certified</span>
+  <div class="pearl-preloader" id="pearlPreloader">
+    <div class="preloader-content">
+      <div class="preloader-logo-wrap">
+        <svg width="280" height="70" viewBox="0 0 340 95" fill="none" xmlns="http://www.w3.org/2000/svg" class="preloader-logo-svg" style="color: #FFFFFF;">
+          <g class="logo-circle-emblem">
+            <circle cx="46" cy="46" r="38" fill="none" stroke="currentColor" stroke-width="7"/>
+            <path d="M46 48 L46 68 M46 54 L38 63 M46 58 L54 64 M42 68 L46 68 L50 68" stroke="#10B981" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <ellipse cx="46" cy="22" rx="4.5" ry="6.5" fill="#10B981"/>
+            <ellipse cx="38" cy="26" rx="4" ry="6" fill="#10B981"/>
+            <ellipse cx="54" cy="26" rx="4" ry="6" fill="#10B981"/>
+            <ellipse cx="32" cy="32" rx="4" ry="5.5" fill="#10B981"/>
+            <ellipse cx="60" cy="32" rx="4" ry="5.5" fill="#10B981"/>
+            <ellipse cx="46" cy="30" rx="5" ry="7" fill="#10B981"/>
+            <ellipse cx="38" cy="38" rx="4.5" ry="6" fill="#10B981"/>
+            <ellipse cx="54" cy="38" rx="4.5" ry="6" fill="#10B981"/>
+            <ellipse cx="28" cy="40" rx="3.5" ry="5" fill="#10B981"/>
+            <ellipse cx="64" cy="40" rx="3.5" ry="5" fill="#10B981"/>
+            <ellipse cx="46" cy="42" rx="4.5" ry="6" fill="#10B981"/>
+          </g>
+          <g class="logo-wordmark">
+            <path d="M104 20 H126 C136 20 144 26 144 36 C144 45 136 50 126 50 H116 V68 H104 V20 Z M116 29 V41 H125 C130 41 133 38 133 35 C133 32 130 29 125 29 H116 Z" fill="currentColor"/>
+            <rect x="152" y="20" width="38" height="7.5" rx="2" fill="#10B981"/>
+            <rect x="152" y="41" width="38" height="7.5" rx="2" fill="#10B981"/>
+            <rect x="152" y="61" width="38" height="7.5" rx="2" fill="#10B981"/>
+            <path d="M210 20 L228 68 H215 L211 58 H198 L194 68 H183 L202 20 H210 Z M205 34 L201 48 H208 L205 34 Z" fill="currentColor"/>
+            <path d="M235 20 H256 C266 20 273 26 273 35 C273 42 268 47 260 49 L274 68 H260 L248 51 H247 V68 H235 V20 Z M247 29 V41 H254 C259 41 262 38 262 35 C262 32 259 29 254 29 H247 Z" fill="currentColor"/>
+            <path d="M284 20 H296 V58 H318 V68 H284 V20 Z" fill="currentColor"/>
+            <text x="321" y="22" font-family="Georgia, 'Times New Roman', serif" font-size="12" font-weight="bold" fill="currentColor">TM</text>
+          </g>
+          <text x="248" y="86" font-family="Georgia, 'Times New Roman', serif" font-size="13" font-weight="bold" letter-spacing="2" fill="currentColor" text-anchor="middle">THINK DIFFERENT</text>
+        </svg>
       </div>
-      <div class="topbar-right">
-        <a href="#dealership" class="topbar-item"><i class="lucide-store"></i> Dealer Helpline</a>
-        <a href="https://www.instagram.com/pearl_plywood?igsh=d3VmZ2c0MWc1eDJu" target="_blank" rel="noopener noreferrer" class="topbar-item" style="color: #E1306C; font-weight: 700;">
-          <i class="lucide-instagram"></i> Instagram
-        </a>
-        <a href="https://wa.me/919993613434?text=Hi%20Pearl%20Ply,%20I%20want%20to%20inquire%20about%20your%20plywood%20products." target="_blank" class="topbar-item" style="color: #25D366; font-weight: 700;">
-          <i class="lucide-message-circle"></i> WhatsApp Support (+91 99936 13434)
-        </a>
+
+      <div class="preloader-tagline">
+        <span>STRENGTH</span> &bull; <span>PRECISION</span> &bull; <span>LUXURY</span>
       </div>
+
+      <div class="preloader-progress-track">
+        <div class="preloader-progress-bar" id="preloaderProgressBar"></div>
+      </div>
+      <div class="preloader-percent" id="preloaderPercent">0%</div>
     </div>
   </div>
 
@@ -198,33 +223,34 @@
     <div class="container">
       <!-- Brand Logo -->
       <a href="#home" class="brand-logo" aria-label="Pearl Ply Home">
-        <div class="logo-symbol">
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="ppGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#FFEAA7"/>
-                <stop offset="35%" stop-color="#D4A359"/>
-                <stop offset="70%" stop-color="#B8860B"/>
-                <stop offset="100%" stop-color="#8C6014"/>
-              </linearGradient>
-              <linearGradient id="ppDarkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#0E3326"/>
-                <stop offset="100%" stop-color="#04120D"/>
-              </linearGradient>
-            </defs>
-            <rect x="2" y="2" width="36" height="36" rx="9" fill="url(#ppDarkGrad)" stroke="url(#ppGoldGrad)" stroke-width="1.8"/>
-            <path d="M6 11 L11 6 M34 11 L29 6 M6 29 L11 34 M34 29 L29 34" stroke="url(#ppGoldGrad)" stroke-width="1.2" stroke-linecap="round"/>
-            <polygon points="20,5.5 23.5,9.5 16.5,9.5" fill="url(#ppGoldGrad)"/>
-            <path d="M13 11.5 H21.5 C24.8 11.5 27.5 13.8 27.5 17.2 C27.5 20.6 24.8 22.8 21.5 22.8 H17.2 V32 H13 V11.5 Z" fill="url(#ppGoldGrad)"/>
-            <path d="M17.2 15 H21 C22.4 15 23.4 15.9 23.4 17.2 C23.4 18.5 22.4 19.4 21 19.4 H17.2 V15 Z" fill="#0E3326"/>
-            <line x1="13" y1="22.8" x2="21.5" y2="22.8" stroke="#FFEAA7" stroke-width="1"/>
-            <circle cx="28.5" cy="11.5" r="2" fill="#FFEAA7"/>
-          </svg>
-        </div>
-        <div class="logo-text">
-          <span class="logo-title">PEARL <span>PLY</span></span>
-          <span class="logo-subtitle">Strength &bull; Precision &bull; Luxury</span>
-        </div>
+        <svg width="230" height="58" viewBox="0 0 340 95" fill="none" xmlns="http://www.w3.org/2000/svg" class="pearl-official-header-logo" style="color: #FFFFFF;">
+          <g class="logo-circle-emblem">
+            <circle cx="46" cy="46" r="38" fill="none" stroke="currentColor" stroke-width="7"/>
+            <path d="M46 48 L46 68 M46 54 L38 63 M46 58 L54 64 M42 68 L46 68 L50 68" stroke="#10B981" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <ellipse cx="46" cy="22" rx="4.5" ry="6.5" fill="#10B981"/>
+            <ellipse cx="38" cy="26" rx="4" ry="6" fill="#10B981"/>
+            <ellipse cx="54" cy="26" rx="4" ry="6" fill="#10B981"/>
+            <ellipse cx="32" cy="32" rx="4" ry="5.5" fill="#10B981"/>
+            <ellipse cx="60" cy="32" rx="4" ry="5.5" fill="#10B981"/>
+            <ellipse cx="46" cy="30" rx="5" ry="7" fill="#10B981"/>
+            <ellipse cx="38" cy="38" rx="4.5" ry="6" fill="#10B981"/>
+            <ellipse cx="54" cy="38" rx="4.5" ry="6" fill="#10B981"/>
+            <ellipse cx="28" cy="40" rx="3.5" ry="5" fill="#10B981"/>
+            <ellipse cx="64" cy="40" rx="3.5" ry="5" fill="#10B981"/>
+            <ellipse cx="46" cy="42" rx="4.5" ry="6" fill="#10B981"/>
+          </g>
+          <g class="logo-wordmark">
+            <path d="M104 20 H126 C136 20 144 26 144 36 C144 45 136 50 126 50 H116 V68 H104 V20 Z M116 29 V41 H125 C130 41 133 38 133 35 C133 32 130 29 125 29 H116 Z" fill="currentColor"/>
+            <rect x="152" y="20" width="38" height="7.5" rx="2" fill="#10B981"/>
+            <rect x="152" y="41" width="38" height="7.5" rx="2" fill="#10B981"/>
+            <rect x="152" y="61" width="38" height="7.5" rx="2" fill="#10B981"/>
+            <path d="M210 20 L228 68 H215 L211 58 H198 L194 68 H183 L202 20 H210 Z M205 34 L201 48 H208 L205 34 Z" fill="currentColor"/>
+            <path d="M235 20 H256 C266 20 273 26 273 35 C273 42 268 47 260 49 L274 68 H260 L248 51 H247 V68 H235 V20 Z M247 29 V41 H254 C259 41 262 38 262 35 C262 32 259 29 254 29 H247 Z" fill="currentColor"/>
+            <path d="M284 20 H296 V58 H318 V68 H284 V20 Z" fill="currentColor"/>
+            <text x="321" y="22" font-family="Georgia, 'Times New Roman', serif" font-size="12" font-weight="bold" fill="currentColor">TM</text>
+          </g>
+          <text x="248" y="86" font-family="Georgia, 'Times New Roman', serif" font-size="13" font-weight="bold" letter-spacing="2" fill="currentColor" text-anchor="middle">THINK DIFFERENT</text>
+        </svg>
       </a>
 
       <!-- Main Navigation Menu -->
@@ -233,13 +259,13 @@
           <a href="#home" class="nav-link active">Home</a>
         </div>
 
-        <!-- PRODUCTS DROPDOWN (Exact 6 lines) -->
+        <!-- PRODUCTS DROPDOWN -->
         <div class="nav-item">
           <a href="#products" class="nav-link">
             Products <i class="lucide-chevron-down"></i>
           </a>
           <div class="dropdown-menu dropdown-products">
-            <a href="#products" class="dropdown-link" onclick="openProductSpecs('ultima_plus')">
+            <a href="#prod-ultimaplus" class="dropdown-link">
               <div class="dropdown-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
@@ -252,19 +278,86 @@
               </div>
             </a>
 
-            <a href="#products" class="dropdown-link" onclick="openProductSpecs('ultima_ply')">
+            <a href="#prod-boilpro" class="dropdown-link">
               <div class="dropdown-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
                 </svg>
               </div>
               <div class="dropdown-content">
-                <h5>Pearl Ultima Ply (IS:303)</h5>
-                <p>303 BWR Grade &bull; Calibrated Gurjan Face &bull; 10-Yr Guarantee</p>
+                <h5>Pearl Boil Pro (HDF BWP)</h5>
+                <p>Boiling Water Proof HDF &bull; 20-Year Guarantee &bull; 18mm</p>
               </div>
             </a>
 
-            <a href="#products" class="dropdown-link" onclick="openProductSpecs('platinum')">
+            <a href="#prod-hdmr" class="dropdown-link">
+              <div class="dropdown-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                </svg>
+              </div>
+              <div class="dropdown-content">
+                <h5>Pearl HDMR</h5>
+                <p>High Density Moisture Resistance &bull; High Load Capacity</p>
+              </div>
+            </a>
+
+            <a href="#prod-ultimabwr" class="dropdown-link">
+              <div class="dropdown-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                  <polyline points="2 17 12 22 22 17"></polyline>
+                  <polyline points="2 12 12 17 22 12"></polyline>
+                </svg>
+              </div>
+              <div class="dropdown-content">
+                <h5>Pearl Ultima BWR (IS:303)</h5>
+                <p>Extra Layer BWR Plywood &bull; 10-Year Guarantee &bull; Hot Pressed</p>
+              </div>
+            </a>
+
+            <a href="#prod-blackhub" class="dropdown-link">
+              <div class="dropdown-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="3" y1="9" x2="21" y2="9"></line>
+                  <line x1="9" y1="21" x2="9" y2="9"></line>
+                </svg>
+              </div>
+              <div class="dropdown-content">
+                <h5>Pearl Black Hub</h5>
+                <p>100% Full Core Full Panel &bull; Anti-Warp Technology</p>
+              </div>
+            </a>
+
+            <a href="#prod-blackdecor" class="dropdown-link">
+              <div class="dropdown-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                  <polyline points="2 17 12 22 22 17"></polyline>
+                  <polyline points="2 12 12 17 22 12"></polyline>
+                </svg>
+              </div>
+              <div class="dropdown-content">
+                <h5>Pearl Black Decor (IS:303)</h5>
+                <p>100% Full Core Full Panel &bull; 5-Year Guarantee</p>
+              </div>
+            </a>
+
+            <a href="#prod-futurewood" class="dropdown-link">
+              <div class="dropdown-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                </svg>
+              </div>
+              <div class="dropdown-content">
+                <h5>Pearl Future Wood</h5>
+                <p>High Tensile Strength &bull; 5-Year Guarantee</p>
+              </div>
+            </a>
+
+            <a href="#prod-platinum" class="dropdown-link">
               <div class="dropdown-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M3 21h18M3 7v14M21 7v14M6 3h12a2 2 0 0 1 2 2v2H4V5a2 2 0 0 1 2-2z"></path>
@@ -275,63 +368,6 @@
                 <p>BWP Flush Door &bull; 100% Pine Wood &bull; Swell Proof</p>
               </div>
             </a>
-
-            <a href="#products" class="dropdown-link" onclick="openProductSpecs('blackdecor')">
-              <div class="dropdown-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                  <polyline points="2 17 12 22 22 17"></polyline>
-                  <polyline points="2 12 12 17 22 12"></polyline>
-                </svg>
-              </div>
-              <div class="dropdown-content">
-                <h5>Pearl Black Decor (IS:303)</h5>
-                <p>MR Grade &bull; 100% Gurjan Face &bull; Full Core Full Panel</p>
-              </div>
-            </a>
-
-            <a href="#products" class="dropdown-link" onclick="openProductSpecs('marine')">
-              <div class="dropdown-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="5" r="3"></circle>
-                  <line x1="12" y1="22" x2="12" y2="8"></line>
-                  <path d="M5 12H2a10 10 0 0 0 20 0h-3"></path>
-                </svg>
-              </div>
-              <div class="dropdown-content">
-                <h5>Marine Plywood</h5>
-                <p>100% Calibrated Gurjan Core for ultra-heavy duty & coastal use</p>
-              </div>
-            </a>
-
-            <a href="#products" class="dropdown-link" onclick="openProductSpecs('commercial')">
-              <div class="dropdown-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line>
-                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                  <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                  <line x1="12" y1="22.08" x2="12" y2="12"></line>
-                </svg>
-              </div>
-              <div class="dropdown-content">
-                <h5>Commercial Plywood</h5>
-                <p>Selected Hardwood Core for office partitions & general interior</p>
-              </div>
-            </a>
-
-            <a href="#products" class="dropdown-link" onclick="openProductSpecs('blockboard')">
-              <div class="dropdown-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                  <line x1="3" y1="9" x2="21" y2="9"></line>
-                  <line x1="9" y1="21" x2="9" y2="9"></line>
-                </svg>
-              </div>
-              <div class="dropdown-content">
-                <h5>Block Board</h5>
-                <p>IS:1659 Solid Pine Core with 100% anti-warping for tall doors</p>
-              </div>
-            </a>
           </div>
         </div>
 
@@ -340,94 +376,11 @@
         </div>
 
         <div class="nav-item">
-          <a href="#manufacturing" class="nav-link">Manufacturing</a>
-        </div>
-
-        <div class="nav-item">
-          <a href="#quality" class="nav-link">Quality & Lab</a>
-        </div>
-
-        <div class="nav-item">
           <a href="#applications" class="nav-link">Applications</a>
         </div>
 
         <div class="nav-item">
           <a href="#architects" class="nav-link">Architects</a>
-        </div>
-
-        <!-- RESOURCES DROPDOWN -->
-        <div class="nav-item">
-          <a href="#resources" class="nav-link">
-            Resources <i class="lucide-chevron-down"></i>
-          </a>
-          <div class="dropdown-menu dropdown-resources">
-            <a href="#resources" class="dropdown-link" onclick="triggerDownload('Pearl Ply Product Catalogue 2026')">
-              <div class="dropdown-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                </svg>
-              </div>
-              <div class="dropdown-content">
-                <h5>Catalogue</h5>
-                <p>Interactive full digital product catalogue</p>
-              </div>
-            </a>
-
-            <a href="#resources" class="dropdown-link" onclick="triggerDownload('Pearl Ply Series Brochures')">
-              <div class="dropdown-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
-                  <polyline points="14 2 14 8 20 8"></polyline>
-                  <line x1="16" y1="13" x2="8" y2="13"></line>
-                  <line x1="16" y1="17" x2="8" y2="17"></line>
-                  <line x1="10" y1="9" x2="8" y2="9"></line>
-                </svg>
-              </div>
-              <div class="dropdown-content">
-                <h5>Brochures</h5>
-                <p>Detailed series brochures with color shades</p>
-              </div>
-            </a>
-
-            <a href="#resources" class="dropdown-link" onclick="triggerDownload('Technical Data Sheets TDS')">
-              <div class="dropdown-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="4" y="4" width="16" height="16" rx="2"></rect>
-                  <rect x="9" y="9" width="6" height="6"></rect>
-                  <line x1="9" y1="1" x2="9" y2="4"></line>
-                  <line x1="15" y1="1" x2="15" y2="4"></line>
-                  <line x1="9" y1="20" x2="9" y2="23"></line>
-                  <line x1="15" y1="20" x2="15" y2="23"></line>
-                  <line x1="20" y1="9" x2="23" y2="9"></line>
-                  <line x1="20" y1="14" x2="23" y2="14"></line>
-                  <line x1="1" y1="9" x2="4" y2="9"></line>
-                  <line x1="1" y1="14" x2="4" y2="14"></line>
-                </svg>
-              </div>
-              <div class="dropdown-content">
-                <h5>Datasheets</h5>
-                <p>Engineering & mechanical test data sheets</p>
-              </div>
-            </a>
-
-            <a href="#resources" class="dropdown-link" onclick="triggerDownload('BIS & ISO Official Licenses')">
-              <div class="dropdown-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="8" r="7"></circle>
-                  <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
-                </svg>
-              </div>
-              <div class="dropdown-content">
-                <h5>Certifications</h5>
-                <p>IS:710, IS:303 & ISO test certificates</p>
-              </div>
-            </a>
-          </div>
-        </div>
-
-        <div class="nav-item">
-          <a href="#dealership" class="nav-link">Dealers</a>
         </div>
 
         <div class="nav-item">
@@ -441,9 +394,6 @@
 
       <!-- Header Actions -->
       <div class="header-actions">
-        <a href="#calculator" class="btn btn-outline-gold btn-sm">
-          <i class="lucide-calculator"></i> Calculator
-        </a>
         <button class="btn btn-primary btn-sm" onclick="openModal('modalQuote')">
           <i class="lucide-send"></i> Get Quote
         </button>
@@ -460,228 +410,42 @@
   <div class="nav-overlay" id="navOverlay"></div>
 
   <!-- ==========================================
-       HERO SECTION
+       ROYALE TOUCHE STYLE HERO LANDING SECTION
        ========================================== -->
-  <section class="hero-section" id="home">
-    <div class="hero-bg">
-      <img src="assets/images/hero.png" alt="Pearl Ply Luxury Timber Interiors">
-    </div>
-    <div class="hero-overlay"></div>
-
+  <section class="hero-royale" id="home">
+    <div class="hero-royale-overlay"></div>
     <div class="container">
-      <div class="hero-grid">
-        <!-- Left Column: Content & CTA -->
-        <div class="hero-content">
-          <div class="hero-badge-wrap">
-            <div class="hero-badge">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-              <span>IS:710 Certified &bull; 100% Gurjan Core</span>
-            </div>
-            <span class="badge-gold">25-Year Warranty</span>
-          </div>
-
-          <h1 class="hero-title">
-            Engineered for Strength.<br>
-            <span>Crafted for Luxury Interiors.</span>
-          </h1>
-
-          <p class="hero-desc">
-            Pearl Ply delivers India's finest 4x Calibrated Marine Plywood, BWP 710, and Solid Core Blockboards. Manufactured with high-density hardwood timber, zero core gap technology, and chemical vacuum defense against borers & termites.
-          </p>
-
-          <div class="hero-cta-group">
-            <a href="#products" class="btn btn-primary btn-lg">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg> Explore Products
-            </a>
-            <button class="btn btn-outline-light btn-lg" onclick="openModal('modalSampleBox')">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg> Request Sample Box
-            </button>
-            <a href="#calculator" class="btn btn-outline-gold btn-lg">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="16" y1="14" x2="16" y2="18"></line><path d="M16 10h.01"></path><path d="M12 10h.01"></path><path d="M8 10h.01"></path><path d="M12 14h.01"></path><path d="M8 14h.01"></path><path d="M12 18h.01"></path><path d="M8 18h.01"></path></svg> Calculate Sheets
-            </a>
-          </div>
-
-          <!-- Trust Stats Bar -->
-          <div class="hero-trust-bar">
-            <div class="trust-item">
-              <div class="trust-number">72 Hrs</div>
-              <div class="trust-label">Boiling Water Proof (IS:710)</div>
-            </div>
-            <div class="trust-item">
-              <div class="trust-number">&plusmn;0.1mm</div>
-              <div class="trust-label">4x Quad Calibration Tolerance</div>
-            </div>
-            <div class="trust-item">
-              <div class="trust-number">6+</div>
-              <div class="trust-label">Authorized Dealers Across India</div>
-            </div>
-            <div class="trust-item">
-              <div class="trust-number">E0 Class</div>
-              <div class="trust-label">Zero Formaldehyde Emission</div>
-            </div>
-          </div>
+      <div class="hero-royale-content">
+        <div class="hero-royale-badge">
+          <i class="lucide-shield-check"></i> Pearl Performance Standard
         </div>
-
-        <!-- Right Column: Interactive 3D Luxury Plywood Layer Widget -->
-        <div class="hero-interactive-card">
-          <div class="hero-card-header">
-            <h4>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-              Pearl Ultima Plus (IS:710 BWP Marine)
-            </h4>
-            <div class="hero-live-pill">
-              <span class="pulse-dot"></span> 72-Hr Lab Tested
-            </div>
-          </div>
-
-          <!-- 3D Plywood Anatomy Visual with Laser Scan Effect -->
-          <div class="hero-3d-visual">
-            <img src="assets/images/factory.png" alt="Pearl Ply Marine 710 4x Calibrated Layer Anatomy">
-            <div class="scan-laser-line"></div>
-          </div>
-
-          <!-- Layer Breakdown Badges -->
-          <div class="layer-breakdown-badges">
-            <div class="layer-badge-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-              <span><strong>100% Gurjan Core</strong> (0 Gaps)</span>
-            </div>
-            <div class="layer-badge-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
-              <span><strong>Phenol Formaldehyde</strong> (BWP)</span>
-            </div>
-            <div class="layer-badge-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line></svg>
-              <span><strong>&plusmn;0.1mm CNC</strong> Sanded Face</span>
-            </div>
-            <div class="layer-badge-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
-              <span><strong>Vacuum Anti-Borer</strong> Impregnated</span>
-            </div>
-          </div>
-
-          <!-- Card Footer Actions -->
-          <div class="hero-card-footer">
-            <span>Bureau of Indian Standards: <strong>IS:710</strong></span>
-            <button class="btn btn-primary btn-sm" onclick="openProductSpecs('marine')">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg> View 3D Specs
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Live Marquee Ticker -->
-  <div class="ticker-section">
-    <div class="ticker-track">
-      <div class="ticker-item"><i class="lucide-check-circle"></i> 100% Gurjan Hardwood Core</div>
-      <div class="ticker-item"><i class="lucide-check-circle"></i> IS:710 Marine Grade Certified</div>
-      <div class="ticker-item"><i class="lucide-check-circle"></i> 4x Automated Calibration Sanding</div>
-      <div class="ticker-item"><i class="lucide-check-circle"></i> 25 Years Replacement Guarantee</div>
-      <div class="ticker-item"><i class="lucide-check-circle"></i> Vacuum Pressure Anti-Borer Defense</div>
-      <div class="ticker-item"><i class="lucide-check-circle"></i> Zero Core Gap X-Ray Assurance</div>
-      <div class="ticker-item"><i class="lucide-check-circle"></i> E0 Emission Green Air Safe</div>
-      <div class="ticker-item"><i class="lucide-check-circle"></i> 100% Gurjan Hardwood Core</div>
-      <div class="ticker-item"><i class="lucide-check-circle"></i> IS:710 Marine Grade Certified</div>
-    </div>
-  </div>
-
-  <!-- ==========================================
-       INTERACTIVE PLYWOOD & COST CALCULATOR
-       ========================================== -->
-  <section class="section" id="calculator">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag"><i class="lucide-calculator"></i> Smart Estimation Tool</span>
-        <h2 class="section-title">Plywood Sheet & Budget Calculator</h2>
-        <p class="section-desc">
-          Plan your carpentry with precision. Select your furniture type and dimensions to instantly calculate the required 8x4 sheets, recommended thickness mix, and estimated project cost.
+        <h1 class="hero-royale-title">
+          Ply That Is A <span>Living Shield</span> For Beautiful &amp; Timeless Furniture
+        </h1>
+        <p class="hero-royale-subtitle">
+          Crafted with 100% Gurjan Core, proprietary 4-stage vacuum chemical pressure treatment, 4-head diamond calibration, and 25-Year warranty. Built for those who accept nothing less than absolute perfection.
         </p>
-      </div>
-
-      <div class="calculator-wrap">
-        <!-- Input Form -->
-        <div class="calc-inputs">
-          <h3 style="margin-bottom: 20px; font-size: 1.35rem;">1. Configure Furniture Dimensions</h3>
-          
-          <div class="calc-grid">
-            <div class="form-group full-width">
-              <label class="form-label" for="calcFurnitureType"><i class="lucide-layout-grid"></i> Select Furniture Type</label>
-              <select id="calcFurnitureType" class="form-select">
-                <option value="kitchen">Modular Kitchen Cabinets (Base & Overhead)</option>
-                <option value="wardrobe" selected>3-Door / 4-Door Wardrobe with Lofts</option>
-                <option value="bed">King Size Bed with Hydraulic Storage Box</option>
-                <option value="tv_unit">TV Entertainment Unit & Wall Paneling</option>
-                <option value="bathroom">Bathroom Vanity Counter & Undermount Box</option>
-                <option value="custom">Custom Cabinet / Dimension</option>
-              </select>
-            </div>
-
-            <div class="form-group full-width">
-              <label class="form-label"><i class="lucide-ruler"></i> Enter Dimensions (in Feet)</label>
-              <div class="dimension-row">
-                <div>
-                  <span style="font-size: 0.75rem; color: #596B63;">Length / Width (ft)</span>
-                  <input type="number" id="calcLength" class="form-control" value="8" min="1" max="50" step="0.5">
-                </div>
-                <div>
-                  <span style="font-size: 0.75rem; color: #596B63;">Height (ft)</span>
-                  <input type="number" id="calcHeight" class="form-control" value="7" min="1" max="20" step="0.5">
-                </div>
-                <div>
-                  <span style="font-size: 0.75rem; color: #596B63;">Depth (ft)</span>
-                  <input type="number" id="calcDepth" class="form-control" value="2" min="0.5" max="10" step="0.5">
-                </div>
-              </div>
-            </div>
-
-            <div class="form-group full-width">
-              <label class="form-label" for="calcGrade"><i class="lucide-shield"></i> Recommended Plywood Grade</label>
-              <select id="calcGrade" class="form-select">
-                <option value="ultimaplus">Pearl Ultima Plus (IS:710 BWP Marine • 100% Gurjan Inside)</option>
-                <option value="ultimaply" selected>Pearl Ultima Ply (IS:303 BWR • Calibrated Gurjan Face)</option>
-                <option value="platinum">Pearl Platinum (IS:2202 BWP • 100% Pine Flush Door)</option>
-                <option value="blackdecor">Pearl Black Decor (IS:303 MR • 100% Gurjan Face)</option>
-              </select>
-            </div>
-          </div>
+        <div class="hero-royale-actions">
+          <a href="#products" class="btn btn-royale-gold">
+            <i class="lucide-layers"></i> Explore Product Range
+          </a>
+          <button class="btn btn-outline-light" onclick="openModal('modalQuote')">
+            <i class="lucide-message-circle"></i> Talk To An Expert
+          </button>
         </div>
 
-        <!-- Output Summary Card -->
-        <div class="calc-outputs">
-          <div>
-            <div class="calc-result-header">Estimated Requirement</div>
-            <div class="calc-sheet-count" id="calcSheetCount">6 <span>Sheets (8x4 ft)</span></div>
-            <p style="font-size: 0.85rem; color: #A3B5AE;">Includes standard 12% carpentry wastage & overlap margin.</p>
-            
-            <div class="calc-breakdown-list">
-              <div class="breakdown-item">
-                <span class="breakdown-label"><i class="lucide-layers"></i> 18mm Thickness:</span>
-                <span class="breakdown-val" id="breakdown18mm">4 Sheets (Carcass & Shutters)</span>
-              </div>
-              <div class="breakdown-item">
-                <span class="breakdown-label"><i class="lucide-layers"></i> 12mm Thickness:</span>
-                <span class="breakdown-val" id="breakdown12mm">1 Sheet (Internal Shelves)</span>
-              </div>
-              <div class="breakdown-item">
-                <span class="breakdown-label"><i class="lucide-layers"></i> 6mm Thickness:</span>
-                <span class="breakdown-val" id="breakdown6mm">1 Sheet (Back Paneling)</span>
-              </div>
-              <div class="breakdown-item" style="border-top: 1px solid rgba(212,163,89,0.3); padding-top: 12px; margin-top: 6px;">
-                <span class="breakdown-label" style="color: #FFFFFF; font-weight: 700;">Approx. Material Cost:</span>
-                <span class="breakdown-val price" id="estimatedCost">₹14,500 - ₹17,800</span>
-              </div>
-            </div>
+        <div class="hero-royale-trust-strip">
+          <div class="trust-item">
+            <i class="lucide-sliders"></i> 100% Calibrated (&plusmn;0.1mm)
           </div>
-
-          <div style="margin-top: 24px; display: flex; flex-direction: column; gap: 10px;">
-            <a id="btnShareWhatsApp" href="#" target="_blank" class="btn btn-primary" style="width: 100%;">
-              <i class="lucide-message-circle"></i> Send Calculation to WhatsApp
-            </a>
-            <button class="btn btn-outline-light btn-sm" onclick="openModal('modalQuote')">
-              <i class="lucide-file-text"></i> Get Official Dealer Rate Card
-            </button>
+          <div class="trust-item">
+            <i class="lucide-droplets"></i> 72-Hr Boiling Water Proof
+          </div>
+          <div class="trust-item">
+            <i class="lucide-shield"></i> Vacuum Pressure Treated
+          </div>
+          <div class="trust-item">
+            <i class="lucide-leaf"></i> E-0 Low Emission Certified
           </div>
         </div>
       </div>
@@ -689,203 +453,99 @@
   </section>
 
   <!-- ==========================================
-       SMART PRODUCT FINDER QUIZ (WIZARD)
+       ROYALE TOUCHE BRAND STATEMENT & PROMISE OF QUALITY
        ========================================== -->
-  <section class="section section-alt">
+  <section class="section section-dark">
     <div class="container">
-      <div class="section-header">
-        <span class="section-tag"><i class="lucide-sparkles"></i> 30-Second Recommendation Wizard</span>
-        <h2 class="section-title">Not Sure Which Plywood to Buy?</h2>
-        <p class="section-desc">Answer 3 quick questions about your room and our algorithm will suggest the exact grade, resin type, and thickness.</p>
+      <div class="royale-statement-card">
+        <span class="royale-statement-tag">PEARL PLY PERFORMANCE PLY</span>
+        <h2 class="royale-statement-title">For Those Who Accept Nothing Less Than The Finest. A Ply That Has It All.</h2>
+        <p class="royale-statement-desc">
+          Carefully engineered using proprietary 4-stage chemical preservative treatment of select hardwood species, cross-bonded with 100% BWP grade phenolic resins using 4-press technology, a ply that is completely safe for your home and loved ones with E-0 emissions and fire-retardant properties.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
+          <span class="badge-gold">BIS IS:710 Marine Certified</span>
+          <span class="badge-gold">ISO 9001:2015 Company</span>
+          <span class="badge-gold">25-Year Guarantee</span>
+        </div>
       </div>
 
-      <div class="quiz-container">
-        <!-- Step Indicators -->
-        <div class="quiz-steps-indicator">
-          <div class="quiz-step-node active" data-step="1">
-            <div class="step-circle">1</div>
-            <span class="step-label">Application</span>
-          </div>
-          <div class="quiz-step-node" data-step="2">
-            <div class="step-circle">2</div>
-            <span class="step-label">Moisture Exposure</span>
-          </div>
-          <div class="quiz-step-node" data-step="3">
-            <div class="step-circle">3</div>
-            <span class="step-label">Fabrication Style</span>
-          </div>
+      <!-- PROMISE OF QUALITY 7 STEPS -->
+      <div style="margin-top: 60px;">
+        <div class="section-header">
+          <span class="section-tag" style="background: rgba(212,163,89,0.15); color: #D4A359; border: 1px solid var(--border-gold);">
+            <i class="lucide-award"></i> Signature Standard
+          </span>
+          <h2 style="color: #FFFFFF;" class="section-title">Promise Of Quality</h2>
+          <p style="color: #A3B5AE;" class="section-desc">7-point engineering excellence engineered into every single sheet of Pearl Ply.</p>
         </div>
 
-        <!-- Step 1: Area of Use -->
-        <div id="quizFormPanel">
-          <div class="quiz-step-panel" data-step="1">
-            <h3 style="text-align: center; margin-bottom: 24px; font-size: 1.25rem;">Where will this furniture or paneling be installed?</h3>
-            <div class="quiz-options-grid">
-              <div class="quiz-option-card" onclick="selectQuizOption(1, 'kitchen', this)">
-                <div class="quiz-icon">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M18 2v8a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V2"></path>
-                    <line x1="6" y1="2" x2="6" y2="6"></line>
-                    <line x1="10" y1="2" x2="10" y2="6"></line>
-                    <line x1="14" y1="2" x2="14" y2="6"></line>
-                    <line x1="10" y1="14" x2="10" y2="22"></line>
-                  </svg>
-                </div>
-                <div class="quiz-option-title">Modular Kitchen</div>
-                <div class="quiz-option-desc">Under-sink cabinets, base units, and pantry storage</div>
+        <div class="royale-timeline-container">
+          <div class="timeline-list">
+            <div class="timeline-step-card active" onclick="switchTimelineStep(1, this)">
+              <div class="timeline-number">01</div>
+              <div>
+                <h4 class="timeline-step-title">Vacuum Pressure Treatment</h4>
+                <p class="timeline-step-desc">100% scientifically researched proprietary Vacuum Pressure Chemical Treated veneer to provide protection against termites, borers and fire.</p>
               </div>
+            </div>
 
-              <div class="quiz-option-card" onclick="selectQuizOption(1, 'wardrobe_doors', this)">
-                <div class="quiz-icon">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 2h16a2 2 0 0 1 2 2v18H2V4a2 2 0 0 1 2-2z"></path>
-                    <line x1="12" y1="2" x2="12" y2="22"></line>
-                    <circle cx="9" cy="12" r="1"></circle>
-                    <circle cx="15" cy="12" r="1"></circle>
-                  </svg>
-                </div>
-                <div class="quiz-option-title">Wardrobe & Tall Doors</div>
-                <div class="quiz-option-desc">7ft/8ft tall shutters, wardrobe carcases, bedroom storage</div>
+            <div class="timeline-step-card" onclick="switchTimelineStep(2, this)">
+              <div class="timeline-number">02</div>
+              <div>
+                <h4 class="timeline-step-title">Fully Composed Core &amp; Panels</h4>
+                <p class="timeline-step-desc">100% composed veneer sheets made using sophisticated core and panel composers to ensure precise manufacturing and zero core gaps.</p>
               </div>
+            </div>
 
-              <div class="quiz-option-card" onclick="selectQuizOption(1, 'living', this)">
-                <div class="quiz-icon">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect>
-                    <polyline points="17 2 12 7 7 2"></polyline>
-                  </svg>
-                </div>
-                <div class="quiz-option-title">Living Room & Paneling</div>
-                <div class="quiz-option-desc">TV units, wall partitions, study tables, false ceiling</div>
+            <div class="timeline-step-card" onclick="switchTimelineStep(3, this)">
+              <div class="timeline-number">03</div>
+              <div>
+                <h4 class="timeline-step-title">100% Phenolic BWP Polymers</h4>
+                <p class="timeline-step-desc">Unextended Phenol Formaldehyde resin ensures unshakeable bonding and 72-hour boiling waterproof properties.</p>
+              </div>
+            </div>
+
+            <div class="timeline-step-card" onclick="switchTimelineStep(4, this)">
+              <div class="timeline-number">04</div>
+              <div>
+                <h4 class="timeline-step-title">Termite &amp; Borer Defense</h4>
+                <p class="timeline-step-desc">Shielded against microbes, viruses, bacteria, fungi, termites, and wood-boring beetles in high humidity conditions.</p>
+              </div>
+            </div>
+
+            <div class="timeline-step-card" onclick="switchTimelineStep(5, this)">
+              <div class="timeline-number">05</div>
+              <div>
+                <h4 class="timeline-step-title">Fire Retardant Technology</h4>
+                <p class="timeline-step-desc">Pressure treated with nano-particle organo-phosphorus fire retardants providing exceptional flame resistance.</p>
+              </div>
+            </div>
+
+            <div class="timeline-step-card" onclick="switchTimelineStep(6, this)">
+              <div class="timeline-number">06</div>
+              <div>
+                <h4 class="timeline-step-title">Quadruple Diamond Sanding</h4>
+                <p class="timeline-step-desc">4-head diamond calibrators eliminate thickness variation with &plusmn;0.1mm micro-flat precision for automated CNC routing.</p>
+              </div>
+            </div>
+
+            <div class="timeline-step-card" onclick="switchTimelineStep(7, this)">
+              <div class="timeline-number">07</div>
+              <div>
+                <h4 class="timeline-step-title">High Screw &amp; Nail Holding (&gt;2600N)</h4>
+                <p class="timeline-step-desc">High density full core hardwood structure ensures heavy soft-close hinges and wardrobe shutters never loosen.</p>
               </div>
             </div>
           </div>
 
-          <!-- Step 2: Moisture Exposure -->
-          <div class="quiz-step-panel" data-step="2" style="display: none;">
-            <h3 style="text-align: center; margin-bottom: 24px; font-size: 1.25rem;">What is the expected moisture & water contact?</h3>
-            <div class="quiz-options-grid">
-              <div class="quiz-option-card" onclick="selectQuizOption(2, 'high', this)">
-                <div class="quiz-icon">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M2 12c.6 0 1.2-.2 1.7-.5 1-.6 2.3-.6 3.3 0 1 .6 2.3.6 3.3 0 1-.6 2.3-.6 3.3 0 1 .6 2.3.6 3.3 0 1-.6 2.3-.6 3.4 0 .5.3 1.1.5 1.7.5"></path>
-                    <path d="M2 18c.6 0 1.2-.2 1.7-.5 1-.6 2.3-.6 3.3 0 1 .6 2.3.6 3.3 0 1-.6 2.3-.6 3.3 0 1 .6 2.3.6 3.3 0 1-.6 2.3-.6 3.4 0 .5.3 1.1.5 1.7.5"></path>
-                    <path d="M2 6c.6 0 1.2-.2 1.7-.5 1-.6 2.3-.6 3.3 0 1 .6 2.3.6 3.3 0 1-.6 2.3-.6 3.3 0 1 .6 2.3.6 3.3 0 1-.6 2.3-.6 3.4 0 .5.3 1.1.5 1.7.5"></path>
-                  </svg>
-                </div>
-                <div class="quiz-option-title">High Water / Coastal</div>
-                <div class="quiz-option-desc">Frequent water exposure, bathroom areas, coastal climate</div>
-              </div>
-
-              <div class="quiz-option-card" onclick="selectQuizOption(2, 'medium', this)">
-                <div class="quiz-icon">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25"></path>
-                    <line x1="8" y1="19" x2="8" y2="21"></line>
-                    <line x1="8" y1="13" x2="8" y2="15"></line>
-                    <line x1="16" y1="19" x2="16" y2="21"></line>
-                    <line x1="16" y1="13" x2="16" y2="15"></line>
-                  </svg>
-                </div>
-                <div class="quiz-option-title">Moderate Humidity</div>
-                <div class="quiz-option-desc">Occasional water spills, seasonal humidity changes</div>
-              </div>
-
-              <div class="quiz-option-card" onclick="selectQuizOption(2, 'dry', this)">
-                <div class="quiz-icon">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="5"></circle>
-                    <line x1="12" y1="1" x2="12" y2="3"></line>
-                    <line x1="12" y1="21" x2="12" y2="23"></line>
-                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                    <line x1="1" y1="12" x2="3" y2="12"></line>
-                    <line x1="21" y1="12" x2="23" y2="12"></line>
-                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                  </svg>
-                </div>
-                <div class="quiz-option-title">Dry Indoor Zone</div>
-                <div class="quiz-option-desc">Air-conditioned bedrooms, living room, office spaces</div>
-              </div>
+          <div class="timeline-media-card">
+            <img id="timelineActiveImg" src="assets/images/lab_vacuum.png" alt="Pearl Ply Quality Control">
+            <div class="timeline-media-content">
+              <span class="badge-gold" id="timelineActiveBadge">Process 1/7: Vacuum Chemical Plant</span>
+              <h3 style="color: #FFFFFF; margin: 10px 0 6px;" id="timelineActiveTitle">Vacuum Pressure Chemical Treatment</h3>
+              <p style="color: #C2D4CD; font-size: 0.9rem;" id="timelineActiveDesc">Veneers undergo deep vacuum chamber pressure immersion, infusing preservative anti-termite and fire-retardant chemicals deep into every core wood cell.</p>
             </div>
-          </div>
-
-          <!-- Step 3: Fabrication Method -->
-          <div class="quiz-step-panel" data-step="3" style="display: none;">
-            <h3 style="text-align: center; margin-bottom: 24px; font-size: 1.25rem;">How will the carpentry be executed?</h3>
-            <div class="quiz-options-grid">
-              <div class="quiz-option-card" onclick="selectQuizOption(3, 'cnc', this)">
-                <div class="quiz-icon">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="4" y="4" width="16" height="16" rx="2"></rect>
-                    <rect x="9" y="9" width="6" height="6"></rect>
-                    <line x1="9" y1="1" x2="9" y2="4"></line>
-                    <line x1="15" y1="1" x2="15" y2="4"></line>
-                    <line x1="9" y1="20" x2="9" y2="23"></line>
-                    <line x1="15" y1="20" x2="15" y2="23"></line>
-                    <line x1="20" y1="9" x2="23" y2="9"></line>
-                    <line x1="20" y1="14" x2="23" y2="14"></line>
-                    <line x1="1" y1="9" x2="4" y2="9"></line>
-                    <line x1="1" y1="14" x2="4" y2="14"></line>
-                  </svg>
-                </div>
-                <div class="quiz-option-title">Automated Factory CNC</div>
-                <div class="quiz-option-desc">Requires 100% calibrated uniform thickness for edge-banding</div>
-              </div>
-
-              <div class="quiz-option-card" onclick="selectQuizOption(3, 'carpenter', this)">
-                <div class="quiz-icon">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M15 12l-8.5 8.5a2.12 2.12 0 0 1-3-3L12 9"></path>
-                    <path d="M17.64 4.36a9 9 0 0 1 2 2"></path>
-                    <path d="M20 2l-4 4"></path>
-                  </svg>
-                </div>
-                <div class="quiz-option-title">On-Site Master Carpenter</div>
-                <div class="quiz-option-desc">Handcrafted on-site woodworking with nail and screw fixing</div>
-              </div>
-
-              <div class="quiz-option-card" onclick="selectQuizOption(3, 'commercial_bulk', this)">
-                <div class="quiz-icon">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
-                    <line x1="9" y1="6" x2="9" y2="6.01"></line>
-                    <line x1="15" y1="6" x2="15" y2="6.01"></line>
-                    <line x1="9" y1="10" x2="9" y2="10.01"></line>
-                    <line x1="15" y1="10" x2="15" y2="10.01"></line>
-                    <line x1="9" y1="14" x2="9" y2="14.01"></line>
-                    <line x1="15" y1="14" x2="15" y2="14.01"></line>
-                    <line x1="9" y1="18" x2="15" y2="18"></line>
-                  </svg>
-                </div>
-                <div class="quiz-option-title">Builder / Bulk Project</div>
-                <div class="quiz-option-desc">Commercial high-rise interior fitting & partition framing</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Result Box -->
-        <div id="quizResultBox" style="display: none; text-align: center; padding: 20px;">
-          <div style="width: 60px; height: 60px; border-radius: 50%; background: rgba(212,163,89,0.15); color: #D4A359; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 1.8rem;">
-            <i class="lucide-check-circle-2"></i>
-          </div>
-          <span class="badge-gold" id="recProductTag">Recommended Grade</span>
-          <h3 id="recProductTitle" style="font-size: 1.7rem; margin: 12px 0 8px; color: #0A1F18;">Pearl 100% Calibrated Marine 710</h3>
-          <p id="recProductDesc" style="max-width: 620px; margin: 0 auto 16px; font-size: 0.95rem; color: #596B63;">
-            Engineered with unextended Phenol Formaldehyde resin, 72-hour boiling water proof endurance, and 4x calibrating sanding for modular precision.
-          </p>
-          <div id="recProductSpecs" style="font-weight: 700; color: #0A1F18; font-size: 0.88rem; margin-bottom: 24px; padding: 10px; background: #F3EFE8; border-radius: 8px;">
-            IS:710 Marine Certified | 100% Gurjan Core | 25-Year Warranty
-          </div>
-          <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
-            <button class="btn btn-primary" onclick="openModal('modalQuote')">
-              <i class="lucide-send"></i> Request Quote For This Grade
-            </button>
-            <button class="btn btn-outline-gold" onclick="restartQuiz()">
-              <i class="lucide-rotate-ccw"></i> Restart Quiz
-            </button>
           </div>
         </div>
       </div>
@@ -903,9 +563,7 @@
         <p class="section-desc">
           Crafted in compliance with rigorous Bureau of Indian Standards (BIS) specifications. Every sheet is backed by our signature anti-borer vacuum shield.
         </p>
-      </div>
-
-      <div class="products-grid">
+       <div class="products-grid">
 
         <!-- 1. Pearl Ultima Plus (IS:710 BWP Marine Plywood) -->
         <div class="product-card" id="prod-ultimaplus">
@@ -917,7 +575,7 @@
             <h3 class="product-title">Pearl Ultima Plus</h3>
             <div class="product-use-tag"><i class="lucide-shield-check"></i> IS:710 BWP &bull; 100% Gurjan Inside &bull; 15-Yr Guarantee</div>
             <p style="font-size: 0.88rem; color: #596B63;">
-              Elevate your space with uncompromising strength. Engineered with 100% Gurjan inside, extra layer cross-grain construction, high density compaction, and low VOC eco-friendly resin. 72-hour boiling water proof.
+              Super-premium Boiling Water Proof (BWP) plywood certified IS:710 (CM/L 9504492). Built with 100% Gurjan inside, extra layer cross-grain construction, high density compaction, and low VOC resin.
             </p>
             <div class="product-specs-list">
               <div class="spec-line">
@@ -927,10 +585,6 @@
               <div class="spec-line">
                 <span class="spec-key">Core Material:</span>
                 <span class="spec-val">100% Gurjan Inside (High Density)</span>
-              </div>
-              <div class="spec-line">
-                <span class="spec-key">Layer Build:</span>
-                <span class="spec-val">Extra Layer Technology</span>
               </div>
               <div class="spec-line">
                 <span class="spec-key">Water Resistance:</span>
@@ -945,85 +599,8 @@
                 <span class="spec-val">Termite &amp; Borer Proof Shield</span>
               </div>
               <div class="spec-line">
-                <span class="spec-key">Eco / Air Safety:</span>
-                <span class="spec-val">Low VOC &amp; Eco-Friendly</span>
-              </div>
-              <div class="spec-line">
-                <span class="spec-key">Certification:</span>
-                <span class="spec-val">ISO 9001:2008 Certified Co.</span>
-              </div>
-              <div class="spec-line">
                 <span class="spec-key">Warranty:</span>
-                <span class="spec-val">15 Years Guarantee</span>
-              </div>
-              <div class="thickness-chips">
-                <span class="thickness-chip">6mm</span>
-                <span class="thickness-chip">9mm</span>
-                <span class="thickness-chip">12mm</span>
-                <span class="thickness-chip">16mm</span>
-                <span class="thickness-chip">19mm</span>
-                <span class="thickness-chip">25mm</span>
-              </div>
-            </div>
-            <div class="product-footer">
-              <button class="btn btn-outline-gold btn-sm" onclick="openProductSpecs('ultima_plus')">
-                <i class="lucide-info"></i> Tech Specs
-              </button>
-              <button class="btn btn-primary btn-sm" onclick="openModal('modalQuote', {productName: 'Pearl Ultima Plus (IS:710 BWP Plywood)'})">
-                <i class="lucide-send"></i> Quote
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- 2. Pearl Ultima Ply (IS:303 BWR Grade Plywood) -->
-        <div class="product-card" id="prod-ultimaply">
-          <div class="product-media" onclick="openPhotoLightbox('assets/images/pearl_ultima_ply.jpg', 'Pearl Ultima Ply — IS:303 BWR Grade • Calibrated Gurjan Face • 10 Years Guarantee')">
-            <img src="assets/images/pearl_ultima_ply.jpg" alt="Pearl Ultima Ply IS:303 BWR Grade Calibrated Gurjan Face">
-            <div class="product-grade-badge">IS:303 &bull; 303 BWR GRADE</div>
-          </div>
-          <div class="product-body">
-            <h3 class="product-title">Pearl Ultima Ply</h3>
-            <div class="product-use-tag"><i class="lucide-layers"></i> 303 BWR Grade &bull; Calibrated Gurjan Face &bull; 10-Yr Guarantee</div>
-            <p style="font-size: 0.88rem; color: #596B63;">
-              High density extra layer plywood with calibrated Gurjan face veneer. Hot pressed under precision hydraulic temperature &amp; pressure. Termite proof with low VOC eco-formulation.
-            </p>
-            <div class="product-specs-list">
-              <div class="spec-line">
-                <span class="spec-key">BIS Standard:</span>
-                <span class="spec-val">IS:303 (BWR Grade) &bull; CM/L 9760279217</span>
-              </div>
-              <div class="spec-line">
-                <span class="spec-key">Face Veneer:</span>
-                <span class="spec-val">Calibrated Gurjan Face</span>
-              </div>
-              <div class="spec-line">
-                <span class="spec-key">Layer Build:</span>
-                <span class="spec-val">Extra Layer Plywood</span>
-              </div>
-              <div class="spec-line">
-                <span class="spec-key">Density &amp; Press:</span>
-                <span class="spec-val">High Density &bull; Hot Pressed</span>
-              </div>
-              <div class="spec-line">
-                <span class="spec-key">Water Resistance:</span>
-                <span class="spec-val">8-Hr Boiling Water Resistant (BWR)</span>
-              </div>
-              <div class="spec-line">
-                <span class="spec-key">Pest Defense:</span>
-                <span class="spec-val">Termite Proof Infusion</span>
-              </div>
-              <div class="spec-line">
-                <span class="spec-key">Eco / Air Safety:</span>
-                <span class="spec-val">Low VOC (Indoor Safe)</span>
-              </div>
-              <div class="spec-line">
-                <span class="spec-key">Certification:</span>
-                <span class="spec-val">ISO 9001:2008 Certified Co.</span>
-              </div>
-              <div class="spec-line">
-                <span class="spec-key">Warranty:</span>
-                <span class="spec-val">10 Years Guarantee</span>
+                <span class="spec-val">15-Year Replacement Guarantee</span>
               </div>
               <div class="thickness-chips">
                 <span class="thickness-chip">6mm</span>
@@ -1036,17 +613,357 @@
               </div>
             </div>
             <div class="product-footer">
-              <button class="btn btn-outline-gold btn-sm" onclick="openProductSpecs('ultima_ply')">
+              <button class="btn btn-outline-gold btn-sm" onclick="openProductSpecs('ultima_plus')">
                 <i class="lucide-info"></i> Tech Specs
               </button>
-              <button class="btn btn-primary btn-sm" onclick="openModal('modalQuote', {productName: 'Pearl Ultima Ply (IS:303 BWR Grade)'})">
+              <button class="btn btn-primary btn-sm" onclick="openModal('modalQuote', {productName: 'Pearl Ultima Plus (IS:710 BWP)'})">
                 <i class="lucide-send"></i> Quote
               </button>
             </div>
           </div>
         </div>
 
-        <!-- 3. Pearl Platinum Premium Flush Door -->
+        <!-- 2. Pearl Boil Pro (Boiling Water Proof HDF Board) -->
+        <div class="product-card" id="prod-boilpro">
+          <div class="product-media" onclick="openPhotoLightbox('assets/images/pearl_boil_pro.jpg', 'Pearl Boil Pro — Boiling Water Proof HDF Board • 20 Years Guarantee')">
+            <img src="assets/images/pearl_boil_pro.jpg" alt="Pearl Boil Pro Boiling Water Proof HDF Board">
+            <div class="product-grade-badge" style="background: #22C55E; color: #04120D;">BOILING WATER PROOF</div>
+          </div>
+          <div class="product-body">
+            <h3 class="product-title">Pearl Boil Pro</h3>
+            <div class="product-use-tag"><i class="lucide-droplets"></i> BWP HDF Board &bull; 20-Year Guarantee</div>
+            <p style="font-size: 0.88rem; color: #596B63;">
+              Boiling Water Proof HDF Board engineered for extreme endurance. Certified IS:303 (CM/L 9100233593 Type AA Grade MR). Features 20-Year Guarantee, termite &amp; borer proofing, and fungal resistance.
+            </p>
+            <div class="product-specs-list">
+              <div class="spec-line">
+                <span class="spec-key">BIS Standard:</span>
+                <span class="spec-val">IS:303 &bull; CM/L No. 9100233593</span>
+              </div>
+              <div class="spec-line">
+                <span class="spec-key">Board Type:</span>
+                <span class="spec-val">Boiling Water Proof HDF Board</span>
+              </div>
+              <div class="spec-line">
+                <span class="spec-key">Grade / Type:</span>
+                <span class="spec-val">Type AA | Grade MR</span>
+              </div>
+              <div class="spec-line">
+                <span class="spec-key">Pest &amp; Fungal:</span>
+                <span class="spec-val">Termite &amp; Borer Proof &bull; Fungal Resistant</span>
+              </div>
+              <div class="spec-line">
+                <span class="spec-key">Available Size:</span>
+                <span class="spec-val">6ft x 4ft (1830mm x 1220mm)</span>
+              </div>
+              <div class="spec-line">
+                <span class="spec-key">Warranty:</span>
+                <span class="spec-val">20-Year Guarantee</span>
+              </div>
+              <div class="thickness-chips">
+                <span class="thickness-chip">18mm</span>
+              </div>
+            </div>
+            <div class="product-footer">
+              <button class="btn btn-outline-gold btn-sm" onclick="openProductSpecs('boilpro')">
+                <i class="lucide-info"></i> Tech Specs
+              </button>
+              <button class="btn btn-primary btn-sm" onclick="openModal('modalQuote', {productName: 'Pearl Boil Pro HDF Board'})">
+                <i class="lucide-send"></i> Quote
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Pearl HDMR (High Density Moisture Resistance Board) -->
+        <div class="product-card" id="prod-hdmr">
+          <div class="product-media" onclick="openPhotoLightbox('assets/images/pearl_hdmr.jpg', 'Pearl HDMR — High Density Moisture Resistance Board')">
+            <img src="assets/images/pearl_hdmr.jpg" alt="Pearl HDMR High Density Moisture Resistance Board">
+            <div class="product-grade-badge" style="background: #3B82F6; color: #FFFFFF;">HIGH DENSITY HDMR</div>
+          </div>
+          <div class="product-body">
+            <h3 class="product-title">Pearl HDMR</h3>
+            <div class="product-use-tag"><i class="lucide-sliders"></i> High Load Bearing &bull; Moisture Resistant</div>
+            <p style="font-size: 0.88rem; color: #596B63;">
+              High Density Moisture Resistance Board certified IS:303 (CM/L 9100233593 Type AA Grade MR). Specially engineered for heavy load bearing wardrobes, kitchen cabinets, and humid interiors.
+            </p>
+            <div class="product-specs-list">
+              <div class="spec-line">
+                <span class="spec-key">BIS Standard:</span>
+                <span class="spec-val">IS:303 &bull; CM/L No. 9100233593</span>
+              </div>
+              <div class="spec-line">
+                <span class="spec-key">Board Type:</span>
+                <span class="spec-val">High Density Moisture Resistant</span>
+              </div>
+              <div class="spec-line">
+                <span class="spec-key">Grade / Type:</span>
+                <span class="spec-val">Type AA | Grade MR</span>
+              </div>
+              <div class="spec-line">
+                <span class="spec-key">Load Capacity:</span>
+                <span class="spec-val">High Load Bearing Capacity</span>
+              </div>
+              <div class="spec-line">
+                <span class="spec-key">Available Size:</span>
+                <span class="spec-val">6ft x 4ft (1830mm x 1220mm)</span>
+              </div>
+              <div class="spec-line">
+                <span class="spec-key">Pest Defense:</span>
+                <span class="spec-val">Termite Resistant &bull; Durable</span>
+              </div>
+              <div class="thickness-chips">
+                <span class="thickness-chip">18mm</span>
+              </div>
+            </div>
+            <div class="product-footer">
+              <button class="btn btn-outline-gold btn-sm" onclick="openProductSpecs('hdmr')">
+                <i class="lucide-info"></i> Tech Specs
+              </button>
+              <button class="btn btn-primary btn-sm" onclick="openModal('modalQuote', {productName: 'Pearl HDMR Board'})">
+                <i class="lucide-send"></i> Quote
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Pearl Ultima BWR (Extra Layer BWR Plywood) -->
+        <div class="product-card" id="prod-ultimabwr">
+          <div class="product-media" onclick="openPhotoLightbox('assets/images/pearl_ultima_bwr.jpg', 'Pearl Ultima BWR — Extra Layer BWR Plywood • 10 Years Guarantee')">
+            <img src="assets/images/pearl_ultima_bwr.jpg" alt="Pearl Ultima BWR Extra Layer Plywood">
+            <div class="product-grade-badge" style="background: #EAB308; color: #04120D;">IS:303 &bull; ULTIMA BWR</div>
+          </div>
+          <div class="product-body">
+            <h3 class="product-title">Pearl Ultima BWR</h3>
+            <div class="product-use-tag"><i class="lucide-layers"></i> Extra Layer BWR &bull; 10-Yr Guarantee</div>
+            <p style="font-size: 0.88rem; color: #596B63;">
+              Certified IS:303 BWR Grade Plywood (CM/L 9100233593). Built with Extra Layer technology, high density low VOC resin, and hot pressed under high hydraulic pressure. 10-Year Guarantee.
+            </p>
+            <div class="product-specs-list">
+              <div class="spec-line">
+                <span class="spec-key">BIS Standard:</span>
+                <span class="spec-val">IS:303 &bull; CM/L No. 9100233593</span>
+              </div>
+              <div class="spec-line">
+                <span class="spec-key">Layer Tech:</span>
+                <span class="spec-val">Extra Layers Technology &bull; Hot Pressed</span>
+              </div>
+              <div class="spec-line">
+                <span class="spec-key">Grade / Type:</span>
+                <span class="spec-val">Type AA | Grade MR</span>
+              </div>
+              <div class="spec-line">
+                <span class="spec-key">Certification:</span>
+                <span class="spec-val">AN ISO 9001:2008 Certified Co.</span>
+              </div>
+              <div class="spec-line">
+                <span class="spec-key">Available Size:</span>
+                <span class="spec-val">7ft x 4ft (2130mm x 1220mm)</span>
+              </div>
+              <div class="spec-line">
+                <span class="spec-key">Warranty:</span>
+                <span class="spec-val">10-Year Guarantee</span>
+              </div>
+              <div class="thickness-chips">
+                <span class="thickness-chip">5mm</span>
+                <span class="thickness-chip">6mm</span>
+                <span class="thickness-chip">9mm</span>
+                <span class="thickness-chip">12mm</span>
+                <span class="thickness-chip">16mm</span>
+                <span class="thickness-chip">18mm</span>
+                <span class="thickness-chip">19mm</span>
+                <span class="thickness-chip">25mm</span>
+              </div>
+            </div>
+            <div class="product-footer">
+              <button class="btn btn-outline-gold btn-sm" onclick="openProductSpecs('ultimabwr')">
+                <i class="lucide-info"></i> Tech Specs
+              </button>
+              <button class="btn btn-primary btn-sm" onclick="openModal('modalQuote', {productName: 'Pearl Ultima BWR Plywood'})">
+                <i class="lucide-send"></i> Quote
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Pearl Black Hub (100% Full Core Full Panel) -->
+        <div class="product-card" id="prod-blackhub">
+          <div class="product-media" onclick="openPhotoLightbox('assets/images/pearl_black_hub.jpg', 'Pearl Black Hub — 100% Full Core Full Panel • Anti-Warp Technology')">
+            <img src="assets/images/pearl_black_hub.jpg" alt="Pearl Black Hub 100% Full Core Full Panel Ply & Board">
+            <div class="product-grade-badge" style="background: #111827; color: #F3F4F6; border: 1px solid #4B5563;">BLACK HUB &bull; FULL CORE</div>
+          </div>
+          <div class="product-body">
+            <h3 class="product-title">Pearl Black Hub</h3>
+            <div class="product-use-tag"><i class="lucide-check-circle"></i> 100% Full Core &bull; Anti-Warp Technology</div>
+            <p style="font-size: 0.88rem; color: #596B63;">
+              Premium 100% Full Core Full Panel Ply &amp; Board (IS:303 CM/L 9100233593 Type AA Grade MR). Features Anti-Warp Technology, high density low VOC, and 100% Press Technology.
+            </p>
+            <div class="product-specs-list">
+              <div class="spec-line">
+                <span class="spec-key">BIS Standard:</span>
+                <span class="spec-val">IS:303 &bull; CM/L No. 9100233593</span>
+              </div>
+              <div class="spec-line">
+                <span class="spec-key">Core &amp; Panel:</span>
+                <span class="spec-val">100% Full Core Full Panel</span>
+              </div>
+              <div class="spec-line">
+                <span class="spec-key">Warp Control:</span>
+                <span class="spec-val">Anti-Warp Precision Technology</span>
+              </div>
+              <div class="spec-line">
+                <span class="spec-key">Press Tech:</span>
+                <span class="spec-val">100% Press Technology &bull; Low VOC</span>
+              </div>
+              <div class="spec-line">
+                <span class="spec-key">Available Size:</span>
+                <span class="spec-val">8ft x 4ft (2440mm x 1220mm)</span>
+              </div>
+              <div class="spec-line">
+                <span class="spec-key">Pest Defense:</span>
+                <span class="spec-val">Termite &amp; Borer Ever Resistant</span>
+              </div>
+              <div class="thickness-chips">
+                <span class="thickness-chip">5mm</span>
+                <span class="thickness-chip">6mm</span>
+                <span class="thickness-chip">9mm</span>
+                <span class="thickness-chip">12mm</span>
+                <span class="thickness-chip">16mm</span>
+                <span class="thickness-chip">18mm</span>
+                <span class="thickness-chip">19mm</span>
+                <span class="thickness-chip">25mm</span>
+              </div>
+            </div>
+            <div class="product-footer">
+              <button class="btn btn-outline-gold btn-sm" onclick="openProductSpecs('blackhub')">
+                <i class="lucide-info"></i> Tech Specs
+              </button>
+              <button class="btn btn-primary btn-sm" onclick="openModal('modalQuote', {productName: 'Pearl Black Hub Ply & Board'})">
+                <i class="lucide-send"></i> Quote
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Pearl Black Decor (100% Full Core Full Panel) -->
+        <div class="product-card" id="prod-blackdecor">
+          <div class="product-media" onclick="openPhotoLightbox('assets/images/pearl_black_decor.jpg', 'Pearl Black Decor — 100% Full Core Full Panel • 5 Years Guarantee')">
+            <img src="assets/images/pearl_black_decor.jpg" alt="Pearl Black Decor 100% Full Core Full Panel Plywood">
+            <div class="product-grade-badge" style="background: #1F2937; color: #F9FAFB; border: 1px solid #D4A359;">BLACK DECOR &bull; IS:303</div>
+          </div>
+          <div class="product-body">
+            <h3 class="product-title">Pearl Black Decor</h3>
+            <div class="product-use-tag"><i class="lucide-layers"></i> 100% Full Core &bull; 5-Year Guarantee</div>
+            <p style="font-size: 0.88rem; color: #596B63;">
+              IS:303 certified MR Grade Plywood (CM/L 9100233593 Type AA). Built with 100% Full Core Full Panel, Anti-Warp Technology, High Tensile Strength, 5-Year Guarantee, and Termite &amp; Borer Resistance.
+            </p>
+            <div class="product-specs-list">
+              <div class="spec-line">
+                <span class="spec-key">BIS Standard:</span>
+                <span class="spec-val">IS:303 &bull; CM/L No. 9100233593</span>
+              </div>
+              <div class="spec-line">
+                <span class="spec-key">Core &amp; Panel:</span>
+                <span class="spec-val">100% Full Core Full Panel</span>
+              </div>
+              <div class="spec-line">
+                <span class="spec-key">Grade / Type:</span>
+                <span class="spec-val">Type AA | Grade MR</span>
+              </div>
+              <div class="spec-line">
+                <span class="spec-key">Strength:</span>
+                <span class="spec-val">High Tensile &amp; Anti-Warp Tech</span>
+              </div>
+              <div class="spec-line">
+                <span class="spec-key">Available Size:</span>
+                <span class="spec-val">7ft x 4ft (2130mm x 1220mm)</span>
+              </div>
+              <div class="spec-line">
+                <span class="spec-key">Warranty:</span>
+                <span class="spec-val">5-Year Guarantee</span>
+              </div>
+              <div class="thickness-chips">
+                <span class="thickness-chip">5mm</span>
+                <span class="thickness-chip">6mm</span>
+                <span class="thickness-chip">9mm</span>
+                <span class="thickness-chip">12mm</span>
+                <span class="thickness-chip">16mm</span>
+                <span class="thickness-chip">18mm</span>
+                <span class="thickness-chip">19mm</span>
+                <span class="thickness-chip">25mm</span>
+              </div>
+            </div>
+            <div class="product-footer">
+              <button class="btn btn-outline-gold btn-sm" onclick="openProductSpecs('blackdecor')">
+                <i class="lucide-info"></i> Tech Specs
+              </button>
+              <button class="btn btn-primary btn-sm" onclick="openModal('modalQuote', {productName: 'Pearl Black Decor Plywood'})">
+                <i class="lucide-send"></i> Quote
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Pearl Future Wood (Ply, Board & Door) -->
+        <div class="product-card" id="prod-futurewood">
+          <div class="product-media" onclick="openPhotoLightbox('assets/images/pearl_future_wood.jpg', 'Pearl Future Wood — Ply, Board & Door • 5 Years Guarantee')">
+            <img src="assets/images/pearl_future_wood.jpg" alt="Pearl Future Wood High Tensile Strength Plywood">
+            <div class="product-grade-badge" style="background: #92400E; color: #FEF3C7;">FUTURE WOOD &bull; IS:303</div>
+          </div>
+          <div class="product-body">
+            <h3 class="product-title">Pearl Future Wood</h3>
+            <div class="product-use-tag"><i class="lucide-award"></i> High Tensile &bull; 5-Year Guarantee</div>
+            <p style="font-size: 0.88rem; color: #596B63;">
+              IS:303 certified Type AA Grade MR Plywood (CM/L 9100233593). Features 100% Full Core Full Panel construction, Anti-Warp Technology, Extra Strength, Fungal Resistance, and 5-Year Guarantee.
+            </p>
+            <div class="product-specs-list">
+              <div class="spec-line">
+                <span class="spec-key">BIS Standard:</span>
+                <span class="spec-val">IS:303 &bull; CM/L No. 9100233593</span>
+              </div>
+              <div class="spec-line">
+                <span class="spec-key">Core &amp; Panel:</span>
+                <span class="spec-val">100% Full Core Full Panel</span>
+              </div>
+              <div class="spec-line">
+                <span class="spec-key">Grade / Type:</span>
+                <span class="spec-val">Type AA | Grade MR</span>
+              </div>
+              <div class="spec-line">
+                <span class="spec-key">Strength:</span>
+                <span class="spec-val">High Tensile &amp; Extra Strength</span>
+              </div>
+              <div class="spec-line">
+                <span class="spec-key">Available Size:</span>
+                <span class="spec-val">7ft x 4ft (2130mm x 1220mm)</span>
+              </div>
+              <div class="spec-line">
+                <span class="spec-key">Warranty:</span>
+                <span class="spec-val">5-Year Guarantee</span>
+              </div>
+              <div class="thickness-chips">
+                <span class="thickness-chip">5mm</span>
+                <span class="thickness-chip">6mm</span>
+                <span class="thickness-chip">9mm</span>
+                <span class="thickness-chip">12mm</span>
+                <span class="thickness-chip">16mm</span>
+                <span class="thickness-chip">18mm</span>
+                <span class="thickness-chip">19mm</span>
+                <span class="thickness-chip">25mm</span>
+              </div>
+            </div>
+            <div class="product-footer">
+              <button class="btn btn-outline-gold btn-sm" onclick="openProductSpecs('futurewood')">
+                <i class="lucide-info"></i> Tech Specs
+              </button>
+              <button class="btn btn-primary btn-sm" onclick="openModal('modalQuote', {productName: 'Pearl Future Wood Plywood'})">
+                <i class="lucide-send"></i> Quote
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. Pearl Platinum (IS:2202 BWP Flush Door) -->
         <div class="product-card" id="prod-platinum">
           <div class="product-media" onclick="openPhotoLightbox('assets/images/pearl_platinum.jpg', 'Pearl Platinum — IS:2202 BWP Premium Flush Door')">
             <img src="assets/images/pearl_platinum.jpg" alt="Pearl Platinum Premium Flush Door IS-2202 BWP">
@@ -1056,7 +973,7 @@
             <h3 class="product-title">Pearl Platinum</h3>
             <div class="product-use-tag"><i class="lucide-door-open"></i> Premium Flush Door &bull; Full Water Proof</div>
             <p style="font-size: 0.88rem; color: #596B63;">
-              Premium flush door engineered with 100% Pine Wood core. Swell proof, termite &amp; borer resistant with GD protection. Certified IS:2202 BWP grade with superior strength.
+              Premium flush door engineered with 100% pure pine wood core. Swell proof, termite &amp; borer resistant with GD protection. Certified IS:2202 BWP grade with superior strength.
             </p>
             <div class="product-specs-list">
               <div class="spec-line">
@@ -1065,7 +982,7 @@
               </div>
               <div class="spec-line">
                 <span class="spec-key">Core Material:</span>
-                <span class="spec-val">100% Pure Pine Wood</span>
+                <span class="spec-val">100% Pure Seasoned Pine Wood</span>
               </div>
               <div class="spec-line">
                 <span class="spec-key">Water Resistance:</span>
@@ -1076,12 +993,8 @@
                 <span class="spec-val">Superior Swell Proof</span>
               </div>
               <div class="spec-line">
-                <span class="spec-key">GD Protection:</span>
+                <span class="spec-key">Pest Defense:</span>
                 <span class="spec-val">Termite &amp; Borer Resistant</span>
-              </div>
-              <div class="spec-line">
-                <span class="spec-key">Certification:</span>
-                <span class="spec-val">ISO 9001:2008 Certified</span>
               </div>
               <div class="spec-line">
                 <span class="spec-key">Warranty:</span>
@@ -1103,66 +1016,10 @@
           </div>
         </div>
 
-        <!-- 4. Pearl Black Decor MR Grade Ply -->
-        <div class="product-card" id="prod-blackdecor">
-          <div class="product-media" onclick="openPhotoLightbox('assets/images/pearl_black_decor.jpg', 'Pearl Black Decor — IS:303 MR Grade Plywood with Gurjan Face')">
-            <img src="assets/images/pearl_black_decor.jpg" alt="Pearl Black Decor IS:303 MR Grade Plywood Gurjan Face">
-            <div class="product-grade-badge">IS:303 &bull; MR Grade</div>
-          </div>
-          <div class="product-body">
-            <h3 class="product-title">Pearl Black Decor</h3>
-            <div class="product-use-tag"><i class="lucide-layers"></i> Furniture, Interiors &amp; Paneling</div>
-            <p style="font-size: 0.88rem; color: #596B63;">
-              303 MR Grade plywood with 100% Gurjan Face Veneer. Full core, full panel construction ensures zero gaps and superior screw holding strength for premium furniture applications.
-            </p>
-            <div class="product-specs-list">
-              <div class="spec-line">
-                <span class="spec-key">BIS Standard:</span>
-                <span class="spec-val">IS:303 MR Grade</span>
-              </div>
-              <div class="spec-line">
-                <span class="spec-key">Face Veneer:</span>
-                <span class="spec-val">100% Gurjan Face</span>
-              </div>
-              <div class="spec-line">
-                <span class="spec-key">Panel Construction:</span>
-                <span class="spec-val">Full Core, Full Panel</span>
-              </div>
-              <div class="spec-line">
-                <span class="spec-key">Moisture Resistance:</span>
-                <span class="spec-val">MR Grade (Interior)</span>
-              </div>
-              <div class="spec-line">
-                <span class="spec-key">Certification:</span>
-                <span class="spec-val">GLP Gurjan Face Certified</span>
-              </div>
-              <div class="spec-line">
-                <span class="spec-key">Type:</span>
-                <span class="spec-val">Type AA (ISI Marked)</span>
-              </div>
-              <div class="thickness-chips">
-                <span class="thickness-chip">9mm</span>
-                <span class="thickness-chip">12mm</span>
-                <span class="thickness-chip">16mm</span>
-                <span class="thickness-chip">18mm</span>
-                <span class="thickness-chip">19mm</span>
-              </div>
-            </div>
-            <div class="product-footer">
-              <button class="btn btn-outline-gold btn-sm" onclick="openProductSpecs('blackdecor')">
-                <i class="lucide-info"></i> Tech Specs
-              </button>
-              <button class="btn btn-primary btn-sm" onclick="openModal('modalQuote', {productName: 'Pearl Black Decor MR Grade (IS:303)'})">
-                <i class="lucide-send"></i> Quote
-              </button>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
     </div>
   </section>
+
+
 
   <!-- ==========================================
        ABOUT PEARLPLY
@@ -1203,176 +1060,9 @@
     </div>
   </section>
 
-  <!-- ==========================================
-       MANUFACTURING EXCELLENCE
-       ========================================== -->
-  <section class="section" id="manufacturing">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag"><i class="lucide-factory"></i> Advanced Infrastructure</span>
-        <h2 class="section-title">State-of-the-Art Manufacturing Plant</h2>
-        <p class="section-desc">
-          Spanning over 25,000 sq.ft. of automated manufacturing floor with automated hydraulic hot presses, veneer peeling lines, and vacuum chemical treatment chambers.
-        </p>
-      </div>
 
-      <div style="margin-bottom: 40px; border-radius: 18px; overflow: hidden; border: 1px solid var(--border-gold); max-height: 420px;">
-        <img src="assets/images/factory.png" alt="Pearl Ply Automated Manufacturing Plant" style="width: 100%; height: 100%; object-fit: cover;">
-      </div>
 
-      <div class="manufacturing-grid">
-        <div class="manufacturing-card">
-          <div class="manufacturing-icon-wrap">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B8860B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"></path>
-              <path d="M9.6 4.6A2 2 0 1 1 11 8H2"></path>
-              <path d="M12.6 19.4A2 2 0 1 0 14 16H2"></path>
-            </svg>
-          </div>
-          <h4 style="margin-bottom: 6px;">Jet Veneer Dryers</h4>
-          <p style="font-size: 0.85rem; color: #596B63;">
-            Computerized drying reduces moisture to a precise 6% to 8%, eliminating interior bubble pockets and fungal growth.
-          </p>
-        </div>
 
-        <div class="manufacturing-card">
-          <div class="manufacturing-icon-wrap">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B8860B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-              <line x1="12" y1="8" x2="12" y2="12"></line>
-              <line x1="12" y1="16" x2="12.01" y2="16"></line>
-            </svg>
-          </div>
-          <h4 style="margin-bottom: 6px;">Vacuum Pressure Plant</h4>
-          <p style="font-size: 0.85rem; color: #596B63;">
-            Veneers undergo high-pressure chemical immersion, infusing preservative chemicals into the deepest wood pore cells.
-          </p>
-        </div>
-
-        <div class="manufacturing-card">
-          <div class="manufacturing-icon-wrap">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B8860B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path>
-            </svg>
-          </div>
-          <h4 style="margin-bottom: 6px;">Multi-Daylight Hot Press</h4>
-          <p style="font-size: 0.85rem; color: #596B63;">
-            Hydraulic presses operating at 160°C temperature and 16 kg/cm² pressure ensure unshakeable synthetic resin molecular bonding.
-          </p>
-        </div>
-
-        <div class="manufacturing-card">
-          <div class="manufacturing-icon-wrap">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B8860B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="4" y="4" width="16" height="16" rx="2"></rect>
-              <rect x="9" y="9" width="6" height="6"></rect>
-              <line x1="9" y1="1" x2="9" y2="4"></line>
-              <line x1="15" y1="1" x2="15" y2="4"></line>
-              <line x1="9" y1="20" x2="9" y2="23"></line>
-              <line x1="15" y1="20" x2="15" y2="23"></line>
-              <line x1="20" y1="9" x2="23" y2="9"></line>
-              <line x1="20" y1="14" x2="23" y2="14"></line>
-              <line x1="1" y1="9" x2="4" y2="9"></line>
-              <line x1="1" y1="14" x2="4" y2="14"></line>
-            </svg>
-          </div>
-          <h4 style="margin-bottom: 6px;">4-Head CNC Calibrators</h4>
-          <p style="font-size: 0.85rem; color: #596B63;">
-            Diamond head sanders calibrate top and bottom faces simultaneously for &plusmn;0.1mm micro-even thickness.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================
-       QUALITY & CERTIFICATIONS (7-LAB PROTOCOLS)
-       ========================================== -->
-  <section class="section section-dark" id="quality">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag"><i class="lucide-microscope"></i> Rigorous Lab Testing</span>
-        <h2 class="section-title">7-Point Quality Testing Protocol</h2>
-        <p class="section-desc">
-          Every production batch undergoes destructive and non-destructive laboratory testing before receiving the official Pearl Ply holographic seal.
-        </p>
-      </div>
-
-      <div class="lab-grid">
-        <!-- Interactive Test Selector Tabs -->
-        <div class="test-nav">
-          <button class="test-tab-btn active" data-test="test1">
-            <span><i class="lucide-droplets"></i> 1. 72-Hour Boiling Water Immersion</span>
-            <i class="lucide-chevron-right"></i>
-          </button>
-          <button class="test-tab-btn" data-test="test2">
-            <span><i class="lucide-move-vertical"></i> 2. Modulus of Rupture (MOR) & MOE</span>
-            <i class="lucide-chevron-right"></i>
-          </button>
-          <button class="test-tab-btn" data-test="test3">
-            <span><i class="lucide-shield-check"></i> 3. Vacuum Anti-Borer Chemical Defense</span>
-            <i class="lucide-chevron-right"></i>
-          </button>
-          <button class="test-tab-btn" data-test="test4">
-            <span><i class="lucide-sliders"></i> 4. Quadruple Calibrating Sanding</span>
-            <i class="lucide-chevron-right"></i>
-          </button>
-          <button class="test-tab-btn" data-test="test5">
-            <span><i class="lucide-scissors"></i> 5. Glue Shear Strength & Knife Test</span>
-            <i class="lucide-chevron-right"></i>
-          </button>
-          <button class="test-tab-btn" data-test="test6">
-            <span><i class="lucide-wrench"></i> 6. Screw & Nail Holding Capacity</span>
-            <i class="lucide-chevron-right"></i>
-          </button>
-          <button class="test-tab-btn" data-test="test7">
-            <span><i class="lucide-wind"></i> 7. E0 Low Formaldehyde Air Safety</span>
-            <i class="lucide-chevron-right"></i>
-          </button>
-        </div>
-
-        <!-- Dynamic Lab Content Card (Process Specific) -->
-        <div class="test-content-card">
-          <div style="border-radius: 12px; overflow: hidden; margin-bottom: 20px; border: 1px solid var(--border-gold); max-height: 240px; position: relative;">
-            <img id="labTestImg" src="assets/images/lab_boiling.png" alt="Pearl Ply Quality Control Testing" style="width: 100%; height: 100%; object-fit: cover; transition: opacity 0.3s ease;">
-            <div id="labTestProcessBadge" style="position: absolute; bottom: 12px; left: 12px; background: rgba(10,31,24,0.88); backdrop-filter: blur(8px); border: 1px solid var(--border-gold); padding: 5px 14px; border-radius: 20px; font-size: 0.76rem; font-weight: 700; color: #D4A359; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
-              Process 1/7: 100°C Boiling Water Tank
-            </div>
-          </div>
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-            <span class="badge-gold" id="labTestStandard">Bureau of Indian Standards (IS:710:2010)</span>
-            <span style="color: #D4A359; font-weight: 700; font-size: 0.85rem;" id="labTestMetric">72 Hours Boiling | 0% Delamination</span>
-          </div>
-          <h3 style="color: #FFFFFF; font-size: 1.4rem; margin-bottom: 12px;" id="labTestTitle">
-            72-Hour Continuous Boiling Water Immersion Test
-          </h3>
-          <p style="color: #C2D4CD; font-size: 0.95rem; line-height: 1.6;" id="labTestDesc">
-            Conducted under strict IS:710 guidelines. Sample specimens are submerged in boiling water (100°C) for 72 continuous hours. Tested for zero delamination, zero edge swelling, and complete resin bond integrity.
-          </p>
-        </div>
-      </div>
-
-      <!-- Official Certifications Grid -->
-      <div class="cert-badges-grid">
-        <div class="cert-box">
-          <div class="cert-number">IS: 710</div>
-          <div class="cert-name">Marine Grade Plywood</div>
-        </div>
-        <div class="cert-box">
-          <div class="cert-number">IS: 303</div>
-          <div class="cert-name">MR & BWR Plywood</div>
-        </div>
-        <div class="cert-box">
-          <div class="cert-number">IS: 1659</div>
-          <div class="cert-name">Solid Core Blockboards</div>
-        </div>
-        <div class="cert-box">
-          <div class="cert-number">ISO 9001:2015</div>
-          <div class="cert-name">Quality Certified System</div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- ==========================================
        APPLICATIONS & ROOM LOOKBOOK (6 COMPREHENSIVE INTERIOR APPLICATIONS)
@@ -1536,170 +1226,7 @@
     </div>
   </section>
 
-  <!-- ==========================================
-       RESOURCES (CATALOGUE, BROCHURES, TDS, CERTS)
-       ========================================== -->
-  <section class="section section-alt" id="resources">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag"><i class="lucide-folder-down"></i> Technical Documentation Hub</span>
-        <h2 class="section-title">Resources & Download Center</h2>
-        <p class="section-desc">Access digital product catalogues, technical data sheets (TDS), mechanical test reports, and official BIS certification copies.</p>
-      </div>
 
-      <!-- Resource Filter Tabs -->
-      <div class="resources-tabs">
-        <button class="res-tab-btn active" data-category="all">All Documents</button>
-        <button class="res-tab-btn" data-category="catalogue">Catalogue</button>
-        <button class="res-tab-btn" data-category="brochures">Brochures</button>
-        <button class="res-tab-btn" data-category="datasheets">Datasheets (TDS)</button>
-        <button class="res-tab-btn" data-category="certifications">Certifications</button>
-      </div>
-
-      <div class="resources-grid">
-        <!-- 1. Master Catalogue -->
-        <div class="resource-card" data-category="catalogue">
-          <div class="res-icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-            </svg>
-          </div>
-          <div>
-            <h4 class="res-title">Pearl Ply Master Catalogue 2026</h4>
-            <p class="res-meta">Complete product range, thickness charts & applications (PDF &bull; 8.4 MB)</p>
-          </div>
-          <button class="btn btn-primary btn-sm" onclick="triggerDownload('Pearl Ply Master Catalogue 2026')">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download PDF
-          </button>
-        </div>
-
-        <!-- 2. Marine 710 Brochure -->
-        <div class="resource-card" data-category="brochures">
-          <div class="res-icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
-              <polyline points="14 2 14 8 20 8"></polyline>
-              <line x1="16" y1="13" x2="8" y2="13"></line>
-              <line x1="16" y1="17" x2="8" y2="17"></line>
-              <line x1="10" y1="9" x2="8" y2="9"></line>
-            </svg>
-          </div>
-          <div>
-            <h4 class="res-title">Marine BWP 710 Series Brochure</h4>
-            <p class="res-meta">Deep-dive into 72-hr boiling proof technology & warranty (PDF &bull; 3.2 MB)</p>
-          </div>
-          <button class="btn btn-outline-gold btn-sm" onclick="triggerDownload('Marine BWP 710 Series Brochure')">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download PDF
-          </button>
-        </div>
-
-        <!-- 3. Technical Data Sheet -->
-        <div class="resource-card" data-category="datasheets">
-          <div class="res-icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="4" y="4" width="16" height="16" rx="2"></rect>
-              <rect x="9" y="9" width="6" height="6"></rect>
-              <line x1="9" y1="1" x2="9" y2="4"></line>
-              <line x1="15" y1="1" x2="15" y2="4"></line>
-              <line x1="9" y1="20" x2="9" y2="23"></line>
-              <line x1="15" y1="20" x2="15" y2="23"></line>
-              <line x1="20" y1="9" x2="23" y2="9"></line>
-              <line x1="20" y1="14" x2="23" y2="14"></line>
-              <line x1="1" y1="9" x2="4" y2="9"></line>
-              <line x1="1" y1="14" x2="4" y2="14"></line>
-            </svg>
-          </div>
-          <div>
-            <h4 class="res-title">Technical Data Sheet (TDS Matrix)</h4>
-            <p class="res-meta">Tensile strength MOR/MOE, density & glue shear values (PDF &bull; 1.8 MB)</p>
-          </div>
-          <button class="btn btn-outline-gold btn-sm" onclick="triggerDownload('Technical Data Sheet TDS Matrix')">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download PDF
-          </button>
-        </div>
-
-        <!-- 4. BIS Certification License -->
-        <div class="resource-card" data-category="certifications">
-          <div class="res-icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="8" r="7"></circle>
-              <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
-            </svg>
-          </div>
-          <div>
-            <h4 class="res-title">BIS License IS:710 & IS:303 Copy</h4>
-            <p class="res-meta">Official Bureau of Indian Standards endorsement copy (PDF &bull; 2.1 MB)</p>
-          </div>
-          <button class="btn btn-outline-gold btn-sm" onclick="triggerDownload('BIS License IS710 and IS303 Official Copy')">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download PDF
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================
-       DEALERSHIP & STORE LOCATOR
-       ========================================== -->
-  <section class="section" id="dealership">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag"><i class="lucide-store"></i> Pan-India Distribution</span>
-        <h2 class="section-title">Authorized Dealer Network</h2>
-        <p class="section-desc">Locate an authorized Pearl Ply experience centre near you or apply to become a certified regional distributor.</p>
-      </div>
-
-      <div class="dealers-grid">
-        <!-- Search & Filter Controls -->
-        <div class="dealers-search-box">
-          <h3 style="font-size: 1.35rem; margin-bottom: 16px;">Find Nearest Dealer</h3>
-          
-          <div class="form-group" style="margin-bottom: 16px;">
-            <label class="form-label" for="dealerCityFilter"><i class="lucide-map-pin"></i> Select State / City</label>
-            <select id="dealerCityFilter" class="form-select">
-              <option value="">All Major Cities in India</option>
-              <option value="Delhi">Delhi NCR (Kirti Nagar / Timber Market)</option>
-              <option value="Mumbai">Mumbai (Andheri / Lakdawala)</option>
-              <option value="Bengaluru">Bengaluru (Banaswadi / Ring Road)</option>
-              <option value="Ahmedabad">Ahmedabad (Sarangpur Bridge)</option>
-              <option value="Kolkata">Kolkata (Alipore / Chetla)</option>
-              <option value="Jaipur">Jaipur (Mansarovar Industrial)</option>
-              <option value="Hyderabad">Hyderabad (Ranigunj / Secunderabad)</option>
-              <option value="Lucknow">Lucknow (Transport Nagar)</option>
-              <option value="Chandigarh">Chandigarh (Industrial Area)</option>
-            </select>
-          </div>
-
-          <div class="form-group" style="margin-bottom: 24px;">
-            <label class="form-label" for="dealerSearchInput"><i class="lucide-search"></i> Search by Locality / Store Name</label>
-            <input type="text" id="dealerSearchInput" class="form-control" placeholder="e.g. Kirti Nagar, SV Road, Outer Ring Road">
-          </div>
-
-          <div style="background: rgba(212,163,89,0.08); padding: 18px; border-radius: 8px; border: 1px solid var(--border-gold);">
-            <h4 style="font-size: 0.95rem; margin-bottom: 6px; color: #0A1F18;">Want to Become a Pearl Ply Dealer?</h4>
-            <p style="font-size: 0.82rem; color: #596B63; margin-bottom: 12px;">
-              Join our fast-growing network of 6+ regional dealers with exclusive territory rights, branding display support, and high margins.
-            </p>
-            <button class="btn btn-primary btn-sm" onclick="openModal('modalDealerApply')">
-              <i class="lucide-handshake"></i> Apply for Dealership
-            </button>
-          </div>
-        </div>
-
-        <!-- Dealers List Container -->
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-            <h4 style="font-size: 1.1rem;">Verified Experience Centres</h4>
-            <span class="badge-gold" id="dealerCount">9 Verified Locations</span>
-          </div>
-          <div class="dealers-list" id="dealersList">
-            <!-- Populated via js/dealers.js -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
 
 
@@ -1946,33 +1473,34 @@
       <div class="footer-grid">
         <div>
           <a href="#home" class="brand-logo" style="margin-bottom: 16px;" aria-label="Pearl Ply Home">
-            <div class="logo-symbol">
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <linearGradient id="ppGoldGradFtr" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#FFEAA7"/>
-                    <stop offset="35%" stop-color="#D4A359"/>
-                    <stop offset="70%" stop-color="#B8860B"/>
-                    <stop offset="100%" stop-color="#8C6014"/>
-                  </linearGradient>
-                  <linearGradient id="ppDarkGradFtr" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#0E3326"/>
-                    <stop offset="100%" stop-color="#04120D"/>
-                  </linearGradient>
-                </defs>
-                <rect x="2" y="2" width="36" height="36" rx="9" fill="url(#ppDarkGradFtr)" stroke="url(#ppGoldGradFtr)" stroke-width="1.8"/>
-                <path d="M6 11 L11 6 M34 11 L29 6 M6 29 L11 34 M34 29 L29 34" stroke="url(#ppGoldGradFtr)" stroke-width="1.2" stroke-linecap="round"/>
-                <polygon points="20,5.5 23.5,9.5 16.5,9.5" fill="url(#ppGoldGradFtr)"/>
-                <path d="M13 11.5 H21.5 C24.8 11.5 27.5 13.8 27.5 17.2 C27.5 20.6 24.8 22.8 21.5 22.8 H17.2 V32 H13 V11.5 Z" fill="url(#ppGoldGradFtr)"/>
-                <path d="M17.2 15 H21 C22.4 15 23.4 15.9 23.4 17.2 C23.4 18.5 22.4 19.4 21 19.4 H17.2 V15 Z" fill="#0E3326"/>
-                <line x1="13" y1="22.8" x2="21.5" y2="22.8" stroke="#FFEAA7" stroke-width="1"/>
-                <circle cx="28.5" cy="11.5" r="2" fill="#FFEAA7"/>
-              </svg>
-            </div>
-            <div class="logo-text">
-              <span class="logo-title">PEARL <span>PLY</span></span>
-              <span class="logo-subtitle">Strength &bull; Precision &bull; Luxury</span>
-            </div>
+            <svg width="230" height="58" viewBox="0 0 340 95" fill="none" xmlns="http://www.w3.org/2000/svg" class="pearl-official-footer-logo" style="color: #FFFFFF;">
+              <g class="logo-circle-emblem">
+                <circle cx="46" cy="46" r="38" fill="none" stroke="currentColor" stroke-width="7"/>
+                <path d="M46 48 L46 68 M46 54 L38 63 M46 58 L54 64 M42 68 L46 68 L50 68" stroke="#10B981" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <ellipse cx="46" cy="22" rx="4.5" ry="6.5" fill="#10B981"/>
+                <ellipse cx="38" cy="26" rx="4" ry="6" fill="#10B981"/>
+                <ellipse cx="54" cy="26" rx="4" ry="6" fill="#10B981"/>
+                <ellipse cx="32" cy="32" rx="4" ry="5.5" fill="#10B981"/>
+                <ellipse cx="60" cy="32" rx="4" ry="5.5" fill="#10B981"/>
+                <ellipse cx="46" cy="30" rx="5" ry="7" fill="#10B981"/>
+                <ellipse cx="38" cy="38" rx="4.5" ry="6" fill="#10B981"/>
+                <ellipse cx="54" cy="38" rx="4.5" ry="6" fill="#10B981"/>
+                <ellipse cx="28" cy="40" rx="3.5" ry="5" fill="#10B981"/>
+                <ellipse cx="64" cy="40" rx="3.5" ry="5" fill="#10B981"/>
+                <ellipse cx="46" cy="42" rx="4.5" ry="6" fill="#10B981"/>
+              </g>
+              <g class="logo-wordmark">
+                <path d="M104 20 H126 C136 20 144 26 144 36 C144 45 136 50 126 50 H116 V68 H104 V20 Z M116 29 V41 H125 C130 41 133 38 133 35 C133 32 130 29 125 29 H116 Z" fill="currentColor"/>
+                <rect x="152" y="20" width="38" height="7.5" rx="2" fill="#10B981"/>
+                <rect x="152" y="41" width="38" height="7.5" rx="2" fill="#10B981"/>
+                <rect x="152" y="61" width="38" height="7.5" rx="2" fill="#10B981"/>
+                <path d="M210 20 L228 68 H215 L211 58 H198 L194 68 H183 L202 20 H210 Z M205 34 L201 48 H208 L205 34 Z" fill="currentColor"/>
+                <path d="M235 20 H256 C266 20 273 26 273 35 C273 42 268 47 260 49 L274 68 H260 L248 51 H247 V68 H235 V20 Z M247 29 V41 H254 C259 41 262 38 262 35 C262 32 259 29 254 29 H247 Z" fill="currentColor"/>
+                <path d="M284 20 H296 V58 H318 V68 H284 V20 Z" fill="currentColor"/>
+                <text x="321" y="22" font-family="Georgia, 'Times New Roman', serif" font-size="12" font-weight="bold" fill="currentColor">TM</text>
+              </g>
+              <text x="248" y="86" font-family="Georgia, 'Times New Roman', serif" font-size="13" font-weight="bold" letter-spacing="2" fill="currentColor" text-anchor="middle">THINK DIFFERENT</text>
+            </svg>
           </a>
           <p style="font-size: 0.88rem; margin-bottom: 16px; line-height: 1.6;">
             India’s trusted manufacturer of IS:710 Marine Grade Plywood, 4x Calibrated CNC Sheets, and SolidCore Blockboards. 100% Gurjan Hardwood core with 25-Year Guarantee.
@@ -1995,39 +1523,37 @@
         </div>
 
         <div>
-          <h4>Our Products</h4>
+          <h4>Products Range</h4>
           <ul class="footer-links">
             <li><a href="#products" onclick="openProductSpecs('ultima_plus')">Pearl Ultima Plus (IS:710 BWP)</a></li>
             <li><a href="#products" onclick="openProductSpecs('ultima_ply')">Pearl Ultima Ply (IS:303 BWR)</a></li>
             <li><a href="#products" onclick="openProductSpecs('platinum')">Pearl Platinum (IS:2202 Flush Door)</a></li>
             <li><a href="#products" onclick="openProductSpecs('blackdecor')">Pearl Black Decor (IS:303 MR)</a></li>
-            <li><a href="#products" onclick="openProductSpecs('marine')">Marine Plywood (100% Calibrated)</a></li>
-            <li><a href="#products" onclick="openProductSpecs('blockboard')">Block Board (IS:1659 SolidCore)</a></li>
+            <li><a href="#products" onclick="openProductSpecs('marine')">100% Calibrated Marine Ply</a></li>
+            <li><a href="#products" onclick="openProductSpecs('blockboard')">SolidCore Pine Block Board</a></li>
           </ul>
         </div>
 
         <div>
-          <h4>Quick Navigation</h4>
+          <h4>Plywood Categories</h4>
+          <ul class="footer-links">
+            <li><a href="#products">Boiling Waterproof Plywood</a></li>
+            <li><a href="#products">4-Head Calibrated Plywood</a></li>
+            <li><a href="#products">E-0 Emission Eco Plywood</a></li>
+            <li><a href="#products">Fire Retardant Plywood</a></li>
+            <li><a href="#products">100% Gurjan Face Plywood</a></li>
+            <li><a href="#products">Termite &amp; Borer Proof Ply</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Information &amp; Help</h4>
           <ul class="footer-links">
             <li><a href="#about">About Pearlply</a></li>
-            <li><a href="#manufacturing">Manufacturing Plant</a></li>
-            <li><a href="#quality">Quality & Certifications</a></li>
             <li><a href="#applications">Applications Lookbook</a></li>
-            <li><a href="#architects">Architects & Designers</a></li>
-            <li><a href="#dealership">Dealer Network</a></li>
-            <li><a href="#calculator">Plywood Sheet Calculator</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4>Resources</h4>
-          <ul class="footer-links">
-            <li><a href="#resources" onclick="triggerDownload('Pearl Ply Product Catalogue')">Product Catalogue</a></li>
-            <li><a href="#resources" onclick="triggerDownload('Pearl Ply Series Brochures')">Product Brochures</a></li>
-            <li><a href="#resources" onclick="triggerDownload('Technical Data Sheet TDS')">Technical Datasheets</a></li>
-            <li><a href="#resources" onclick="triggerDownload('BIS and ISO Certifications')">BIS Certifications</a></li>
-            <li><a href="#quality">Quality & Certifications</a></li>
+            <li><a href="#architects">Architects &amp; Designers</a></li>
             <li><a href="#contact">Contact Support</a></li>
+            <li><a href="#contact" onclick="openModal('modalQuote')">Claim Warranty &amp; Rates</a></li>
           </ul>
         </div>
       </div>
@@ -2331,12 +1857,7 @@
       </div>
       <span>Products</span>
     </a>
-    <a href="#calculator" class="mobile-nav-tab" id="mTabCalc">
-      <div class="m-tab-icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="16" y1="14" x2="16" y2="18"></line><path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M8 18h.01M12 18h.01"></path></svg>
-      </div>
-      <span>Calculator</span>
-    </a>
+
     <button class="mobile-nav-tab" id="mTabChat" onclick="window.triggerMobileChat()">
       <div class="m-tab-icon">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2v4"></path><path d="M4 10h16a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2z"></path><circle cx="9" cy="15" r="1.5"></circle><circle cx="15" cy="15" r="1.5"></circle><path d="M9 19h6"></path></svg>
@@ -2356,7 +1877,7 @@
   <div class="toast-container" id="toastContainer"></div>
 
   <!-- JavaScript Scripts -->
-  <script src="js/calculator.js"></script>
+
   <script src="js/quiz.js"></script>
   <script src="js/dealers.js"></script>
   <script src="js/chatbot.js"></script>

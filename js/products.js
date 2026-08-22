@@ -34,28 +34,128 @@
     },
     {
       id: 'PP-002',
-      name: 'Pearl Ultima Ply',
-      grade: 'BWR',
-      tagline: 'High Density Extra Layer with Calibrated Gurjan Face',
-      description: 'Certified IS:303 BWR Grade (CM/L 9760279217). Engineered with extra layer plywood technology, calibrated Gurjan face, high density core, and hot pressed under precision hydraulic temperature & pressure.',
-      core: 'High Density Core + Calibrated Gurjan Face',
-      resin: 'Fortified Phenol Formaldehyde Synthetic Resin — Low VOC',
-      standard: 'IS:303 (BWR) • CM/L 9760279217',
-      warranty: '10-Year Guarantee',
-      waterTest: '8-Hour Boiling Resistant (Hot Pressed)',
-      moisture: 'BWR',
-      thicknesses: ['6', '9', '12', '16', '18', '19', '25'],
-      sheetSizes: ['8x4', '7x4', '8x3', '7x3'],
-      price: '₹1,050 per sheet',
+      name: 'Pearl Boil Pro',
+      grade: 'Marine',
+      tagline: 'Boiling Water Proof HDF Board • 20-Year Guarantee',
+      description: 'Boiling Water Proof HDF Board certified IS:303 (CM/L 9100233593 Type AA Grade MR). Features 20-Year Guarantee, termite proof, borer proof, fungal resistant, and durable long-lasting high-density core.',
+      core: 'Boiling Water Proof HDF High Density Core',
+      resin: 'Unextended Phenol Formaldehyde (PF) — Eco Friendly',
+      standard: 'IS:303 (CM/L No. 9100233593)',
+      warranty: '20-Year Guarantee',
+      waterTest: 'Boiling Water Proof (BWP HDF)',
+      moisture: 'BWP',
+      thicknesses: ['18'],
+      sheetSizes: ['6x4'],
+      price: '₹1,280 per sheet',
       status: 'Active',
-      features: '303 BWR Grade, Calibrated Gurjan Face, Extra Layer Plywood, High Density, Low VOC, 10 Years Guarantee, Hot Pressed, Termite Proof',
-      photo: 'assets/images/pearl_ultima_ply.jpg',
-      createdAt: '01 Aug 2026'
+      features: 'Boiling Water Proof, 20 Years Guarantee, Termite Proof, Borer Proof, Fungal Resistant, Durable & Long Lasting, Type AA Grade MR, Mfg 2025',
+      photo: 'assets/images/pearl_boil_pro.jpg',
+      createdAt: '21 Aug 2026'
     },
     {
       id: 'PP-003',
+      name: 'Pearl HDMR',
+      grade: 'MR',
+      tagline: 'High Density Moisture Resistance Board • High Load Bearing',
+      description: 'High Density Moisture Resistance Board certified IS:303 (CM/L 9100233593 Type AA Grade MR). Specially engineered for heavy load bearing wardrobes, kitchen cabinets, modular furniture, and humid interiors.',
+      core: 'High Density Moisture Resistant Fiber Core',
+      resin: 'Fortified MUF Synthetic Resin — Low VOC',
+      standard: 'IS:303 (CM/L No. 9100233593)',
+      warranty: '10-Year Guarantee',
+      waterTest: 'Moisture Resistant (High Density)',
+      moisture: 'MR',
+      thicknesses: ['18'],
+      sheetSizes: ['6x4'],
+      price: '₹1,150 per sheet',
+      status: 'Active',
+      features: 'High Load Bearing Capacity, Moisture Resistant, Termite Resistant, Durable & Long Lasting, Type AA Grade MR, Mfg 2025',
+      photo: 'assets/images/pearl_hdmr.jpg',
+      createdAt: '21 Aug 2026'
+    },
+    {
+      id: 'PP-004',
+      name: 'Pearl Ultima BWR',
+      grade: 'BWR',
+      tagline: 'Extra Layer BWR Technology • 10-Year Guarantee',
+      description: 'Certified IS:303 BWR Grade Plywood (CM/L 9100233593). Built with Extra Layer technology, high density low VOC resin, and hot pressed under high hydraulic pressure. 10-Year Guarantee, termite proof.',
+      core: 'Extra Layer High Density Hardwood Core',
+      resin: 'Fortified Phenolic Synthetic Resin — Low VOC',
+      standard: 'IS:303 (CM/L No. 9100233593)',
+      warranty: '10-Year Guarantee',
+      waterTest: '8-Hour Boiling Resistant (Hot Pressed)',
+      moisture: 'BWR',
+      thicknesses: ['5', '6', '9', '12', '16', '18', '19', '25'],
+      sheetSizes: ['7x4'],
+      price: '₹1,050 per sheet',
+      status: 'Active',
+      features: 'BWR Plywood, Extra Layers Technology, 10 Year Guarantee, Termite & Borer Resistant, Fungal Resistant, Hot Pressed, ISO 9001:2008',
+      photo: 'assets/images/pearl_ultima_bwr.jpg',
+      createdAt: '21 Aug 2026'
+    },
+    {
+      id: 'PP-005',
+      name: 'Pearl Black Hub',
+      grade: 'MR',
+      tagline: '100% Full Core Full Panel • Anti-Warp Technology',
+      description: 'Premium 100% Full Core Full Panel Ply & Board certified IS:303 (CM/L 9100233593 Type AA Grade MR). Features Anti-Warp Technology, high density low VOC formulation, 100% Press Technology, and Make in India quality.',
+      core: '100% Full Core Full Panel Selected Timber',
+      resin: 'Fortified Resin — Low VOC & Anti-Warp',
+      standard: 'IS:303 (CM/L No. 9100233593)',
+      warranty: '10-Year Guarantee',
+      waterTest: 'Moisture Resistant (Interior & Furniture)',
+      moisture: 'MR',
+      thicknesses: ['5', '6', '9', '12', '16', '18', '19', '25'],
+      sheetSizes: ['8x4'],
+      price: '₹950 per sheet',
+      status: 'Active',
+      features: '100% Full Core Full Panel, Anti-Warp Technology, High Density Low VOC, Termite & Borer Resistant, Fungal Resistant, 100% Press Tech',
+      photo: 'assets/images/pearl_black_hub.jpg',
+      createdAt: '21 Aug 2026'
+    },
+    {
+      id: 'PP-006',
+      name: 'Pearl Black Decor',
+      grade: 'MR',
+      tagline: '100% Full Core Full Panel • 5-Year Guarantee',
+      description: 'IS:303 certified MR Grade Plywood (CM/L 9100233593 Type AA). Built with 100% Full Core Full Panel, Anti-Warp Technology, High Tensile Strength, 5-Year Guarantee, Termite & Borer Resistance.',
+      core: '100% Full Core Full Panel Hardwood',
+      resin: 'Fortified MUF Synthetic Resin — Low VOC',
+      standard: 'IS:303 (CM/L No. 9100233593)',
+      warranty: '5-Year Guarantee',
+      waterTest: 'Moisture Resistant Interior Immersion Tested',
+      moisture: 'MR',
+      thicknesses: ['5', '6', '9', '12', '16', '18', '19', '25'],
+      sheetSizes: ['7x4'],
+      price: '₹880 per sheet',
+      status: 'Active',
+      features: '100% Full Core Full Panel, Anti-Warp Technology, High Tensile Strength, 5 Years Guarantee, Termite & Borer Resistant, Fungal Resistant, Extra Strength, ISO 9001:2008',
+      photo: 'assets/images/pearl_black_decor.jpg',
+      createdAt: '21 Aug 2026'
+    },
+    {
+      id: 'PP-007',
+      name: 'Pearl Future Wood',
+      grade: 'MR',
+      tagline: 'High Tensile Strength Ply, Board & Door • 5-Year Guarantee',
+      description: 'IS:303 certified Type AA Grade MR Plywood (CM/L 9100233593). Features 100% Full Core Full Panel construction, Anti-Warp Technology, Extra Strength, Fungal Resistance, and 5-Year Guarantee.',
+      core: '100% Full Core Full Panel Timber Core',
+      resin: 'Fortified MUF Resin Matrix — Low VOC',
+      standard: 'IS:303 (CM/L No. 9100233593)',
+      warranty: '5-Year Guarantee',
+      waterTest: 'Moisture Resistant (Furniture & Interior)',
+      moisture: 'MR',
+      thicknesses: ['5', '6', '9', '12', '16', '18', '19', '25'],
+      sheetSizes: ['7x4'],
+      price: '₹820 per sheet',
+      status: 'Active',
+      features: '100% Full Core Full Panel, Anti-Warp Technology, High Tensile Strength, 5 Years Guarantee, Termite & Borer Resistant, Fungal Resistant, Extra Strength, ISO 9001:2008',
+      photo: 'assets/images/pearl_future_wood.jpg',
+      createdAt: '21 Aug 2026'
+    },
+    {
+      id: 'PP-008',
       name: 'Pearl Platinum',
-      grade: 'Marine',
+      grade: 'Door',
       tagline: 'Premium 100% Pine Wood Flush Door (Full Water Proof)',
       description: 'Premium flush door engineered with 100% pure pine wood core. Swell proof, termite & borer resistant with GD protection. Certified IS:2202 BWP grade with superior strength.',
       core: '100% Pure Seasoned Pine Wood',
@@ -71,26 +171,6 @@
       features: '100% Pure Pine Wood, Superior Swell Proof, Full Water Proof, Termite & Borer Resistant, GD Protection, ISO 9001:2008',
       photo: 'assets/images/pearl_platinum.jpg',
       createdAt: '01 Aug 2026'
-    },
-    {
-      id: 'PP-004',
-      name: 'Pearl Black Decor',
-      grade: 'MR',
-      tagline: '303 MR Grade Plywood with 100% Gurjan Face',
-      description: '303 MR Grade plywood with 100% Gurjan Face Veneer. Full core, full panel construction ensures zero gaps and superior screw holding strength for luxury furniture and interior paneling.',
-      core: 'Full Core, Full Panel Selected Hardwood',
-      resin: 'Fortified Melamine Urea Formaldehyde (MUF)',
-      standard: 'IS:303 (MR Grade)',
-      warranty: '10-Year Guarantee',
-      waterTest: 'Moisture Resistant (Interior Grade)',
-      moisture: 'MR',
-      thicknesses: ['9', '12', '16', '18', '19'],
-      sheetSizes: ['8x4', '7x4', '8x3', '7x3'],
-      price: '₹850 per sheet',
-      status: 'Active',
-      features: '100% Gurjan Face, Full Core Full Panel, High Screw Retention, GLP Certified, Type AA ISI Marked, Anti-Borer Chemical Treatment',
-      photo: 'assets/images/pearl_black_decor.jpg',
-      createdAt: '01 Aug 2026'
     }
   ];
 
@@ -100,26 +180,19 @@
       const stored = localStorage.getItem(PRODUCTS_KEY);
       if (stored) {
         let list = JSON.parse(stored);
-        if (Array.isArray(list) && list.length > 0) return list;
-      }
-    } catch (e) { console.warn('Products read error:', e); }
-    localStorage.setItem(PRODUCTS_KEY, JSON.stringify(DEFAULT_PRODUCTS));
-    return DEFAULT_PRODUCTS;
-  }
-      if (stored) {
-        let list = JSON.parse(stored);
-        // Ensure default products exist in stored list
-        let updated = false;
-        DEFAULT_PRODUCTS.forEach(dp => {
-          if (!list.some(p => p.id === dp.id)) {
-            list.push(dp);
-            updated = true;
+        if (Array.isArray(list) && list.length > 0) {
+          let updated = false;
+          DEFAULT_PRODUCTS.forEach(dp => {
+            if (!list.some(p => p.id === dp.id)) {
+              list.push(dp);
+              updated = true;
+            }
+          });
+          if (updated) {
+            localStorage.setItem(PRODUCTS_KEY, JSON.stringify(list));
           }
-        });
-        if (updated) {
-          localStorage.setItem(PRODUCTS_KEY, JSON.stringify(list));
+          return list;
         }
-        return list;
       }
     } catch (e) { console.warn('Products read error:', e); }
     localStorage.setItem(PRODUCTS_KEY, JSON.stringify(DEFAULT_PRODUCTS));
@@ -450,11 +523,22 @@
 
   // ── Public API ─────────────────────────────────────────────────────────────
   window.PearlProducts = {
+    render: renderProducts,
+    search: function(val) {
+      const el = document.getElementById('prodSearchInput');
+      if (el) el.value = val;
+      renderProducts();
+    },
+    filterGrade: function(val) {
+      const el = document.getElementById('prodGradeFilter');
+      if (el) el.value = val;
+      renderProducts();
+    },
     openModal,
     closeModal,
     saveProduct,
     deleteProduct,
-    filterProducts,
+    filterProducts: renderProducts,
     handlePhotoUpload
   };
 

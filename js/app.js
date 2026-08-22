@@ -3,6 +3,30 @@
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Royale Touche Style Preloader Controller (Smooth & Slower Luxury Intro)
+  const preloader = document.getElementById('pearlPreloader');
+  const progressBar = document.getElementById('preloaderProgressBar');
+  const percentText = document.getElementById('preloaderPercent');
+
+  if (preloader) {
+    let progress = 0;
+    const interval = setInterval(() => {
+      progress += Math.floor(Math.random() * 3) + 2; // Increments 2% to 4%
+      if (progress >= 100) {
+        progress = 100;
+        clearInterval(interval);
+        if (progressBar) progressBar.style.width = '100%';
+        if (percentText) percentText.textContent = '100%';
+        setTimeout(() => {
+          preloader.classList.add('fade-out');
+        }, 650);
+      } else {
+        if (progressBar) progressBar.style.width = `${progress}%`;
+        if (percentText) percentText.textContent = `${progress}%`;
+      }
+    }, 75); // 75ms per step = ~3.2s total smooth intro duration
+  }
+
   // 1. Sticky Navigation Header
   const header = document.querySelector('.main-header');
   window.addEventListener('scroll', () => {
@@ -69,9 +93,8 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', () => {
     const scrollPos = window.scrollY + 250;
     const sections = [
-      { id: 'home', tabId: 'mTabHome' },
       { id: 'products', tabId: 'mTabProducts' },
-      { id: 'calculator', tabId: 'mTabCalc' }
+      { id: 'quality', tabId: 'mTabQuality' }
     ];
 
     sections.forEach(s => {
@@ -485,62 +508,98 @@ document.addEventListener('DOMContentLoaded', () => {
     'ultima_plus': {
       title: 'Pearl Ultima Plus (IS:710 BWP Marine Grade)',
       grade: 'IS:710 BWP Grade • CM/L 9504492',
-      core: '100% Gurjan Inside with Extra Layer Technology & High Density Compaction',
+      core: '100% High Density Gurjan Inside with Extra Layer Technology',
       resin: '100% Undiluted Phenol Formaldehyde (PF) Marine Resin (Low VOC)',
-      thickness: '6mm, 9mm, 12mm, 16mm, 19mm, 25mm',
-      dimensions: '8x4, 7x4, 8x3, 7x3 ft',
+      thickness: '6mm, 9mm, 12mm, 16mm, 18mm, 19mm, 25mm',
+      dimensions: '8x4, 7x4, 8x3, 7x3 ft (2440x1220mm, 2130x1220mm)',
       boilingTest: '72-Hour Continuous Boiling Water Proof Immersion Test (Zero Delamination)',
       screwHolding: '> 2850 N (Face) | > 1750 N (Edge)',
-      warranty: '15 Years Guarantee',
+      warranty: '15 Years Replacement Guarantee',
       applications: 'Modular kitchen base units, wet areas, bathroom vanities, luxury wardrobes, coastal residences'
     },
-    'ultima_ply': {
-      title: 'Pearl Ultima Ply (IS:303 BWR Grade)',
-      grade: 'IS:303 BWR Grade • CM/L 9760279217',
-      core: 'High Density Hardwood Core with Calibrated Gurjan Face & Extra Layer',
-      resin: 'Fortified Phenol Formaldehyde Synthetic Resin Matrix (Low VOC)',
-      thickness: '6mm, 9mm, 12mm, 16mm, 19mm, 25mm',
-      dimensions: '8x4, 7x4, 8x3, 7x3 ft',
-      boilingTest: '8-Hour Continuous Boiling Resistant (Hot Pressed Technology)',
-      screwHolding: '> 2450 N (Face) | > 1550 N (Edge)',
+    'boilpro': {
+      title: 'Pearl Boil Pro (Boiling Water Proof HDF Board)',
+      grade: 'IS:303 • CM/L No. 9100233593 • Type AA Grade MR',
+      core: 'Boiling Water Proof HDF High Density Core (2025 Mfg)',
+      resin: 'Unextended Phenol Formaldehyde (PF) — Low VOC & Eco-Friendly',
+      thickness: '18mm',
+      dimensions: '6ft x 4ft (1830mm x 1220mm)',
+      boilingTest: 'Boiling Water Proof (BWP HDF Board High Temp Resistant)',
+      screwHolding: '> 2700 N (Face) | > 1650 N (Edge)',
+      warranty: '20 Years Guarantee',
+      applications: 'Heavy duty kitchen shutters, wardrobes, moisture prone zones, architectural paneling'
+    },
+    'hdmr': {
+      title: 'Pearl HDMR (High Density Moisture Resistance Board)',
+      grade: 'IS:303 • CM/L No. 9100233593 • Type AA Grade MR',
+      core: 'High Density Moisture Resistant Fiber Core (2025 Mfg)',
+      resin: 'Fortified MUF Synthetic Resin Matrix (Low VOC)',
+      thickness: '18mm',
+      dimensions: '6ft x 4ft (1830mm x 1220mm)',
+      boilingTest: 'High Density Moisture Barrier & Humidity Immersion Resistance',
+      screwHolding: '> 2900 N (High Load Bearing Capacity)',
       warranty: '10 Years Guarantee',
-      applications: 'Kitchen upper cabinets, wardrobes, dining furniture, living partitions, architectural woodworking'
+      applications: 'Heavy load wardrobes, kitchen cabinets, office modular furniture, humid interiors'
+    },
+    'ultimabwr': {
+      title: 'Pearl Ultima BWR (Extra Layer BWR Plywood)',
+      grade: 'IS:303 BWR Grade • CM/L No. 9100233593 • Type AA Grade MR',
+      core: 'Extra Layer High Density Core + Hot Pressed Technology',
+      resin: 'Fortified Phenolic Synthetic Resin (Low VOC & ISO 9001:2008)',
+      thickness: '5mm, 6mm, 9mm, 12mm, 16mm, 18mm, 19mm, 25mm',
+      dimensions: '7ft x 4ft (2130mm x 1220mm)',
+      boilingTest: '8-Hour Continuous Boiling Water Resistance (Hot Pressed)',
+      screwHolding: '> 2550 N (Face) | > 1600 N (Edge)',
+      warranty: '10 Years Guarantee',
+      applications: 'Kitchen cabinets, bedroom wardrobes, dining tables, interior partitions'
+    },
+    'blackhub': {
+      title: 'Pearl Black Hub (100% Full Core Full Panel)',
+      grade: 'IS:303 • CM/L No. 9100233593 • Type AA Grade MR',
+      core: '100% Full Core Full Panel Selected Hardwood Timber',
+      resin: 'Anti-Warp Precision Resin & 100% Press Technology (Low VOC)',
+      thickness: '5mm, 6mm, 9mm, 12mm, 16mm, 18mm, 19mm, 25mm',
+      dimensions: '8ft x 4ft (2440mm x 1220mm)',
+      boilingTest: 'Moisture Resistant Anti-Warp Environmental Immersion',
+      screwHolding: '> 2650 N (Face) | > 1650 N (Edge)',
+      warranty: '10 Years Guarantee',
+      applications: 'Full height wardrobe shutters, living room consoles, commercial paneling, furniture'
+    },
+    'blackdecor': {
+      title: 'Pearl Black Decor (100% Full Core Full Panel)',
+      grade: 'IS:303 • CM/L No. 9100233593 • Type AA Grade MR',
+      core: '100% Full Core Full Panel Construction & Anti-Warp Tech',
+      resin: 'Fortified MUF Synthetic Resin Matrix (ISO 9001:2008 Certified)',
+      thickness: '5mm, 6mm, 9mm, 12mm, 16mm, 18mm, 19mm, 25mm',
+      dimensions: '7ft x 4ft (2130mm x 1220mm)',
+      boilingTest: 'Moisture & Fungal Resistant Interior Immersion Tested',
+      screwHolding: '> 2600 N High Tensile Strength',
+      warranty: '5 Years Guarantee',
+      applications: 'Architectural interior paneling, wardrobes, doors, premium furniture'
+    },
+    'futurewood': {
+      title: 'Pearl Future Wood (Ply, Board & Door)',
+      grade: 'IS:303 • CM/L No. 9100233593 • Type AA Grade MR',
+      core: '100% Full Core Full Panel Next-Gen Engineered Timber',
+      resin: 'Fortified MUF Synthetic Resin (Low VOC & ISO 9001:2008)',
+      thickness: '5mm, 6mm, 9mm, 12mm, 16mm, 18mm, 19mm, 25mm',
+      dimensions: '7ft x 4ft (2130mm x 1220mm)',
+      boilingTest: 'High Tensile Moisture Resistant Fiber Barrier',
+      screwHolding: '> 2580 N High Tensile Strength',
+      warranty: '5 Years Guarantee',
+      applications: 'Modern furniture, tall doors, wall paneling, office interior suites'
     },
     'platinum': {
       title: 'Pearl Platinum Flush Door (IS:2202 BWP)',
-      grade: 'IS:2202 BWP Grade • ISO 9001:2008',
-      core: '100% Pure Pine Wood Solid Door Core with GD Protection',
-      resin: 'Phenol Formaldehyde (PF) BWP Synthetic Resin',
+      grade: 'IS:2202 BWP Grade • ISO 9001:2008 Certified',
+      core: '100% Pure Seasoned Pine Wood Solid Core with GD Protection',
+      resin: '100% Undiluted Phenol Formaldehyde (PF) BWP Synthetic Resin',
       thickness: '30mm, 35mm',
       dimensions: '8x4, 7x4, 7x3, 6.5x3 ft',
       boilingTest: 'Full Water Proof (BWP) & Superior Swell Proof',
       screwHolding: '> 3000 N (Face) | > 2100 N (Edge)',
       warranty: '10-Year Guarantee',
       applications: 'Main entrance doors, bathroom doors, bedroom luxury doors, commercial suites'
-    },
-    'blackdecor': {
-      title: 'Pearl Black Decor MR Plywood (IS:303)',
-      grade: 'IS:303 MR Grade • Type AA (ISI Marked)',
-      core: 'Full Core, Full Panel Construction with 100% Gurjan Face',
-      resin: 'Fortified Melamine Urea Formaldehyde (MUF)',
-      thickness: '9mm, 12mm, 16mm, 18mm, 19mm',
-      dimensions: '8x4, 7x4, 8x3, 7x3 ft',
-      boilingTest: 'Moisture Resistant Interior Immersion Tested',
-      screwHolding: '> 2350 N (Face) | > 1450 N (Edge)',
-      warranty: '10-Year Guarantee',
-      applications: 'Premium living furniture, modular wardrobes, TV consoles, wall paneling'
-    },
-    'blockboard': {
-      title: 'Pearl SolidCore Block Board (IS:1659)',
-      grade: 'IS:1659 Solid Batten Blockboard',
-      core: 'Seasoned Pine / Hardwood Solid Core Battens',
-      resin: 'BWP / MR Grade Phenolic & Melamine Bonding',
-      thickness: '19mm, 25mm, 30mm',
-      dimensions: '8x4, 7x4, 8x3, 7x3 ft',
-      boilingTest: 'High Thermal & Moisture Immersion Resistant',
-      screwHolding: '> 2800 N (High Retention Batten Core)',
-      warranty: '20 Years Anti-Warping Guarantee',
-      applications: '7ft to 9ft tall wardrobe shutters, solid core doors, long conference tables'
     }
   };
 
@@ -672,3 +731,73 @@ window.addEventListener('load', () => {
     lucide.createIcons();
   }
 });
+
+// Timeline Quality Switcher (Royale Touche Style 7-Point Quality Steps)
+const TIMELINE_DATA = {
+  1: {
+    title: "Vacuum Pressure Chemical Treatment",
+    badge: "Process 1/7: Vacuum Chemical Plant",
+    img: "assets/images/lab_vacuum.png",
+    desc: "Veneers undergo deep vacuum chamber pressure immersion, infusing preservative anti-termite and fire-retardant chemicals deep into every core wood cell."
+  },
+  2: {
+    title: "Fully Composed Core & Panels",
+    badge: "Process 2/7: Core & Panel Composers",
+    img: "assets/images/factory.png",
+    desc: "100% composed full sheet veneers made using sophisticated CNC core composers to ensure zero overlap, zero core voids, and seamless structural stability."
+  },
+  3: {
+    title: "100% Phenolic BWP Polymers",
+    badge: "Process 3/7: Phenolic Resin Synthesis",
+    img: "assets/images/lab_boiling.png",
+    desc: "Bonded with unextended Phenol Formaldehyde resin, providing unshakeable cross-ply adhesive strength and 72-hour boiling water proof endurance."
+  },
+  4: {
+    title: "Termite & Borer Proof Shield",
+    badge: "Process 4/7: Microbe & Pest Defense",
+    img: "assets/images/lab_e0.png",
+    desc: "Veneer cells are permanently immunized against microbes, wood-boring beetles, subterranean termites, and fungal decay under all climates."
+  },
+  5: {
+    title: "Fire Retardant Technology",
+    badge: "Process 5/7: Nano Fire Retardant",
+    img: "assets/images/lab_mor.png",
+    desc: "Vacuum treated with organo-phosphorus nano particles to retard flame spread, giving crucial safety time during fire emergencies."
+  },
+  6: {
+    title: "Quadruple Diamond Sanding Calibration",
+    badge: "Process 6/7: 4-Head CNC Calibrator",
+    img: "assets/images/lab_cnc.png",
+    desc: "All sheets pass through computerized 4-head diamond calibrators ensuring micro-flat ±0.1mm uniform thickness across the entire 8x4 sheet."
+  },
+  7: {
+    title: "High Screw & Nail Holding Capacity",
+    badge: "Process 7/7: Heavy Load Mechanical Test",
+    img: "assets/images/lab_screw.png",
+    desc: "Made from select dense plantation hardwoods with face holding force exceeding 2600 N, ensuring heavy soft-close shutters never sag."
+  }
+};
+
+window.switchTimelineStep = function(stepNum, element) {
+  document.querySelectorAll('.timeline-step-card').forEach(card => card.classList.remove('active'));
+  element?.classList.add('active');
+
+  const data = TIMELINE_DATA[stepNum];
+  if (data) {
+    const titleEl = document.getElementById('timelineActiveTitle');
+    const badgeEl = document.getElementById('timelineActiveBadge');
+    const descEl = document.getElementById('timelineActiveDesc');
+    const imgEl = document.getElementById('timelineActiveImg');
+
+    if (titleEl) titleEl.textContent = data.title;
+    if (badgeEl) badgeEl.textContent = data.badge;
+    if (descEl) descEl.textContent = data.desc;
+    if (imgEl) {
+      imgEl.style.opacity = '0.3';
+      setTimeout(() => {
+        imgEl.src = data.img;
+        imgEl.style.opacity = '1';
+      }, 150);
+    }
+  }
+};

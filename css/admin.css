@@ -3,17 +3,17 @@
    ========================================================================== */
 
 :root {
-  --adm-bg: #05140F;
-  --adm-bg-surface: #0A2219;
-  --adm-card: #0E2E22;
-  --adm-card-hover: #133D2E;
-  --adm-gold: #D4A359;
-  --adm-gold-light: #F3D9A2;
-  --adm-gold-dark: #A67324;
+  --adm-bg: #0A2B17;
+  --adm-bg-surface: #0F3F22;
+  --adm-card: #14532D;
+  --adm-card-hover: #1D6B3C;
+  --adm-gold: #F4C430;
+  --adm-gold-light: #FFE082;
+  --adm-gold-dark: #C79B18;
   --adm-text: #FFFFFF;
-  --adm-text-muted: #8FA89E;
-  --adm-border: rgba(212, 163, 89, 0.22);
-  --adm-border-hover: rgba(212, 163, 89, 0.5);
+  --adm-text-muted: #A3C9B2;
+  --adm-border: rgba(244, 196, 48, 0.25);
+  --adm-border-hover: rgba(244, 196, 48, 0.55);
   --adm-green: #38A169;
   --adm-green-glow: rgba(56, 161, 105, 0.35);
   --adm-blue: #3182CE;

@@ -6,32 +6,32 @@
 
 :root {
   /* Brand Color Tokens */
-  --color-primary: #0A1F18;
-  --color-primary-light: #14352B;
-  --color-primary-dark: #05120E;
-  --color-accent-gold: #D4A359;
-  --color-accent-gold-hover: #E3B770;
-  --color-accent-amber: #B8860B;
-  --color-accent-cream: #F5E8D3;
+  --color-primary: #14532D;
+  --color-primary-light: #1E6D3E;
+  --color-primary-dark: #0B331B;
+  --color-accent-gold: #F4C430;
+  --color-accent-gold-hover: #FFD54F;
+  --color-accent-amber: #E5B020;
+  --color-accent-cream: #FEF7E0;
   
   /* Surfaces & Neutrals */
   --bg-body: #FBF9F5;
   --bg-surface: #FFFFFF;
-  --bg-surface-alt: #F3EFE8;
-  --bg-dark-card: rgba(20, 53, 43, 0.85);
+  --bg-surface-alt: #F4F1EA;
+  --bg-dark-card: rgba(20, 83, 45, 0.88);
   --text-main: #1A2621;
   --text-muted: #596B63;
   --text-light: #F4F6F5;
-  --text-gold: #D4A359;
+  --text-gold: #F4C430;
   
   /* Borders & Shadows */
-  --border-light: rgba(10, 31, 24, 0.08);
-  --border-gold: rgba(212, 163, 89, 0.35);
-  --border-gold-glow: rgba(212, 163, 89, 0.6);
-  --shadow-sm: 0 4px 12px rgba(10, 31, 24, 0.04);
-  --shadow-md: 0 10px 30px rgba(10, 31, 24, 0.08);
-  --shadow-lg: 0 20px 50px rgba(10, 31, 24, 0.14);
-  --shadow-gold: 0 10px 30px rgba(212, 163, 89, 0.25);
+  --border-light: rgba(20, 83, 45, 0.1);
+  --border-gold: rgba(244, 196, 48, 0.35);
+  --border-gold-glow: rgba(244, 196, 48, 0.65);
+  --shadow-sm: 0 4px 12px rgba(20, 83, 45, 0.05);
+  --shadow-md: 0 10px 30px rgba(20, 83, 45, 0.1);
+  --shadow-lg: 0 20px 50px rgba(20, 83, 45, 0.16);
+  --shadow-gold: 0 10px 30px rgba(244, 196, 48, 0.3);
   
   /* Typography */
   --font-heading: 'Playfair Display', Georgia, serif;
@@ -172,7 +172,7 @@ button, input, select, textarea { font-family: inherit; }
 
 /* Form select high contrast */
 select option {
-  background-color: #0A1F18 !important;
+  background-color: #14532D !important;
   color: #FFFFFF !important;
   padding: 10px 14px !important;
   font-size: 0.88rem !important;
@@ -180,8 +180,8 @@ select option {
 
 select option:checked,
 select option:hover {
-  background-color: #174032 !important;
-  color: #D4A359 !important;
+  background-color: #14532D !important;
+  color: #F4C430 !important;
 }
 
 .section-tag {
@@ -230,15 +230,15 @@ select option:hover {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--color-accent-gold) 0%, #C49245 100%);
+  background: linear-gradient(135deg, var(--color-accent-gold) 0%, #D4A017 100%);
   color: var(--color-primary-dark);
   box-shadow: var(--shadow-gold);
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, var(--color-accent-gold-hover) 0%, #D4A359 100%);
+  background: linear-gradient(135deg, var(--color-accent-gold-hover) 0%, #F4C430 100%);
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(212, 163, 89, 0.4);
+  box-shadow: 0 12px 30px rgba(244, 196, 48, 0.4);
 }
 
 .btn-dark {
@@ -560,8 +560,8 @@ select option:hover {
 .dropdown-icon svg, .dropdown-icon i {
   width: 16px;
   height: 16px;
-  stroke: #D4A359;
-  color: #D4A359;
+  stroke: #F4C430;
+  color: #F4C430;
 }
 
 .dropdown-link:hover .dropdown-icon {
@@ -825,8 +825,8 @@ select option:hover {
   left: 0;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, transparent 0%, #D4A359 50%, #48BB78 80%, transparent 100%);
-  box-shadow: 0 0 12px #D4A359, 0 0 20px #48BB78;
+  background: linear-gradient(90deg, transparent 0%, #F4C430 50%, #48BB78 80%, transparent 100%);
+  box-shadow: 0 0 12px #F4C430, 0 0 20px #48BB78;
   animation: scanLaser 3.5s ease-in-out infinite alternate;
   z-index: 5;
 }
@@ -1065,8 +1065,8 @@ select option:hover {
   height: 38px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(212, 163, 89, 0.35);
-  color: #D4A359;
+  border: 1px solid rgba(244, 196, 48, 0.35);
+  color: #F4C430;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1190,7 +1190,7 @@ select option:hover {
   width: 100%;
   overflow: hidden;
   position: relative;
-  background: #0A1F18;
+  background: #14532D;
 }
 
 .application-media img {
@@ -1275,3 +1275,373 @@ select option:hover {
   grid-template-columns: 1.5fr 1fr 1fr 1fr;
   gap: 40px;
 }
+
+/* ==========================================================================
+   ROYALE TOUCHE STYLE LUXURY LANDING PAGE STYLES
+   ========================================================================== */
+
+/* Hero Section */
+.hero-royale {
+  position: relative;
+  min-height: calc(100vh - var(--header-height));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, rgba(5, 20, 15, 0.82) 0%, rgba(8, 31, 23, 0.94) 100%), url('../assets/images/factory.png') center/cover no-repeat;
+  color: #FFFFFF;
+  padding: 100px 0 80px;
+  overflow: hidden;
+}
+
+.hero-royale-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at center, rgba(212, 163, 89, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-royale-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.hero-royale-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(212, 163, 89, 0.15);
+  border: 1px solid var(--border-gold);
+  color: var(--color-accent-gold);
+  padding: 8px 22px;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  backdrop-filter: blur(8px);
+}
+
+.hero-royale-title {
+  font-size: clamp(2.5rem, 5vw, 4.2rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.15;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.hero-royale-title span {
+  background: linear-gradient(135deg, #FFEAA7 0%, #D4A359 50%, #B8860B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-royale-subtitle {
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  color: #C2D4CD;
+  max-width: 780px;
+  margin: 0 auto 36px;
+  line-height: 1.6;
+}
+
+.hero-royale-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+}
+
+.hero-royale-trust-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: #E2EAE6;
+  font-weight: 600;
+}
+
+.trust-item i {
+  color: var(--color-accent-gold);
+  font-size: 1.2rem;
+}
+
+/* Royale Statement Card */
+.royale-statement-card {
+  background: linear-gradient(145deg, #071F17 0%, #0D3326 100%);
+  border: 1.5px solid var(--border-gold);
+  border-radius: var(--radius-lg);
+  padding: 50px 40px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  position: relative;
+  overflow: hidden;
+  margin: 40px 0;
+}
+
+.royale-statement-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, transparent, #D4A359, transparent);
+}
+
+.royale-statement-tag {
+  color: #D4A359;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.royale-statement-title {
+  color: #FFFFFF;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  margin-bottom: 20px;
+  line-height: 1.25;
+}
+
+.royale-statement-desc {
+  color: #C2D4CD;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  max-width: 860px;
+  margin: 0 auto 24px;
+}
+
+/* Promise of Quality 7-Step Timeline */
+.royale-timeline-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.timeline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.timeline-step-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(212, 163, 89, 0.2);
+  border-radius: 14px;
+  padding: 20px 24px;
+  transition: all var(--transition-normal);
+  cursor: pointer;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.timeline-step-card:hover, .timeline-step-card.active {
+  background: rgba(212, 163, 89, 0.12);
+  border-color: var(--color-accent-gold);
+  transform: translateX(8px);
+}
+
+.timeline-number {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #D4A359;
+  font-family: var(--font-heading);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.timeline-step-title {
+  color: #FFFFFF;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.timeline-step-desc {
+  color: #A3B5AE;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.timeline-media-card {
+  background: #081F17;
+  border: 1.5px solid var(--border-gold);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  position: relative;
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-media-card img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+}
+
+.timeline-media-content {
+  padding: 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Royale Store Locator CTA Banner */
+.royale-store-banner {
+  background: linear-gradient(135deg, #0A241A 0%, #05140F 100%);
+  border: 1.5px solid var(--border-gold);
+  border-radius: var(--radius-lg);
+  padding: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  box-shadow: var(--shadow-lg);
+  margin: 60px 0;
+}
+
+.royale-store-content h3 {
+  color: #FFFFFF;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  margin-bottom: 12px;
+}
+
+.royale-store-content h3 span {
+  color: #D4A359;
+}
+
+.royale-store-content p {
+  color: #A3B5AE;
+  font-size: 1rem;
+  max-width: 620px;
+  margin: 0;
+}
+
+.btn-royale-gold {
+  background: linear-gradient(135deg, #FFEAA7 0%, #D4A359 50%, #B8860B 100%);
+  color: #05140F;
+  font-weight: 800;
+  padding: 16px 36px;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(212, 163, 89, 0.35);
+  transition: all var(--transition-normal);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.btn-royale-gold:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 35px rgba(212, 163, 89, 0.5);
+  background: linear-gradient(135deg, #FFFFFF 0%, #FFEAA7 50%, #D4A359 100%);
+}
+
+@media (max-width: 992px) {
+  .royale-timeline-container {
+    grid-template-columns: 1fr;
+  }
+  .royale-store-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 32px 24px;
+  }
+}
+
+/* Royale Touche Style Intro Preloader */
+.pearl-preloader {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: radial-gradient(circle at center, #0B291D 0%, #04120D 100%);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 1.2s cubic-bezier(0.77, 0, 0.175, 1), transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.pearl-preloader.fade-out {
+  opacity: 0;
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+
+.preloader-content {
+  text-align: center;
+  max-width: 440px;
+  padding: 20px;
+}
+
+.preloader-logo-wrap {
+  margin-bottom: 24px;
+  animation: preloaderPulse 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes preloaderPulse {
+  0% { transform: scale(0.97); filter: drop-shadow(0 0 10px rgba(244, 196, 48, 0.2)); }
+  100% { transform: scale(1.03); filter: drop-shadow(0 0 25px rgba(244, 196, 48, 0.5)); }
+}
+
+.preloader-tagline {
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  color: #D4A359;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+.preloader-progress-track {
+  width: 260px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  margin: 0 auto 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+.preloader-progress-bar {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #FFEAA7, #D4A359, #B8860B);
+  border-radius: 4px;
+  transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0 0 12px #D4A359;
+}
+
+.preloader-percent {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #A3B5AE;
+  letter-spacing: 0.05em;
+}
+
+

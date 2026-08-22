@@ -3,15 +3,15 @@
    ========================================================================== */
 
 :root {
-  --chat-primary: #0A1F18;
-  --chat-primary-dark: #05140F;
-  --chat-gold: #D4A359;
-  --chat-gold-light: #E6C280;
+  --chat-primary: #14532D;
+  --chat-primary-dark: #0B331B;
+  --chat-gold: #F4C430;
+  --chat-gold-light: #FFE082;
   --chat-bg: #FAF8F5;
   --chat-surface: #FFFFFF;
   --chat-text: #1F2923;
   --chat-muted: #6B7D75;
-  --chat-border: rgba(212, 163, 89, 0.25);
+  --chat-border: rgba(244, 196, 48, 0.28);
   --chat-radius: 18px;
 }
 
@@ -23,14 +23,14 @@
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #0A1F18 0%, #153E31 100%);
+  background: linear-gradient(135deg, #14532D 0%, #1E6D3E 100%);
   color: var(--chat-gold);
   border: 1.8px solid var(--chat-gold);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(212, 163, 89, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(244, 196, 48, 0.35);
   z-index: 9990;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   padding: 0;
@@ -64,7 +64,7 @@
   width: 13px;
   height: 13px;
   background: #48BB78;
-  border: 2.5px solid #0A1F18;
+  border: 2.5px solid #14532D;
   border-radius: 50%;
   box-shadow: 0 0 8px #48BB78;
 }
@@ -100,7 +100,7 @@
 
 /* Chat Header */
 .chat-header {
-  background: linear-gradient(135deg, #0A1F18 0%, #061510 100%);
+  background: linear-gradient(135deg, #14532D 0%, #0B331B 100%);
   color: #FFFFFF;
   padding: 14px 16px;
   display: flex;
@@ -121,14 +121,14 @@
   width: 36px;
   height: 36px;
   border-radius: 10px;
-  background: linear-gradient(135deg, var(--chat-gold) 0%, #A67324 100%);
-  color: #0A1F18;
+  background: linear-gradient(135deg, var(--chat-gold) 0%, #C79B18 100%);
+  color: #14532D;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 800;
   font-size: 1.1rem;
-  box-shadow: 0 4px 12px rgba(212, 163, 89, 0.3);
+  box-shadow: 0 4px 12px rgba(244, 196, 48, 0.3);
   position: relative;
   flex-shrink: 0;
 }
@@ -140,7 +140,7 @@
   width: 9px;
   height: 9px;
   background: #48BB78;
-  border: 2px solid #0A1F18;
+  border: 2px solid #14532D;
   border-radius: 50%;
 }
 
@@ -184,7 +184,7 @@
 
 .header-lead-btn:hover {
   background: var(--chat-gold);
-  color: #0A1F18;
+  color: #14532D;
 }
 
 .chat-close-btn {
@@ -203,13 +203,13 @@
 }
 
 .chat-close-btn:hover {
-  background: rgba(212, 163, 89, 0.3);
+  background: rgba(244, 196, 48, 0.3);
   color: var(--chat-gold);
 }
 
 /* Top Collapsible Lead Capture Drawer (Positioned at Top) */
 .top-lead-drawer {
-  background: linear-gradient(145deg, #0A1F18 0%, #0E2B21 100%);
+  background: linear-gradient(145deg, #14532D 0%, #0B331B 100%);
   border-bottom: 1.5px solid var(--chat-gold);
   padding: 14px 16px;
   color: #FFFFFF;
@@ -282,7 +282,7 @@
 .top-lead-drawer select option,
 .chat-lead-card select option,
 .admin-modal-box select option {
-  background-color: #0A1F18 !important;
+  background-color: #14532D !important;
   color: #FFFFFF !important;
   padding: 10px 14px !important;
   font-size: 0.85rem !important;
@@ -290,13 +290,13 @@
 
 .top-lead-drawer select option:checked,
 .top-lead-drawer select option:hover {
-  background-color: #174032 !important;
-  color: #D4A359 !important;
+  background-color: #14532D !important;
+  color: #F4C430 !important;
 }
 
 .top-lead-drawer input:focus, .top-lead-drawer select:focus {
   border-color: var(--chat-gold);
-  box-shadow: 0 0 0 2px rgba(212, 163, 89, 0.25);
+  box-shadow: 0 0 0 2px rgba(244, 196, 48, 0.25);
 }
 
 .top-lead-drawer input::placeholder {
@@ -306,8 +306,8 @@
 .top-lead-drawer button {
   width: 100%;
   padding: 8px;
-  background: linear-gradient(135deg, var(--chat-gold) 0%, #B8860B 100%);
-  color: #0A1F18;
+  background: linear-gradient(135deg, var(--chat-gold) 0%, #E5B020 100%);
+  color: #14532D;
   font-weight: 800;
   border: none;
   border-radius: 6px;
@@ -364,7 +364,7 @@
 }
 
 .chat-msg.user .msg-bubble {
-  background: #0A1F18;
+  background: #14532D;
   color: #FFFFFF;
   border: 1px solid var(--chat-gold);
   border-bottom-right-radius: 4px;
@@ -379,7 +379,7 @@
 }
 
 .msg-bubble strong {
-  color: #0A1F18;
+  color: #14532D;
 }
 
 .chat-msg.user .msg-bubble strong {
@@ -402,9 +402,9 @@
 }
 
 .chat-chip {
-  background: rgba(212, 163, 89, 0.15);
+  background: rgba(244, 196, 48, 0.15);
   border: 1px solid var(--chat-gold);
-  color: #0A1F18;
+  color: #14532D;
   font-size: 0.74rem;
   font-weight: 600;
   padding: 6px 12px;
@@ -415,13 +415,13 @@
 
 .chat-chip:hover {
   background: var(--chat-gold);
-  color: #0A1F18;
+  color: #14532D;
   transform: translateY(-1px);
 }
 
 /* Lead Capture Form Card in Chat */
 .chat-lead-card {
-  background: linear-gradient(145deg, #0A1F18 0%, #112E24 100%);
+  background: linear-gradient(145deg, #14532D 0%, #0B331B 100%);
   border: 1px solid var(--chat-gold);
   border-radius: 12px;
   padding: 14px;
@@ -456,7 +456,7 @@
   width: 100%;
   padding: 8px;
   background: var(--chat-gold);
-  color: #0A1F18;
+  color: #14532D;
   font-weight: 700;
   border: none;
   border-radius: 6px;
@@ -531,7 +531,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #0A1F18;
+  background: #14532D;
   color: var(--chat-gold);
   border: 1px solid var(--chat-gold);
   display: flex;
@@ -544,7 +544,7 @@
 
 .chat-send-btn:hover {
   background: var(--chat-gold);
-  color: #0A1F18;
+  color: #14532D;
   transform: scale(1.05);
 }
 
