@@ -181,7 +181,7 @@ html, body {
     padding: 10px 0 !important;
     position: sticky !important;
     top: 0 !important;
-    z-index: 1000 !important;
+    z-index: 99995 !important;
   }
 
   .main-header .container {
@@ -207,7 +207,7 @@ html, body {
     display: none !important;
   }
 
-  /* Mobile Slide-Out Navigation Drawer (Crisp, High-Contrast, Zero-Blur) */
+  /* Mobile Slide-Out Navigation Drawer (Ultra-High Contrast, Solid 100% Opaque) */
   .mobile-drawer-header {
     display: flex !important;
     align-items: center !important;
@@ -215,52 +215,59 @@ html, body {
     width: 100% !important;
     padding-bottom: 12px !important;
     margin-bottom: 14px !important;
-    border-bottom: 1.5px solid rgba(212, 163, 89, 0.4) !important;
+    border-bottom: 1.5px solid #F4C430 !important;
   }
 
   .mobile-drawer-header span {
-    color: #D4A359 !important;
+    color: #F4C430 !important;
     font-weight: 800 !important;
-    font-size: 0.88rem !important;
+    font-size: 0.95rem !important;
     letter-spacing: 0.08em !important;
     text-transform: uppercase !important;
+    opacity: 1 !important;
   }
 
   .mobile-drawer-header button {
-    background: rgba(212, 163, 89, 0.2) !important;
-    border: 1px solid #D4A359 !important;
-    color: #D4A359 !important;
-    width: 32px !important;
-    height: 32px !important;
+    background: #F4C430 !important;
+    border: none !important;
+    color: #051812 !important;
+    width: 34px !important;
+    height: 34px !important;
     border-radius: 50% !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     cursor: pointer !important;
+    box-shadow: 0 4px 12px rgba(244, 196, 48, 0.4) !important;
+  }
+
+  .mobile-drawer-header button svg {
+    stroke: #051812 !important;
+    stroke-width: 3px !important;
   }
 
   .nav-menu {
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
-    width: 320px !important;
-    max-width: 88vw !important;
+    width: 330px !important;
+    max-width: 90vw !important;
     height: 100vh !important;
-    background: #051812 !important;
+    background: #09241A !important; /* Solid 100% Opaque Emerald Dark Green */
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
-    border-right: 2px solid #D4A359 !important;
+    border-right: 2.5px solid #F4C430 !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: flex-start !important;
-    padding: 20px 16px 100px !important;
+    padding: 18px 16px 100px !important;
     gap: 6px !important;
     overflow-y: auto !important;
     -webkit-overflow-scrolling: touch;
     transform: translateX(-100%) !important;
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
     z-index: 999999 !important;
-    box-shadow: 20px 0 50px rgba(0, 0, 0, 0.95) !important;
+    box-shadow: 25px 0 60px rgba(0, 0, 0, 0.98) !important;
     opacity: 1 !important;
     visibility: visible !important;
   }
@@ -274,9 +281,9 @@ html, body {
   }
 
   .nav-link {
-    font-size: 1.02rem !important;
+    font-size: 1.05rem !important;
     font-weight: 800 !important;
-    color: #FFFFFF !important;
+    color: #FFFFFF !important; /* Pure 100% Solid White */
     width: 100% !important;
     padding: 12px 14px !important;
     border-radius: 8px !important;
@@ -285,14 +292,15 @@ html, body {
     justify-content: space-between !important;
     text-shadow: none !important;
     opacity: 1 !important;
-    background: rgba(255, 255, 255, 0.04) !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    background: #113B2C !important;
+    border: 1px solid rgba(244, 196, 48, 0.35) !important;
+    margin-bottom: 4px !important;
   }
 
   .nav-link:hover, .nav-link.active {
-    background: rgba(212, 163, 89, 0.25) !important;
-    color: #FFEAA7 !important;
-    border-color: #D4A359 !important;
+    background: #F4C430 !important;
+    color: #051812 !important;
+    border-color: #F4C430 !important;
   }
 
   .dropdown-menu {
@@ -300,8 +308,8 @@ html, body {
     opacity: 1 !important;
     visibility: visible !important;
     transform: none !important;
-    background: rgba(0, 0, 0, 0.3) !important;
-    border: 1.5px solid rgba(212, 163, 89, 0.35) !important;
+    background: #0B2D21 !important;
+    border: 1.5px solid rgba(244, 196, 48, 0.4) !important;
     box-shadow: none !important;
     border-radius: 10px !important;
     width: 100% !important;
@@ -310,7 +318,7 @@ html, body {
     flex-direction: column !important;
     margin: 6px 0 10px 0 !important;
     padding: 8px !important;
-    gap: 4px !important;
+    gap: 6px !important;
   }
 
   .dropdown-link {
@@ -320,28 +328,56 @@ html, body {
     display: flex !important;
     align-items: center !important;
     gap: 12px !important;
-    background: transparent !important;
+    background: #0F3D2D !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
   }
 
   .dropdown-link:hover {
-    background: rgba(212, 163, 89, 0.2) !important;
+    background: rgba(244, 196, 48, 0.25) !important;
+    border-color: #F4C430 !important;
+  }
+
+  .dropdown-content {
+    display: block !important;
+    width: 100% !important;
   }
 
   .dropdown-content h5 {
-    color: #FFFFFF !important;
-    font-size: 0.9rem !important;
-    font-weight: 700 !important;
+    color: #FFFFFF !important; /* Pure 100% White Titles */
+    font-size: 0.95rem !important;
+    font-weight: 800 !important;
     margin-bottom: 2px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
   }
 
   .dropdown-content p {
-    color: #C2D4CD !important;
-    font-size: 0.74rem !important;
-    line-height: 1.25 !important;
+    color: #FFECB3 !important; /* Bright Gold/Yellow Subtitle Specs */
+    font-size: 0.78rem !important;
+    font-weight: 600 !important;
+    line-height: 1.3 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
   }
 
   .dropdown-icon {
-    color: #D4A359 !important;
+    color: #F4C430 !important;
+    background: rgba(244, 196, 48, 0.2) !important;
+    border-radius: 8px !important;
+    padding: 8px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+  }
+
+  .dropdown-icon svg {
+    stroke: #F4C430 !important;
+    stroke-width: 2.5px !important;
+    width: 20px !important;
+    height: 20px !important;
   }
 
   /* Hero Royale Section */

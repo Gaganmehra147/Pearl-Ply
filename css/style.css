@@ -656,17 +656,17 @@ select option:hover {
   transform: translateY(-7.2px) rotate(-45deg);
 }
 
-/* Backdrop Overlay for Mobile Drawer (Zero Blur) */
+/* Backdrop Overlay for Mobile Drawer (Zero Blur & Stacked Below Header) */
 .nav-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.7);
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
-  z-index: 99998;
+  z-index: 9990 !important;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.35s ease, visibility 0.35s ease;
