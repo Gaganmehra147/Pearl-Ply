@@ -389,7 +389,30 @@ html, body {
 
   /* Hero Royale Mobile */
   .hero-royale {
-    padding: 32px 0 28px !important;
+    padding: 0 !important;
+  }
+
+  .hero-slide {
+    padding: 85px 0 75px !important;
+  }
+
+  .hero-carousel-arrow {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .hero-carousel-prev {
+    left: 10px !important;
+  }
+
+  .hero-carousel-next {
+    right: 10px !important;
+  }
+
+  .hero-carousel-footer {
+    bottom: 16px !important;
+    padding: 6px 16px !important;
+    gap: 14px !important;
   }
 
   .hero-royale-badge {

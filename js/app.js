@@ -37,6 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // 1.5. Hero Luxury Carousel Controller
+  initHeroCarousel();
+
   // 2. Mobile Menu Toggle & App-Like Drawer
   const mobileToggle = document.getElementById('mobileMenuToggle');
   const navMenu = document.querySelector('.nav-menu');
@@ -737,43 +740,43 @@ const TIMELINE_DATA = {
   1: {
     title: "Vacuum Pressure Chemical Treatment",
     badge: "Process 1/7: Vacuum Chemical Plant",
-    img: "assets/images/lab_vacuum.png",
+    img: "assets/images/promise_1_vacuum_treatment.jpg",
     desc: "Veneers undergo deep vacuum chamber pressure immersion, infusing preservative anti-termite and fire-retardant chemicals deep into every core wood cell."
   },
   2: {
     title: "Fully Composed Core & Panels",
     badge: "Process 2/7: Core & Panel Composers",
-    img: "assets/images/factory.png",
+    img: "assets/images/promise_2_composed_core.jpg",
     desc: "100% composed full sheet veneers made using sophisticated CNC core composers to ensure zero overlap, zero core voids, and seamless structural stability."
   },
   3: {
     title: "100% Phenolic BWP Polymers",
     badge: "Process 3/7: Phenolic Resin Synthesis",
-    img: "assets/images/lab_boiling.png",
+    img: "assets/images/promise_3_phenolic_bwp.jpg",
     desc: "Bonded with unextended Phenol Formaldehyde resin, providing unshakeable cross-ply adhesive strength and 72-hour boiling water proof endurance."
   },
   4: {
     title: "Termite & Borer Proof Shield",
     badge: "Process 4/7: Microbe & Pest Defense",
-    img: "assets/images/lab_e0.png",
+    img: "assets/images/promise_4_termite_defense.jpg",
     desc: "Veneer cells are permanently immunized against microbes, wood-boring beetles, subterranean termites, and fungal decay under all climates."
   },
   5: {
     title: "Fire Retardant Technology",
     badge: "Process 5/7: Nano Fire Retardant",
-    img: "assets/images/lab_mor.png",
+    img: "assets/images/promise_5_fire_retardant.jpg",
     desc: "Vacuum treated with organo-phosphorus nano particles to retard flame spread, giving crucial safety time during fire emergencies."
   },
   6: {
     title: "Quadruple Diamond Sanding Calibration",
     badge: "Process 6/7: 4-Head CNC Calibrator",
-    img: "assets/images/lab_cnc.png",
+    img: "assets/images/promise_6_sanding_calibration.jpg",
     desc: "All sheets pass through computerized 4-head diamond calibrators ensuring micro-flat ±0.1mm uniform thickness across the entire 8x4 sheet."
   },
   7: {
     title: "High Screw & Nail Holding Capacity",
     badge: "Process 7/7: Heavy Load Mechanical Test",
-    img: "assets/images/lab_screw.png",
+    img: "assets/images/promise_7_screw_holding.jpg",
     desc: "Made from select dense plantation hardwoods with face holding force exceeding 2600 N, ensuring heavy soft-close shutters never sag."
   }
 };
@@ -801,3 +804,138 @@ window.switchTimelineStep = function(stepNum, element) {
     }
   }
 };
+
+/* ==========================================
+   6-SLIDE LUXURY HERO CAROUSEL CONTROLLER
+   ========================================== */
+function initHeroCarousel() {
+  const slides = document.querySelectorAll('.hero-slide');
+  const prevBtn = document.getElementById('heroPrevBtn');
+  const nextBtn = document.getElementById('heroNextBtn');
+  const dots = document.querySelectorAll('#heroCarouselDots .dot');
+  const currentSlideEl = document.getElementById('heroCurrentSlide');
+  const totalSlidesEl = document.getElementById('heroTotalSlides');
+  const carouselContainer = document.getElementById('home');
+
+  if (!slides || slides.length === 0) return;
+
+  let currentIndex = 0;
+  const totalSlides = slides.length;
+  let autoPlayTimer = null;
+  const intervalDuration = 5000; // 5 seconds auto transition
+
+  if (totalSlidesEl) {
+    totalSlidesEl.textContent = String(totalSlides).padStart(2, '0');
+  }
+
+  function goToSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === index);
+    });
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === index);
+    });
+
+    if (currentSlideEl) {
+      currentSlideEl.textContent = String(index + 1).padStart(2, '0');
+    }
+
+    currentIndex = index;
+
+    // Refresh Lucide Icons if available
+    if (window.lucide && typeof window.lucide.createIcons === 'function') {
+      window.lucide.createIcons();
+    }
+  }
+
+  function nextSlide() {
+    const nextIndex = (currentIndex + 1) % totalSlides;
+    goToSlide(nextIndex);
+  }
+
+  function prevSlide() {
+    const prevIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    goToSlide(prevIndex);
+  }
+
+  function startAutoPlay() {
+    stopAutoPlay();
+    autoPlayTimer = setInterval(nextSlide, intervalDuration);
+  }
+
+  function stopAutoPlay() {
+    if (autoPlayTimer) {
+      clearInterval(autoPlayTimer);
+      autoPlayTimer = null;
+    }
+  }
+
+  // Button Listeners
+  nextBtn?.addEventListener('click', () => {
+    nextSlide();
+    startAutoPlay();
+  });
+
+  prevBtn?.addEventListener('click', () => {
+    prevSlide();
+    startAutoPlay();
+  });
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', (e) => {
+      const slideIndex = parseInt(e.target.getAttribute('data-slide'), 10);
+      if (!isNaN(slideIndex)) {
+        goToSlide(slideIndex);
+        startAutoPlay();
+      }
+    });
+  });
+
+  // Pause on hover
+  carouselContainer?.addEventListener('mouseenter', stopAutoPlay);
+  carouselContainer?.addEventListener('mouseleave', startAutoPlay);
+
+  // Mobile Swipe Gesture Recognition
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  carouselContainer?.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+    stopAutoPlay();
+  }, { passive: true });
+
+  carouselContainer?.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+    startAutoPlay();
+  }, { passive: true });
+
+  function handleSwipe() {
+    const swipeThreshold = 40;
+    if (touchEndX < touchStartX - swipeThreshold) {
+      nextSlide();
+    } else if (touchEndX > touchStartX + swipeThreshold) {
+      prevSlide();
+    }
+  }
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    const heroSection = document.getElementById('home');
+    if (!heroSection) return;
+    const rect = heroSection.getBoundingClientRect();
+    if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+      if (e.key === 'ArrowRight') {
+        nextSlide();
+        startAutoPlay();
+      } else if (e.key === 'ArrowLeft') {
+        prevSlide();
+        startAutoPlay();
+      }
+    }
+  });
+
+  // Start initial timer
+  startAutoPlay();
+}

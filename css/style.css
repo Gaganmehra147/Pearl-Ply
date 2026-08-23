@@ -1281,16 +1281,84 @@ select option:hover {
    ========================================================================== */
 
 /* Hero Section */
+/* Hero Section & Multi-Slide Carousel */
 .hero-royale {
   position: relative;
   min-height: calc(100vh - var(--header-height));
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(180deg, rgba(5, 20, 15, 0.82) 0%, rgba(8, 31, 23, 0.94) 100%), url('../assets/images/factory.png') center/cover no-repeat;
+  background: #05140F;
   color: #FFFFFF;
-  padding: 100px 0 80px;
+  padding: 0;
   overflow: hidden;
+}
+
+.hero-carousel-track {
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - var(--header-height));
+  display: flex;
+}
+
+.hero-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-height: calc(100vh - var(--header-height));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s ease, transform 1.2s ease;
+  transform: scale(1.04);
+  padding: 110px 0 100px;
+  z-index: 1;
+}
+
+.hero-slide.active {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  z-index: 2;
+}
+
+/* Slide Content Entrance Animation */
+.hero-slide.active .hero-royale-badge {
+  animation: heroSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+
+.hero-slide.active .hero-royale-title {
+  animation: heroSlideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+
+.hero-slide.active .hero-royale-subtitle {
+  animation: heroSlideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+}
+
+.hero-slide.active .hero-royale-actions {
+  animation: heroSlideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
+}
+
+.hero-slide.active .hero-royale-trust-strip {
+  animation: heroSlideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
+}
+
+@keyframes heroSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero-royale-overlay {
@@ -1300,39 +1368,143 @@ select option:hover {
   pointer-events: none;
 }
 
+/* Glassmorphism Carousel Arrows */
+.hero-carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(5, 20, 15, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 163, 89, 0.35);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.hero-carousel-arrow:hover {
+  background: rgba(212, 163, 89, 0.9);
+  color: #05140F;
+  border-color: #D4A359;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 10px 35px rgba(212, 163, 89, 0.4);
+}
+
+.hero-carousel-arrow i {
+  width: 24px;
+  height: 24px;
+}
+
+.hero-carousel-prev {
+  left: 28px;
+}
+
+.hero-carousel-next {
+  right: 28px;
+}
+
+/* Hero Carousel Footer & Dots */
+.hero-carousel-footer {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: rgba(5, 20, 15, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 10px 24px;
+  border-radius: 40px;
+  border: 1px solid rgba(212, 163, 89, 0.25);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.hero-carousel-counter {
+  font-family: 'Space Grotesk', var(--font-primary), sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--color-accent-gold);
+}
+
+.hero-carousel-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hero-carousel-dots .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.35);
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  padding: 0;
+}
+
+.hero-carousel-dots .dot:hover {
+  background: rgba(212, 163, 89, 0.7);
+}
+
+.hero-carousel-dots .dot.active {
+  width: 32px;
+  background: linear-gradient(90deg, #D4A359 0%, #E6C280 100%);
+  box-shadow: 0 0 12px rgba(212, 163, 89, 0.6);
+}
+
 .hero-royale-content {
   position: relative;
   z-index: 2;
   text-align: center;
-  max-width: 960px;
-  margin: 0 auto;
+  max-width: 740px;
+  margin: 0 auto 55px;
+  padding: 22px 28px 18px;
+  background: rgba(5, 20, 15, 0.45);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 20px;
+  border: 1px solid rgba(212, 163, 89, 0.35);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.15);
 }
 
 .hero-royale-badge {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  background: rgba(212, 163, 89, 0.15);
+  gap: 6px;
+  background: rgba(212, 163, 89, 0.22);
   border: 1px solid var(--border-gold);
   color: var(--color-accent-gold);
-  padding: 8px 22px;
-  border-radius: 30px;
-  font-size: 0.85rem;
+  padding: 4px 16px;
+  border-radius: 20px;
+  font-size: 0.76rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  margin-bottom: 24px;
+  margin-bottom: 12px;
   backdrop-filter: blur(8px);
 }
 
 .hero-royale-title {
-  font-size: clamp(2.5rem, 5vw, 4.2rem);
+  font-size: clamp(1.6rem, 3.2vw, 2.5rem);
   font-weight: 800;
   color: #FFFFFF;
-  line-height: 1.15;
-  margin-bottom: 20px;
+  line-height: 1.18;
+  margin-bottom: 10px;
   letter-spacing: -0.02em;
-  text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  text-shadow: 0 4px 16px rgba(0,0,0,0.8);
 }
 
 .hero-royale-title span {
@@ -1342,30 +1514,36 @@ select option:hover {
 }
 
 .hero-royale-subtitle {
-  font-size: clamp(1.05rem, 2vw, 1.3rem);
-  color: #C2D4CD;
-  max-width: 780px;
-  margin: 0 auto 36px;
-  line-height: 1.6;
+  font-size: clamp(0.88rem, 1.3vw, 1.02rem);
+  color: #E2EAE6;
+  max-width: 620px;
+  margin: 0 auto 16px;
+  line-height: 1.5;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
 }
 
 .hero-royale-actions {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 12px;
   flex-wrap: wrap;
-  margin-bottom: 50px;
+  margin-bottom: 18px;
+}
+
+.hero-royale-actions .btn {
+  padding: 8px 20px;
+  font-size: 0.85rem;
 }
 
 .hero-royale-trust-strip {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 28px;
+  gap: 20px;
   flex-wrap: wrap;
-  padding-top: 30px;
-  border-top: 1px solid rgba(255,255,255,0.12);
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,0.15);
 }
 
 .trust-item {
