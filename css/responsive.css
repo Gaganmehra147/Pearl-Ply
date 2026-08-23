@@ -208,26 +208,59 @@ html, body {
   }
 
   /* Mobile Slide-Out Navigation Drawer (Crisp, High-Contrast, Zero-Blur) */
+  .mobile-drawer-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    padding-bottom: 12px !important;
+    margin-bottom: 14px !important;
+    border-bottom: 1.5px solid rgba(212, 163, 89, 0.4) !important;
+  }
+
+  .mobile-drawer-header span {
+    color: #D4A359 !important;
+    font-weight: 800 !important;
+    font-size: 0.88rem !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+  }
+
+  .mobile-drawer-header button {
+    background: rgba(212, 163, 89, 0.2) !important;
+    border: 1px solid #D4A359 !important;
+    color: #D4A359 !important;
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+  }
+
   .nav-menu {
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
-    width: 310px !important;
-    max-width: 85vw !important;
+    width: 320px !important;
+    max-width: 88vw !important;
     height: 100vh !important;
-    background: #061C15 !important;
-    border-right: 1.5px solid var(--border-gold) !important;
+    background: #051812 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-right: 2px solid #D4A359 !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: flex-start !important;
-    padding: 24px 18px 100px !important;
+    padding: 20px 16px 100px !important;
     gap: 6px !important;
     overflow-y: auto !important;
     -webkit-overflow-scrolling: touch;
     transform: translateX(-100%) !important;
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
     z-index: 999999 !important;
-    box-shadow: 20px 0 50px rgba(0, 0, 0, 0.9) !important;
+    box-shadow: 20px 0 50px rgba(0, 0, 0, 0.95) !important;
     opacity: 1 !important;
     visibility: visible !important;
   }
@@ -241,20 +274,25 @@ html, body {
   }
 
   .nav-link {
-    font-size: 0.95rem !important;
-    font-weight: 700 !important;
-    color: #E2EAE6 !important;
+    font-size: 1.02rem !important;
+    font-weight: 800 !important;
+    color: #FFFFFF !important;
     width: 100% !important;
     padding: 12px 14px !important;
     border-radius: 8px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
+    text-shadow: none !important;
+    opacity: 1 !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
   }
 
   .nav-link:hover, .nav-link.active {
-    background: rgba(212, 163, 89, 0.15) !important;
-    color: var(--color-accent-gold) !important;
+    background: rgba(212, 163, 89, 0.25) !important;
+    color: #FFEAA7 !important;
+    border-color: #D4A359 !important;
   }
 
   .dropdown-menu {
@@ -262,21 +300,48 @@ html, body {
     opacity: 1 !important;
     visibility: visible !important;
     transform: none !important;
-    background: rgba(255, 255, 255, 0.04) !important;
-    border: 1px solid rgba(212, 163, 89, 0.2) !important;
+    background: rgba(0, 0, 0, 0.3) !important;
+    border: 1.5px solid rgba(212, 163, 89, 0.35) !important;
     box-shadow: none !important;
-    border-radius: 8px !important;
+    border-radius: 10px !important;
     width: 100% !important;
     min-width: 100% !important;
     display: flex !important;
     flex-direction: column !important;
-    margin: 4px 0 8px 0 !important;
-    padding: 6px !important;
+    margin: 6px 0 10px 0 !important;
+    padding: 8px !important;
+    gap: 4px !important;
   }
 
   .dropdown-link {
-    padding: 8px 10px !important;
-    font-size: 0.82rem !important;
+    padding: 10px 12px !important;
+    font-size: 0.88rem !important;
+    border-radius: 8px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    background: transparent !important;
+  }
+
+  .dropdown-link:hover {
+    background: rgba(212, 163, 89, 0.2) !important;
+  }
+
+  .dropdown-content h5 {
+    color: #FFFFFF !important;
+    font-size: 0.9rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 2px !important;
+  }
+
+  .dropdown-content p {
+    color: #C2D4CD !important;
+    font-size: 0.74rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .dropdown-icon {
+    color: #D4A359 !important;
   }
 
   /* Hero Royale Section */
