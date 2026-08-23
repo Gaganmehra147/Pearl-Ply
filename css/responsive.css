@@ -688,20 +688,42 @@ html, body {
     color: #48BB78 !important;
   }
 
-  /* Floating Widgets Positioned Above Bottom Navigation Dock */
-  .floating-whatsapp {
-    bottom: 74px !important;
+  /* Jabalpur Regional Hub Mobile Responsiveness */
+  .jabalpur-main-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .jabalpur-stats-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  #jabalpur-hub .section-title {
+    font-size: 1.35rem !important;
+    line-height: 1.25 !important;
+    word-break: break-word !important;
+  }
+
+  #jabalpur-hub p, #jabalpur-hub span, #jabalpur-hub div, #jabalpur-hub td, #jabalpur-hub a {
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+
+  /* Floating Widgets Stacked Cleanly on Right Edge */
+  .pearl-ai-trigger {
+    bottom: 20px !important;
     right: 14px !important;
     width: 46px !important;
     height: 46px !important;
     z-index: 99988 !important;
   }
 
-  .pearl-ai-floating-btn {
-    bottom: 128px !important;
+  .floating-whatsapp {
+    bottom: 74px !important;
     right: 14px !important;
-    padding: 8px 12px !important;
-    font-size: 0.78rem !important;
+    width: 46px !important;
+    height: 46px !important;
     z-index: 99988 !important;
   }
 
