@@ -383,8 +383,7 @@
   position: fixed;
   inset: 0;
   z-index: 99999;
-  background: rgba(3, 10, 6, 0.95);
-  backdrop-filter: blur(12px);
+  background: rgba(3, 10, 6, 0.98);
   align-items: center;
   justify-content: center;
   cursor: zoom-out;
@@ -890,8 +889,7 @@
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(5, 18, 14, 0.85);
-  backdrop-filter: blur(8px);
+  background: rgba(5, 18, 14, 0.92);
   z-index: 2000;
   display: flex;
   align-items: center;
