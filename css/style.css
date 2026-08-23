@@ -1377,17 +1377,35 @@ select option:hover {
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background: rgba(5, 20, 15, 0.45);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(212, 163, 89, 0.35);
-  color: #FFFFFF;
+  background: rgba(5, 20, 15, 0.65);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1.5px solid rgba(212, 163, 89, 0.45);
+  color: #D4A359;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.hero-carousel-arrow svg {
+  display: block;
+  transition: transform 0.2s ease, stroke 0.2s ease;
+}
+
+.hero-carousel-arrow:hover {
+  background: rgba(212, 163, 89, 0.25);
+  border-color: #D4A359;
+  color: #FFEAA7;
+  box-shadow: 0 0 20px rgba(212, 163, 89, 0.6);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.hero-carousel-arrow:hover svg {
+  stroke: #FFEAA7;
+  transform: scale(1.15);
 }
 
 .hero-carousel-arrow:hover {
