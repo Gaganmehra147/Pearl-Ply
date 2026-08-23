@@ -176,9 +176,7 @@ html, body {
 
   /* Header & Mobile Toggle */
   .main-header {
-    background: rgba(5, 20, 15, 0.98) !important;
-    backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
+    background: #05140F !important;
     border-bottom: 1.5px solid rgba(212, 163, 89, 0.3) !important;
     padding: 10px 0 !important;
     position: sticky !important;
@@ -194,13 +192,22 @@ html, body {
 
   .mobile-toggle {
     display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 44px !important;
+    height: 44px !important;
+    background: rgba(212, 163, 89, 0.15) !important;
+    border: 1.5px solid var(--border-gold) !important;
+    border-radius: 10px !important;
+    color: var(--color-accent-gold) !important;
+    cursor: pointer !important;
   }
 
   .header-actions .btn {
     display: none !important;
   }
 
-  /* Mobile Slide-Out Navigation Drawer */
+  /* Mobile Slide-Out Navigation Drawer (Crisp, High-Contrast, Zero-Blur) */
   .nav-menu {
     position: fixed !important;
     top: 0 !important;
@@ -208,7 +215,7 @@ html, body {
     width: 310px !important;
     max-width: 85vw !important;
     height: 100vh !important;
-    background: linear-gradient(180deg, #071C15 0%, #03100B 100%) !important;
+    background: #061C15 !important;
     border-right: 1.5px solid var(--border-gold) !important;
     display: flex !important;
     flex-direction: column !important;
@@ -219,8 +226,10 @@ html, body {
     -webkit-overflow-scrolling: touch;
     transform: translateX(-100%) !important;
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
-    z-index: 99999 !important;
-    box-shadow: 20px 0 50px rgba(0, 0, 0, 0.8) !important;
+    z-index: 999999 !important;
+    box-shadow: 20px 0 50px rgba(0, 0, 0, 0.9) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 
   .nav-menu.active {

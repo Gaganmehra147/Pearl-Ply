@@ -290,7 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 6.5. INSTANT WHATSAPP (+91 99936 13434) & EMAIL LEAD NOTIFICATION ENGINE
   const NOTIFICATION_CONFIG = {
     WHATSAPP_PHONE: '919993613434',
-    OFFICIAL_EMAIL: 'ambikatradingcompany.sonu@gmail.com',
+    OFFICIAL_EMAIL: 'pearlplywood@gmail.com',
     OWNER_NAME: 'Pearl Ply Management'
   };
 
