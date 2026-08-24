@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (preloader) {
     let progress = 0;
     const interval = setInterval(() => {
-      progress += Math.floor(Math.random() * 3) + 2; // Increments 2% to 4%
+      progress += Math.floor(Math.random() * 4) + 3; // Increments 3% to 6%
       if (progress >= 100) {
         progress = 100;
         clearInterval(interval);
@@ -19,12 +19,21 @@ document.addEventListener('DOMContentLoaded', () => {
         if (percentText) percentText.textContent = '100%';
         setTimeout(() => {
           preloader.classList.add('fade-out');
-        }, 650);
+        }, 400);
       } else {
         if (progressBar) progressBar.style.width = `${progress}%`;
         if (percentText) percentText.textContent = `${progress}%`;
       }
-    }, 75); // 75ms per step = ~3.2s total smooth intro duration
+    }, 50);
+
+    // Bulletproof Fallback Timer (Guarantee preloader closes even on slow mobile networks)
+    setTimeout(() => {
+      if (preloader && !preloader.classList.contains('fade-out')) {
+        if (progressBar) progressBar.style.width = '100%';
+        if (percentText) percentText.textContent = '100%';
+        preloader.classList.add('fade-out');
+      }
+    }, 1500);
   }
 
   // 1. Sticky Navigation Header
