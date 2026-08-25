@@ -1014,6 +1014,10 @@ select option:hover {
   border-top: 1px solid var(--border-gold);
 }
 
+.footer p {
+  color: #E2ECE6 !important;
+}
+
 .footer h4 {
   color: #FFFFFF;
   margin-bottom: 24px;
@@ -1037,7 +1041,7 @@ select option:hover {
 }
 
 .footer-links a {
-  color: #A3B5AE;
+  color: #DDE8E2;
   font-size: 0.92rem;
   transition: all var(--transition-fast);
   display: inline-flex;
