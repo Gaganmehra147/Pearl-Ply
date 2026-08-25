@@ -1949,7 +1949,7 @@ select option:hover {
 .pearl-preloader {
   position: fixed;
   top: 0; left: 0; width: 100vw; height: 100vh;
-  background: radial-gradient(circle at center, #0B291D 0%, #04120D 100%);
+  background: radial-gradient(circle at center, #5C743D 0%, #2A381A 100%);
   z-index: 99999;
   display: flex;
   align-items: center;
