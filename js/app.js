@@ -971,28 +971,31 @@ function initHeroCarousel() {
     const grid = document.querySelector('.products-grid');
     if (!grid) return;
 
-    let products = [];
-    try {
-      const stored = localStorage.getItem(PRODUCTS_KEY);
-      if (stored) {
-        products = JSON.parse(stored);
-      }
-    } catch (e) { console.warn('Live products sync read error:', e); }
-
-    if (!Array.isArray(products) || products.length === 0) {
-      fetch('assets/data/products.json?v=250')
-        .then(res => res.json())
-        .then(data => {
-          if (Array.isArray(data) && data.length > 0) {
-            localStorage.setItem(PRODUCTS_KEY, JSON.stringify(data));
-            renderProductsGrid(data, grid);
+    fetch('assets/data/products.json?v=300')
+      .then(res => res.json())
+      .then(serverProducts => {
+        let finalProducts = serverProducts;
+        try {
+          const stored = localStorage.getItem(PRODUCTS_KEY);
+          if (stored) {
+            const localProducts = JSON.parse(stored);
+            if (Array.isArray(localProducts) && localProducts.length > 0) {
+              finalProducts = localProducts;
+            }
           }
-        })
-        .catch(err => console.warn('Products JSON fallback error:', err));
-      return;
-    }
-
-    renderProductsGrid(products, grid);
+        } catch (e) {}
+        renderProductsGrid(finalProducts, grid);
+      })
+      .catch(err => {
+        let products = [];
+        try {
+          const stored = localStorage.getItem(PRODUCTS_KEY);
+          if (stored) products = JSON.parse(stored);
+        } catch (e) {}
+        if (Array.isArray(products) && products.length > 0) {
+          renderProductsGrid(products, grid);
+        }
+      });
   }
 
   function renderProductsGrid(products, grid) {

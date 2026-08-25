@@ -904,8 +904,8 @@ select option:hover {
 
 .hero-title {
   color: #FFFFFF;
-  font-size: clamp(2rem, 3.3vw, 2.9rem);
-  line-height: 1.15;
+  font-size: clamp(1.35rem, 2.2vw, 2.0rem);
+  line-height: 1.2;
   margin-bottom: 12px;
 }
 
