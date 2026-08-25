@@ -542,7 +542,19 @@
     saveProduct,
     deleteProduct,
     filterProducts: renderProducts,
-    handlePhotoUpload
+    handlePhotoUpload,
+    exportJSON: function() {
+      const products = getProducts();
+      const str = JSON.stringify(products, null, 2);
+      const blob = new Blob([str], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'products.json';
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast('📥 Downloaded products.json for live website deploy!');
+    }
   };
 
   // Init on load

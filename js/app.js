@@ -979,8 +979,23 @@ function initHeroCarousel() {
       }
     } catch (e) { console.warn('Live products sync read error:', e); }
 
-    if (!Array.isArray(products) || products.length === 0) return;
+    if (!Array.isArray(products) || products.length === 0) {
+      fetch('assets/data/products.json?v=250')
+        .then(res => res.json())
+        .then(data => {
+          if (Array.isArray(data) && data.length > 0) {
+            localStorage.setItem(PRODUCTS_KEY, JSON.stringify(data));
+            renderProductsGrid(data, grid);
+          }
+        })
+        .catch(err => console.warn('Products JSON fallback error:', err));
+      return;
+    }
 
+    renderProductsGrid(products, grid);
+  }
+
+  function renderProductsGrid(products, grid) {
     // Filter active products only
     const activeProducts = products.filter(p => p.status === 'Active' || !p.status);
     if (activeProducts.length === 0) return;
