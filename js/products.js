@@ -543,8 +543,15 @@
   };
 
   // Init on load
-  document.addEventListener('DOMContentLoaded', () => {
+  function initProducts() {
+    renderProducts();
     updateProductStats();
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initProducts);
+  } else {
+    initProducts();
+  }
 
 })();
