@@ -1009,7 +1009,8 @@ function initHeroCarousel() {
 
     grid.innerHTML = activeProducts.map(p => {
       const photoURL = p.photo || 'assets/images/pearl_ultima_plus.jpg';
-      const cleanPhoto = photoURL.includes('?') ? photoURL : `${photoURL}?v=210`;
+      const isDataURI = photoURL.startsWith('data:');
+      const cleanPhoto = (isDataURI || photoURL.includes('?')) ? photoURL : `${photoURL}?v=260`;
       const specKey = getSpecKey(p);
       const thickChips = (p.thicknesses || []).map(t => `<span class="thickness-chip">${escapeHTML(t)}mm</span>`).join('');
 
@@ -1029,10 +1030,13 @@ function initHeroCarousel() {
         };
       }
 
+      const safeTitle = escapeHTML(p.name);
+      const safeCaption = escapeHTML(p.name + ' — ' + (p.tagline || p.grade));
+
       return `
         <div class="product-card" id="prod-${specKey}">
-          <div class="product-media" onclick="openPhotoLightbox('${cleanPhoto}', '${escapeHTML(p.name)} — ${escapeHTML(p.tagline || p.grade)}')">
-            <img src="${cleanPhoto}" alt="${escapeHTML(p.name)}">
+          <div class="product-media" onclick="openPhotoLightbox(this.querySelector('img').src, '${safeCaption}')">
+            <img src="${cleanPhoto}" alt="${safeTitle}">
           </div>
           <div class="product-body">
             <h3 class="product-title">${escapeHTML(p.name)}</h3>

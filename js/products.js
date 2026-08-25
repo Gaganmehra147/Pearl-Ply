@@ -175,6 +175,15 @@
   ];
 
   // ── Data Layer ─────────────────────────────────────────────────────────────
+  function sanitizePhoto(url) {
+    if (!url) return '';
+    if (url.startsWith('data:')) {
+      const idx = url.indexOf('?v=');
+      if (idx !== -1) return url.substring(0, idx);
+    }
+    return url;
+  }
+
   function getProducts() {
     try {
       const stored = localStorage.getItem(PRODUCTS_KEY);
@@ -182,6 +191,12 @@
         let list = JSON.parse(stored);
         if (Array.isArray(list) && list.length > 0) {
           let updated = false;
+          list.forEach(p => {
+            if (p.photo && p.photo.startsWith('data:') && p.photo.includes('?v=')) {
+              p.photo = sanitizePhoto(p.photo);
+              updated = true;
+            }
+          });
           DEFAULT_PRODUCTS.forEach(dp => {
             if (!list.some(p => p.id === dp.id)) {
               list.push(dp);
