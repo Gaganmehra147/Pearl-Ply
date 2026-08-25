@@ -563,6 +563,21 @@ html, body {
     box-shadow: 0 12px 36px rgba(0, 0, 0, 0.65) !important;
   }
 
+  .pearl-brand-cover-section {
+    min-height: calc(100vh - var(--header-height)) !important;
+    height: calc(100vh - var(--header-height)) !important;
+  }
+
+  .pearl-cover-white-card {
+    padding: 20px 24px !important;
+    border-radius: 16px !important;
+    max-width: 92% !important;
+  }
+
+  .pearl-official-cover-logo {
+    max-width: 280px !important;
+  }
+
   .hero-carousel-arrow {
     width: 34px !important;
     height: 34px !important;
@@ -903,6 +918,21 @@ html, body {
   .photo-lightbox-content {
     max-width: 95vw !important;
     max-height: 85vh !important;
+  }
+
+  .pearl-cover-estd {
+    top: 20px !important;
+    left: 20px !important;
+    font-size: 0.9rem !important;
+    border-left-width: 2.5px !important;
+    padding-left: 8px !important;
+  }
+
+  .pearl-cover-bottom-tagline {
+    bottom: 25px !important;
+    font-size: 0.95rem !important;
+    letter-spacing: 1.5px !important;
+    width: 90% !important;
   }
 }
 
