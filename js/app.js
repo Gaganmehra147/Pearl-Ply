@@ -948,3 +948,119 @@ function initHeroCarousel() {
   // Start initial timer
   startAutoPlay();
 }
+
+/* ==========================================================================
+   LIVE PRODUCT SYNCHRONIZER (ADMIN & WEBSITE REALTIME SYNC)
+   ========================================================================== */
+(function() {
+  const PRODUCTS_KEY = 'pearl_products_v2';
+
+  function getSpecKey(p) {
+    if (p.id === 'PP-001' || (p.name && p.name.includes('Ultima Plus'))) return 'ultima_plus';
+    if (p.id === 'PP-002' || (p.name && p.name.includes('Boil Pro'))) return 'boilpro';
+    if (p.id === 'PP-003' || (p.name && p.name.includes('HDMR'))) return 'hdmr';
+    if (p.id === 'PP-004' || (p.name && p.name.includes('Ultima BWR'))) return 'ultimabwr';
+    if (p.id === 'PP-005' || (p.name && p.name.includes('Black Hub'))) return 'blackhub';
+    if (p.id === 'PP-006' || (p.name && p.name.includes('Black Decor'))) return 'blackdecor';
+    if (p.id === 'PP-007' || (p.name && p.name.includes('Future Wood'))) return 'futurewood';
+    if (p.id === 'PP-008' || (p.name && p.name.includes('Platinum'))) return 'platinum';
+    return (p.id || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+  }
+
+  function syncLiveWebsiteProducts() {
+    const grid = document.querySelector('.products-grid');
+    if (!grid) return;
+
+    let products = [];
+    try {
+      const stored = localStorage.getItem(PRODUCTS_KEY);
+      if (stored) {
+        products = JSON.parse(stored);
+      }
+    } catch (e) { console.warn('Live products sync read error:', e); }
+
+    if (!Array.isArray(products) || products.length === 0) return;
+
+    // Filter active products only
+    const activeProducts = products.filter(p => p.status === 'Active' || !p.status);
+    if (activeProducts.length === 0) return;
+
+    function escapeHTML(str) {
+      if (!str) return '';
+      return String(str).replace(/[&<>'"]/g, tag => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+      }[tag] || tag));
+    }
+
+    grid.innerHTML = activeProducts.map(p => {
+      const photoURL = p.photo || 'assets/images/pearl_ultima_plus.jpg';
+      const cleanPhoto = photoURL.includes('?') ? photoURL : `${photoURL}?v=210`;
+      const specKey = getSpecKey(p);
+      const thickChips = (p.thicknesses || []).map(t => `<span class="thickness-chip">${escapeHTML(t)}mm</span>`).join('');
+
+      // Register / update PRODUCT_SPECS_DATA dynamically for Tech Specs modal
+      if (window.PRODUCT_SPECS_DATA) {
+        window.PRODUCT_SPECS_DATA[specKey] = {
+          title: p.name + ' (' + (p.grade || 'Plywood') + ')',
+          grade: p.standard || (p.grade + ' Grade'),
+          core: p.core || 'High Density Core',
+          resin: p.resin || 'Phenolic Synthetic Resin Matrix',
+          thickness: (p.thicknesses || []).map(t => t + 'mm').join(', '),
+          dimensions: (p.sheetSizes || ['8x4', '7x4']).join(', ') + ' ft',
+          boilingTest: p.waterTest || 'Boiling Water Proof',
+          screwHolding: '> 2700 N (High Tensile Strength)',
+          warranty: p.warranty || 'Guarantee Certified',
+          applications: p.description || 'Architectural woodwork and interior furniture'
+        };
+      }
+
+      return `
+        <div class="product-card" id="prod-${specKey}">
+          <div class="product-media" onclick="openPhotoLightbox('${cleanPhoto}', '${escapeHTML(p.name)} — ${escapeHTML(p.tagline || p.grade)}')">
+            <img src="${cleanPhoto}" alt="${escapeHTML(p.name)}">
+          </div>
+          <div class="product-body">
+            <h3 class="product-title">${escapeHTML(p.name)}</h3>
+            <div class="product-use-tag"><i class="lucide-shield-check"></i> ${escapeHTML(p.tagline || (p.grade + ' Grade'))}</div>
+            <p style="font-size: 0.78rem; color: #C2D4CD; margin-bottom: 6px; line-height: 1.35;">
+              ${escapeHTML(p.description)}
+            </p>
+            <div class="product-specs-list">
+              ${p.standard ? `<div class="spec-line"><span class="spec-key">BIS Standard:</span><span class="spec-val">${escapeHTML(p.standard)}</span></div>` : ''}
+              ${p.core ? `<div class="spec-line"><span class="spec-key">Core Material:</span><span class="spec-val">${escapeHTML(p.core)}</span></div>` : ''}
+              ${p.waterTest ? `<div class="spec-line"><span class="spec-key">Water Test:</span><span class="spec-val">${escapeHTML(p.waterTest)}</span></div>` : ''}
+              ${p.warranty ? `<div class="spec-line"><span class="spec-key">Warranty:</span><span class="spec-val">${escapeHTML(p.warranty)}</span></div>` : ''}
+              ${p.price ? `<div class="spec-line"><span class="spec-key">Wholesale Price:</span><span class="spec-val" style="color:#D4A359; font-weight:800;">${escapeHTML(p.price)}</span></div>` : ''}
+              ${thickChips ? `<div class="thickness-chips" style="margin-top:6px;">${thickChips}</div>` : ''}
+            </div>
+            <div class="product-footer">
+              <button class="btn btn-outline-gold btn-sm" onclick="openProductSpecs('${specKey}')">
+                <i class="lucide-info"></i> Tech Specs
+              </button>
+              <button class="btn btn-primary btn-sm" onclick="openModal('modalQuote', {productName: '${escapeHTML(p.name)}'})">
+                <i class="lucide-send"></i> Quote
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    if (window.lucide && window.lucide.createIcons) {
+      window.lucide.createIcons();
+    }
+  }
+
+  window.syncLiveWebsiteProducts = syncLiveWebsiteProducts;
+
+  document.addEventListener('DOMContentLoaded', () => {
+    syncLiveWebsiteProducts();
+  });
+
+  window.addEventListener('storage', (e) => {
+    if (e.key === PRODUCTS_KEY) {
+      syncLiveWebsiteProducts();
+    }
+  });
+})();
+

@@ -203,6 +203,9 @@
     localStorage.setItem(PRODUCTS_KEY, JSON.stringify(data));
     renderProducts();
     updateProductStats();
+    if (window.syncLiveWebsiteProducts) {
+      window.syncLiveWebsiteProducts();
+    }
   }
 
   // ── Tab Switch ─────────────────────────────────────────────────────────────
