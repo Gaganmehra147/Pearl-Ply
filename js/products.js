@@ -225,7 +225,7 @@
 
   // ── Tab Switch ─────────────────────────────────────────────────────────────
   window.switchAdminTab = function (tab) {
-    const crmMain = document.querySelector('.admin-main-wrap:not(.products-main)');
+    const crmMain = document.getElementById('crmSection') || document.querySelector('.admin-main-wrap:not(.products-main)');
     const prodMain = document.getElementById('productsSection');
     const tabCRM = document.getElementById('tabCRM');
     const tabProd = document.getElementById('tabProducts');
@@ -233,19 +233,19 @@
     const headerLabel = document.getElementById('headerActionLabel');
 
     if (tab === 'crm') {
-      crmMain && (crmMain.style.display = '');
-      prodMain && (prodMain.style.display = 'none');
-      tabCRM && tabCRM.classList.add('active');
-      tabProd && tabProd.classList.remove('active');
-      headerBtn && (headerBtn.onclick = () => window.openAddLeadModal());
-      headerLabel && (headerLabel.textContent = '+ Add Manual Lead');
+      if (crmMain) crmMain.style.display = '';
+      if (prodMain) prodMain.style.display = 'none';
+      if (tabCRM) tabCRM.classList.add('active');
+      if (tabProd) tabProd.classList.remove('active');
+      if (headerBtn) headerBtn.onclick = () => window.openAddLeadModal();
+      if (headerLabel) headerLabel.textContent = '+ Add Manual Lead';
     } else {
-      crmMain && (crmMain.style.display = 'none');
-      prodMain && (prodMain.style.display = '');
-      tabCRM && tabCRM.classList.remove('active');
-      tabProd && tabProd.classList.add('active');
-      headerBtn && (headerBtn.onclick = () => window.PearlProducts.openModal());
-      headerLabel && (headerLabel.textContent = '+ Add Product');
+      if (crmMain) crmMain.style.display = 'none';
+      if (prodMain) prodMain.style.display = '';
+      if (tabCRM) tabCRM.classList.remove('active');
+      if (tabProd) tabProd.classList.add('active');
+      if (headerBtn) headerBtn.onclick = () => window.PearlProducts.openModal();
+      if (headerLabel) headerLabel.textContent = '+ Add Product';
       renderProducts();
       updateProductStats();
     }
@@ -464,7 +464,30 @@
       tagline: document.getElementById('prodTagline').value.trim(),
       description: document.getElementById('prodDescription').value.trim(),
       core: document.getElementById('prodCore').value.trim(),
-      resin: document.getElementBy    saveProducts(products);
+      resin: document.getElementById('prodResin').value.trim(),
+      standard: document.getElementById('prodStandard').value.trim(),
+      warranty: document.getElementById('prodWarranty').value.trim(),
+      waterTest: document.getElementById('prodWaterTest').value.trim(),
+      moisture: document.getElementById('prodMoisture').value,
+      thicknesses,
+      sheetSizes,
+      price: document.getElementById('prodPrice').value.trim(),
+      status: document.getElementById('prodStatus').value,
+      features: document.getElementById('prodFeatures').value.trim(),
+      photo: currentPhotoBase64 || (editId ? (products.find(p => p.id === editId)?.photo || '') : 'assets/images/pearl_ultima_plus.jpg'),
+      createdAt: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
+    };
+
+    if (editId) {
+      const idx = products.findIndex(p => p.id === editId);
+      if (idx !== -1) {
+        products[idx] = { ...products[idx], ...productData };
+      }
+    } else {
+      products.unshift(productData);
+    }
+
+    saveProducts(products);
     closeModal();
 
     // Sync to Cloud Firestore if connected
@@ -477,7 +500,7 @@
     }
 
     // Show success toast
-    showToast(editId ? '✅ Product updated! (Saved & Synced)' : '✅ Product added! (Saved & Synced)');
+    showToast(editId ? '✅ Product updated! (Saved & Synced Live)' : '✅ Product added! (Saved & Synced Live)');
   }
 
   // ── Delete Product ─────────────────────────────────────────────────────────
@@ -528,7 +551,7 @@
   // ── Helper ─────────────────────────────────────────────────────────────────
   function escapeHTML(str) {
     if (!str) return '';
-    return String(str).replace(/[&<>'"]/g, tag => ({
+    return String(str).replace(/[&<>'\"]/g, tag => ({
       '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
     }[tag] || tag));
   }
@@ -554,7 +577,7 @@
     handlePhotoUpload,
     syncAllToCloud: async function() {
       if (!window.PearlCloudDB || !window.PearlCloudDB.isReady()) {
-        alert('⚠️ Cloud Database is not connected yet!\n\nPlease click "☁️ Database Setup" in the top bar to configure your Google Firebase credentials.');
+        alert('☁️ Cloud Database is not connected yet!');
         return;
       }
       try {
@@ -604,51 +627,6 @@
         attachCloudProducts();
       }
     });
-  }��───────────────────
-  function escapeHTML(str) {
-    if (!str) return '';
-    return String(str).replace(/[&<>'\"]/g, tag => ({
-      '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
-    }[tag] || tag));
-  }
-
-  // ── Public API ─────────────────────────────────────────────────────────────
-  window.PearlProducts = {
-    render: renderProducts,
-    search: function(val) {
-      const el = document.getElementById('prodSearchInput');
-      if (el) el.value = val;
-      renderProducts();
-    },
-    filterGrade: function(val) {
-      const el = document.getElementById('prodGradeFilter');
-      if (el) el.value = val;
-      renderProducts();
-    },
-    openModal,
-    closeModal,
-    saveProduct,
-    deleteProduct,
-    filterProducts: renderProducts,
-    handlePhotoUpload,
-    exportJSON: function() {
-      const products = getProducts();
-      const str = JSON.stringify(products, null, 2);
-      const blob = new Blob([str], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'products.json';
-      a.click();
-      URL.revokeObjectURL(url);
-      showToast('📥 Downloaded products.json for live website deploy!');
-    }
-  };
-
-  // Init on load
-  function initProducts() {
-    renderProducts();
-    updateProductStats();
   }
 
   if (document.readyState === 'loading') {
