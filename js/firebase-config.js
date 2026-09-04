@@ -5,13 +5,13 @@
 // Default baseline configuration. 
 // Can also be set directly from Admin Dashboard > Cloud Database Setup.
 window.PEARL_FIREBASE_CONFIG = window.PEARL_FIREBASE_CONFIG || {
-  apiKey: "AIzaSyA7Jk3km3C3rnd-KfZ0QRuJsDjGmGVUCl4",
-  authDomain: "pearlply-168e6.firebaseapp.com",
-  projectId: "pearlply-168e6",
-  storageBucket: "pearlply-168e6.firebasestorage.app",
-  messagingSenderId: "296740323445",
-  appId: "1:296740323445:web:8dcea7782b5e3805b9b83c",
-  measurementId: "G-3DLBS6QK98"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY || "YOUR_API_KEY",
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN || "YOUR_AUTH_DOMAIN",
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID || "pearl-ply",
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET || "YOUR_STORAGE_BUCKET",
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID || "",
+  appId: process.env.REACT_APP_FIREBASE_APP_ID || "",
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID || ""
 };
 
 // Retrieve active config (localStorage has precedence over default file config)
