@@ -50,6 +50,22 @@
       }
     },
 
+    // Fetch Products directly from Cloud Firestore once
+    getProducts: async function() {
+      if (!this.isReady()) return null;
+      try {
+        const snapshot = await window.pearlDb.collection(PRODUCTS_COLLECTION).get();
+        if (snapshot.empty) return [];
+        const products = [];
+        snapshot.forEach(doc => products.push(doc.data()));
+        products.sort((a, b) => (a.id || '').localeCompare(b.id || ''));
+        return products;
+      } catch (err) {
+        console.error('❌ [PearlCloudDB] Error fetching products:', err);
+        return null;
+      }
+    },
+
     // Real-time Subscribe to Products
     subscribeToProducts: function(callback) {
       if (activeProductsUnsub) {
@@ -64,6 +80,7 @@
             snapshot.forEach(doc => {
               products.push(doc.data());
             });
+            products.sort((a, b) => (a.id || '').localeCompare(b.id || ''));
             console.log('☁️ [PearlCloudDB] Real-time products sync: ' + products.length + ' items');
             if (typeof callback === 'function') callback(products);
           },

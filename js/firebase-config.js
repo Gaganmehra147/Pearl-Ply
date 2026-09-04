@@ -135,11 +135,14 @@ window.testFirebaseConnection = async function() {
   }
 };
 
-// Auto-run on load
-(function() {
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', window.initFirebase);
-  } else {
-    window.initFirebase();
-  }
-})();
+// Auto-run immediately so window.pearlDb is available to all subsequent scripts without waiting
+try {
+  window.initFirebase();
+} catch (e) {
+  console.warn('[Pearl Firebase] Immediate init error:', e);
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    if (!window.pearlDb) window.initFirebase();
+  });
+}

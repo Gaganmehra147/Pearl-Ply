@@ -971,30 +971,41 @@ function initHeroCarousel() {
     const grid = document.querySelector('.products-grid');
     if (!grid) return;
 
-    fetch('assets/data/products.json?v=300')
+    // 1. First priority: Check Cloud Firestore (Live Multi-Device Database)
+    if (window.PearlCloudDB && window.PearlCloudDB.isReady() && typeof window.PearlCloudDB.getProducts === 'function') {
+      window.PearlCloudDB.getProducts().then(cloudProducts => {
+        if (Array.isArray(cloudProducts) && cloudProducts.length > 0) {
+          try { localStorage.setItem(PRODUCTS_KEY, JSON.stringify(cloudProducts)); } catch (e) {}
+          renderProductsGrid(cloudProducts, grid);
+          return;
+        }
+        fallbackLoad(grid);
+      }).catch(() => fallbackLoad(grid));
+      return;
+    }
+
+    fallbackLoad(grid);
+  }
+
+  function fallbackLoad(grid) {
+    try {
+      const stored = localStorage.getItem(PRODUCTS_KEY);
+      if (stored) {
+        const local = JSON.parse(stored);
+        if (Array.isArray(local) && local.length > 0) {
+          renderProductsGrid(local, grid);
+          return;
+        }
+      }
+    } catch (e) {}
+
+    fetch('assets/data/products.json?v=' + Date.now())
       .then(res => res.json())
       .then(serverProducts => {
-        let finalProducts = serverProducts;
-        try {
-          const stored = localStorage.getItem(PRODUCTS_KEY);
-          if (stored) {
-            const localProducts = JSON.parse(stored);
-            if (Array.isArray(localProducts) && localProducts.length > 0) {
-              finalProducts = localProducts;
-            }
-          }
-        } catch (e) {}
-        renderProductsGrid(finalProducts, grid);
+        renderProductsGrid(serverProducts, grid);
       })
       .catch(err => {
-        let products = [];
-        try {
-          const stored = localStorage.getItem(PRODUCTS_KEY);
-          if (stored) products = JSON.parse(stored);
-        } catch (e) {}
-        if (Array.isArray(products) && products.length > 0) {
-          renderProductsGrid(products, grid);
-        }
+        console.warn('Fallback products load error:', err);
       });
   }
 
@@ -1090,14 +1101,20 @@ function initHeroCarousel() {
     }
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
+  function initLiveCatalog() {
     syncLiveWebsiteProducts();
     attachCloudRealtimeSync();
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLiveCatalog);
+  } else {
+    initLiveCatalog();
+  }
 
   window.addEventListener('pearl:firebase:status', (e) => {
     if (e.detail && e.detail.connected) {
-      attachCloudRealtimeSync();
+      initLiveCatalog();
     }
   });
 
