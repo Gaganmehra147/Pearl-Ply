@@ -559,6 +559,8 @@
   // ── Public API ─────────────────────────────────────────────────────────────
   window.PearlProducts = {
     render: renderProducts,
+    updateProductStats: updateProductStats,
+    getProducts: getProducts,
     search: function(val) {
       const el = document.getElementById('prodSearchInput');
       if (el) el.value = val;
