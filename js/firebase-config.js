@@ -4,14 +4,15 @@
 
 // Default baseline configuration. 
 // Can also be set directly from Admin Dashboard > Cloud Database Setup.
+const _env = (typeof process !== 'undefined' && process && process.env) ? process.env : {};
 window.PEARL_FIREBASE_CONFIG = window.PEARL_FIREBASE_CONFIG || {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY || "YOUR_API_KEY",
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN || "YOUR_AUTH_DOMAIN",
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID || "pearl-ply",
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET || "YOUR_STORAGE_BUCKET",
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID || "",
-  appId: process.env.REACT_APP_FIREBASE_APP_ID || "",
-  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID || ""
+  apiKey: _env.REACT_APP_FIREBASE_API_KEY || "AIzaSyA7Jk3km3C3rnd-KfZ0QRuJsDjGmGVUCl4",
+  authDomain: _env.REACT_APP_FIREBASE_AUTH_DOMAIN || "pearlply-168e6.firebaseapp.com",
+  projectId: _env.REACT_APP_FIREBASE_PROJECT_ID || "pearlply-168e6",
+  storageBucket: _env.REACT_APP_FIREBASE_STORAGE_BUCKET || "pearlply-168e6.firebasestorage.app",
+  messagingSenderId: _env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID || "296740323445",
+  appId: _env.REACT_APP_FIREBASE_APP_ID || "1:296740323445:web:8dcea7782b5e3805b9b83c",
+  measurementId: _env.REACT_APP_FIREBASE_MEASUREMENT_ID || "G-3DLBS6QK98"
 };
 
 // Retrieve active config (localStorage has precedence over default file config)
