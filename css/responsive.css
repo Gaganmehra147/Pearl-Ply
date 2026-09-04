@@ -60,7 +60,7 @@ html, body {
 
   .footer-grid {
     display: grid !important;
-    grid-template-columns: 1.4fr 1fr 1fr 1.2fr !important;
+    grid-template-columns: 1.5fr 1fr 1fr !important;
     gap: 40px !important;
   }
 }
@@ -103,7 +103,7 @@ html, body {
 
   .footer-grid {
     display: grid !important;
-    grid-template-columns: 1.3fr 1fr 1fr 1fr !important;
+    grid-template-columns: 1.4fr 1fr 1fr !important;
     gap: 32px !important;
   }
 }
