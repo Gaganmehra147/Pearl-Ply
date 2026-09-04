@@ -1075,8 +1075,30 @@ function initHeroCarousel() {
 
   window.syncLiveWebsiteProducts = syncLiveWebsiteProducts;
 
+  function attachCloudRealtimeSync() {
+    const grid = document.querySelector('.products-grid');
+    if (!grid) return;
+    if (window.PearlCloudDB && window.PearlCloudDB.isReady()) {
+      window.PearlCloudDB.subscribeToProducts(cloudProducts => {
+        if (Array.isArray(cloudProducts) && cloudProducts.length > 0) {
+          try {
+            localStorage.setItem(PRODUCTS_KEY, JSON.stringify(cloudProducts));
+          } catch (e) {}
+          renderProductsGrid(cloudProducts, grid);
+        }
+      });
+    }
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     syncLiveWebsiteProducts();
+    attachCloudRealtimeSync();
+  });
+
+  window.addEventListener('pearl:firebase:status', (e) => {
+    if (e.detail && e.detail.connected) {
+      attachCloudRealtimeSync();
+    }
   });
 
   window.addEventListener('storage', (e) => {

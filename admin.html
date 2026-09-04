@@ -301,6 +301,10 @@
       </div>
 
       <div class="admin-header-actions">
+        <div id="cloudDbBadge" style="display:inline-flex; align-items:center; gap:6px; font-size:0.78rem; padding:6px 12px; border-radius:8px; background:rgba(16,185,129,0.12); border:1px solid rgba(16,185,129,0.35); color:#34d399; font-weight:600;" title="Google Firebase Realtime Sync is Active across all devices">
+          <span style="width:8px; height:8px; border-radius:50%; background:#10b981; box-shadow:0 0 6px #10b981; display:inline-block;"></span>
+          <span>Cloud DB Live</span>
+        </div>
         <button class="btn-adm btn-adm-gold" id="headerActionBtn" onclick="window.openAddLeadModal()">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
           <span id="headerActionLabel">+ Add Manual Lead</span>
@@ -610,6 +614,10 @@
               <option value="MR">Commercial MR (IS:303)</option>
               <option value="Door">Flush Door (IS:2202)</option>
             </select>
+            <button class="btn-adm btn-adm-outline" id="btnCloudSync" onclick="window.PearlProducts.syncAllToCloud()" style="font-size: 0.8rem; padding: 8px 14px;" title="Upload all catalog data to Cloud Firestore for instant live multi-device access">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+              ☁️ Sync All to Cloud DB
+            </button>
             <button class="btn-adm btn-adm-outline" onclick="window.PearlProducts.exportJSON()" style="font-size: 0.8rem; padding: 8px 14px;" title="Export products.json file to update live website for all devices">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
               🚀 Export Live Data for All Devices
@@ -915,6 +923,12 @@
     </div>
 
   </div><!-- /adminAppDashboard -->
+
+  <!-- Firebase Cloud Realtime Database SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js?v=300"></script>
+  <script src="js/firebase-db.js?v=300"></script>
 
   <!-- Scripts -->
   <script src="js/admin.js?v=250"></script>

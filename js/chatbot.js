@@ -41,6 +41,15 @@
       leads.unshift(newLead);
       localStorage.setItem(this.STORAGE_KEY, JSON.stringify(leads));
       
+      // Sync to Cloud Firestore in real-time across devices
+      if (window.PearlCloudDB && window.PearlCloudDB.isReady()) {
+        try {
+          window.PearlCloudDB.saveLead(newLead);
+        } catch (e) {
+          console.warn('[PearlCRM] Cloud lead sync warning:', e);
+        }
+      }
+      
       // Dispatch custom event for real-time CRM updates
       window.dispatchEvent(new CustomEvent('pearl_lead_added', { detail: newLead }));
       

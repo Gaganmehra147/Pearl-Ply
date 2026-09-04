@@ -520,6 +520,11 @@
       const current = getLeads();
       current.unshift(newLead);
       saveAllLeads(current);
+
+      if (window.PearlCloudDB && window.PearlCloudDB.isReady()) {
+        try { window.PearlCloudDB.saveLead(newLead); } catch (e) {}
+      }
+
       manualForm.reset();
       window.closeAddLeadModal();
     });
@@ -527,6 +532,23 @@
     // Listen for real-time lead additions from Chatbot / Website
     window.addEventListener('pearl_lead_added', () => {
       renderAll();
+    });
+
+    // Realtime Cloud Leads Sync across multiple devices
+    function attachCloudLeadsSync() {
+      if (window.PearlCloudDB && window.PearlCloudDB.isReady()) {
+        window.PearlCloudDB.subscribeToLeads(cloudLeads => {
+          if (Array.isArray(cloudLeads) && cloudLeads.length > 0) {
+            try { localStorage.setItem(STORAGE_KEY, JSON.stringify(cloudLeads)); } catch (e) {}
+            leads = cloudLeads;
+            renderAll();
+          }
+        });
+      }
+    }
+    attachCloudLeadsSync();
+    window.addEventListener('pearl:firebase:status', (e) => {
+      if (e.detail && e.detail.connected) attachCloudLeadsSync();
     });
   });
 

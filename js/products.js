@@ -464,34 +464,20 @@
       tagline: document.getElementById('prodTagline').value.trim(),
       description: document.getElementById('prodDescription').value.trim(),
       core: document.getElementById('prodCore').value.trim(),
-      resin: document.getElementById('prodResin').value.trim(),
-      standard: document.getElementById('prodStandard').value.trim(),
-      warranty: document.getElementById('prodWarranty').value.trim(),
-      waterTest: document.getElementById('prodWaterTest').value.trim(),
-      moisture: document.getElementById('prodMoisture').value,
-      thicknesses,
-      sheetSizes,
-      price: document.getElementById('prodPrice').value.trim(),
-      status: document.getElementById('prodStatus').value,
-      features: document.getElementById('prodFeatures').value.trim(),
-      photo: currentPhotoBase64,
-      createdAt: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
-    };
-
-    if (editId) {
-      const idx = products.findIndex(p => p.id === editId);
-      if (idx !== -1) {
-        products[idx] = { ...products[idx], ...productData };
-      }
-    } else {
-      products.unshift(productData);
-    }
-
-    saveProducts(products);
+      resin: document.getElementBy    saveProducts(products);
     closeModal();
 
+    // Sync to Cloud Firestore if connected
+    if (window.PearlCloudDB && window.PearlCloudDB.isReady()) {
+      window.PearlCloudDB.saveProduct(productData).then(() => {
+        console.log('☁️ Product synced to Cloud Database across all devices.');
+      }).catch(err => {
+        console.warn('[PearlProducts] Cloud sync warning:', err);
+      });
+    }
+
     // Show success toast
-    showToast(editId ? '✅ Product updated successfully!' : '✅ Product added successfully!');
+    showToast(editId ? '✅ Product updated! (Saved & Synced)' : '✅ Product added! (Saved & Synced)');
   }
 
   // ── Delete Product ─────────────────────────────────────────────────────────
@@ -499,6 +485,14 @@
     if (!confirm('Delete this product permanently?')) return;
     const products = getProducts().filter(p => p.id !== id);
     saveProducts(products);
+
+    // Delete from Cloud Firestore if connected
+    if (window.PearlCloudDB && window.PearlCloudDB.isReady()) {
+      window.PearlCloudDB.deleteProduct(id).catch(err => {
+        console.warn('[PearlProducts] Cloud delete warning:', err);
+      });
+    }
+
     showToast('🗑️ Product deleted.');
   }
 
@@ -532,6 +526,85 @@
   }
 
   // ── Helper ─────────────────────────────────────────────────────────────────
+  function escapeHTML(str) {
+    if (!str) return '';
+    return String(str).replace(/[&<>'"]/g, tag => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+    }[tag] || tag));
+  }
+
+  // ── Public API ─────────────────────────────────────────────────────────────
+  window.PearlProducts = {
+    render: renderProducts,
+    search: function(val) {
+      const el = document.getElementById('prodSearchInput');
+      if (el) el.value = val;
+      renderProducts();
+    },
+    filterGrade: function(val) {
+      const el = document.getElementById('prodGradeFilter');
+      if (el) el.value = val;
+      renderProducts();
+    },
+    openModal,
+    closeModal,
+    saveProduct,
+    deleteProduct,
+    filterProducts: renderProducts,
+    handlePhotoUpload,
+    syncAllToCloud: async function() {
+      if (!window.PearlCloudDB || !window.PearlCloudDB.isReady()) {
+        alert('⚠️ Cloud Database is not connected yet!\n\nPlease click "☁️ Database Setup" in the top bar to configure your Google Firebase credentials.');
+        return;
+      }
+      try {
+        showToast('⏳ Uploading all products to Cloud Database...');
+        const list = getProducts();
+        const count = await window.PearlCloudDB.seedLocalProductsToCloud(list);
+        showToast(`☁️ Success! ${count} products uploaded to Cloud DB for all devices!`);
+      } catch (e) {
+        alert('Cloud sync failed: ' + e.message);
+      }
+    },
+    exportJSON: function() {
+      const products = getProducts();
+      const str = JSON.stringify(products, null, 2);
+      const blob = new Blob([str], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'products.json';
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast('📥 Downloaded products.json for live website deploy!');
+    }
+  };
+
+  // Init on load
+  function initProducts() {
+    renderProducts();
+    updateProductStats();
+
+    // Subscribe to Cloud Firestore real-time updates
+    function attachCloudProducts() {
+      if (window.PearlCloudDB && window.PearlCloudDB.isReady()) {
+        window.PearlCloudDB.subscribeToProducts(cloudProducts => {
+          if (Array.isArray(cloudProducts) && cloudProducts.length > 0) {
+            localStorage.setItem(PRODUCTS_KEY, JSON.stringify(cloudProducts));
+            renderProducts();
+            updateProductStats();
+          }
+        });
+      }
+    }
+
+    attachCloudProducts();
+    window.addEventListener('pearl:firebase:status', function(e) {
+      if (e.detail && e.detail.connected) {
+        attachCloudProducts();
+      }
+    });
+  }��───────────────────
   function escapeHTML(str) {
     if (!str) return '';
     return String(str).replace(/[&<>'\"]/g, tag => ({
