@@ -42,6 +42,6 @@
     <text x="321" y="22" font-family="Georgia, 'Times New Roman', serif" font-size="12" font-weight="bold" fill="currentColor">TM</text>
   </g>
 
-  <!-- Tagline: THINK DIFFERENT -->
-  <text x="248" y="86" font-family="Georgia, 'Times New Roman', serif" font-size="13" font-weight="bold" letter-spacing="2" fill="currentColor" text-anchor="middle">THINK DIFFERENT</text>
+  <!-- Tagline: PLYWOOD -->
+  <text x="248" y="86" font-family="Georgia, 'Times New Roman', serif" font-size="13" font-weight="bold" letter-spacing="3" fill="currentColor" text-anchor="middle">PLYWOOD</text>
 </svg>
