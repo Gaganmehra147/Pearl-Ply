@@ -612,8 +612,24 @@ document.addEventListener('DOMContentLoaded', () => {
       screwHolding: '> 3000 N (Face) | > 2100 N (Edge)',
       warranty: '10-Year Guarantee',
       applications: 'Main entrance doors, bathroom doors, bedroom luxury doors, commercial suites'
+    },
+    'pp734': {
+      title: 'Club Gurjan (High Tension Strength Ply)',
+      grade: 'IS:303 • CM/L No. 9100233593 • BWR Grade',
+      core: 'High Density Moisture Resistant Fiber Core',
+      resin: 'Fortified Resin — Low VOC & Anti-Warp',
+      thickness: '6mm, 9mm, 12mm, 16mm, 19mm',
+      dimensions: '8x4, 7x4 ft',
+      boilingTest: 'Moisture Resistant Interior Immersion Tested',
+      screwHolding: '> 2700 N (High Tensile Strength)',
+      warranty: '20-Year Guarantee',
+      applications: 'High-load wardrobes, architectural woodwork, luxury furniture, humid interiors'
     }
   };
+
+  // Aliases for seamless navigation
+  PRODUCT_SPECS_DATA['ultima_ply'] = PRODUCT_SPECS_DATA['ultimabwr'];
+  PRODUCT_SPECS_DATA['club_gurjan'] = PRODUCT_SPECS_DATA['pp734'];
 
   window.openProductSpecs = function(productKey) {
     const data = PRODUCT_SPECS_DATA[productKey];
